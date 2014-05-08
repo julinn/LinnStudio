@@ -12,7 +12,11 @@ using System.Net.Mail;
 using System.Text;
 
 /// <summary>
-///ulSendEmail 的摘要说明
+/// ulSendEmail 的摘要说明
+/// Author: julinn
+/// GitHub: https://github.com/julinn/LinnStudio
+/// Webnet: www.liuju.net
+/// Update: 2014-05-08 2014-05-08 22:15:39
 /// </summary>
 public class ulSendEmail
 {

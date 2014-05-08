@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Data;
 using System.Configuration;
 using System.Web;
@@ -9,31 +9,35 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 
 /// <summary>
-///ulMsgBox çš„æ‘˜è¦è¯´æ˜
+/// ulMsgBox µÄÕªÒªËµÃ÷
+/// Author: julinn
+/// GitHub: https://github.com/julinn/LinnStudio
+/// Webnet: www.liuju.net
+/// Update: 2014-05-08 22:14:00
 /// </summary>
 public class ulMsgBox
 {
     public ulMsgBox()
     {
         //
-        //TODO: åœ¨æ­¤å¤„æ·»åŠ æ„é€ å‡½æ•°é€»è¾‘
+        //TODO: ÔÚ´Ë´¦Ìí¼Ó¹¹Ôìº¯ÊıÂß¼­
         //
     }
 
     /// <summary>
-    /// alteræç¤ºä¿¡æ¯
+    /// alterÌáÊ¾ĞÅÏ¢
     /// </summary>
     /// <param name="msgstr"></param>
     /// <returns></returns>
     public static void msgBox(string msgstr, Page page)
     {
-        msgstr = msgstr.Replace("'", "ï¼‡").Replace("\"", "ï¼‚");
+        msgstr = msgstr.Replace("'", "£§").Replace("\"", "£¢");
         msgstr = "<script language='javascript'>alert('" + msgstr + "')</script>";
         page.Response.Write(msgstr);
     }
 
     /// <summary>
-    /// æ›¿æ¢æŸ¥è¯¢å‚æ•°ï¼šç©ºæ ¼ï¼Œor ï¼Œand ï¼Œ å•å¼•å·(')
+    /// Ìæ»»²éÑ¯²ÎÊı£º¿Õ¸ñ£¬or £¬and £¬ µ¥ÒıºÅ(')
     /// </summary>
     /// <param name="ParaValue"></param>
     /// <returns></returns>
@@ -45,7 +49,7 @@ public class ulMsgBox
     }
 
     /// <summary>
-    /// åœ¨æ–°çª—å£ä¸­æ‰“å¼€URL
+    /// ÔÚĞÂ´°¿ÚÖĞ´ò¿ªURL
     /// </summary>
     /// <param name="sUrl"></param>
     /// <returns></returns>
@@ -56,7 +60,7 @@ public class ulMsgBox
     }
 
     /// <summary>
-    /// æ‰“å¼€URLï¼Œæ›¿æ¢åŸçª—å£å†…å®¹
+    /// ´ò¿ªURL£¬Ìæ»»Ô­´°¿ÚÄÚÈİ
     /// </summary>
     /// <param name="sUrl"></param>
     /// <returns></returns>
@@ -67,7 +71,7 @@ public class ulMsgBox
     }
 
     /// <summary>
-    /// æ‰“å¼€ModeDialogæ ¼å¼ç½‘é¡µå¯¹è¯æ¡†ï¼Œé”å®šç„¦ç‚¹
+    /// ´ò¿ªModeDialog¸ñÊ½ÍøÒ³¶Ô»°¿ò£¬Ëø¶¨½¹µã
     /// </summary>
     /// <param name="sUrl"></param>
     /// <returns></returns>
@@ -78,7 +82,7 @@ public class ulMsgBox
     }
 
     /// <summary>
-    /// æ‰“å¼€å¯¹è¯æ¡†ï¼Œä¸é”å®šç„¦ç‚¹
+    /// ´ò¿ª¶Ô»°¿ò£¬²»Ëø¶¨½¹µã
     /// </summary>
     /// <param name="sUrl"></param>
     /// <returns></returns>
