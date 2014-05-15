@@ -7,9 +7,7 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
-//
 using System.Data.SqlClient;
-using System.Text;
 
 /// <summary>
 /// SqlParameter 参数操作类
