@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 /// <summary>
 /// SqlParameter 参数操作类
 /// Author: julinn
-/// update: 2014-05-16 11:29:38
+/// update: 2014-05-22 11:19:24
 /// Webnet: www.liuju.net
 /// GitHub: https://github.com/julinn/LinnStudio
 /// </summary>
@@ -48,6 +48,32 @@ public class ulSqlParameter
     }
     #endregion
 
+    #region 获取 SqlParameter[] 全部参数名称和类型
+    /// <summary>
+    /// 获取 SqlParameter[] 全部参数名称和类型
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
+    public static string GetAllParametersName(params SqlParameter[] parameters)
+    {
+        string ret = "", sItem = "";
+        int i = 0, iCount = parameters.Length;
+        for (i = 0; i < iCount; i++)
+        {
+            sItem = parameters[i].ParameterName;
+            if (parameters[i].Direction == ParameterDirection.Output || parameters[i].Direction == ParameterDirection.InputOutput)
+            {
+                sItem = sItem + " out";
+            }
+            if (ret == "")
+                ret = sItem;
+            else
+                ret = ret + "," + sItem;
+        }
+        return ret;
+    }
+    #endregion 
+    
     /********************** 输入参数 **********************/
 
     #region 添加输入参数 -- 完整类型
