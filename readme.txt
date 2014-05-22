@@ -10,7 +10,7 @@ ulSendEmail.cs        //发送邮件
 
 ulSqlParameter.cs     //SQL参数操作类
 
-ulSqlHelper.cs    	  //sql基础操作类（MSSQL）
+ulSqlHelper.cs        //sql基础操作类（MSSQL）
 
 ulwxMsgXML.cs 	      //微信接收到的XML处理分析类 
 
