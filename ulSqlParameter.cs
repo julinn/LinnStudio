@@ -48,6 +48,34 @@ public class ulSqlParameter
     }
     #endregion
 
+<<<<<<< .mine
+    #region 获取 SqlParameter[] 全部参数名称和类型
+    /// <summary>
+    /// 获取 SqlParameter[] 全部参数名称和类型
+    /// </summary>
+    /// <param name="parameters"></param>
+    /// <returns></returns>
+    public static string GetAllParametersName(params SqlParameter[] parameters)
+    {
+        string ret = "", sItem = "";
+        int i = 0, iCount = parameters.Length;
+        for (i = 0; i < iCount; i++)
+        {
+            sItem = parameters[i].ParameterName;
+            if (parameters[i].Direction == ParameterDirection.Output || parameters[i].Direction == ParameterDirection.InputOutput)
+            {
+                sItem = sItem + " out";
+            }
+            if (ret == "")
+                ret = sItem;
+            else
+                ret = ret + "," + sItem;
+        }
+        return ret;
+    }
+    #endregion 
+
+=======
     #region 获取 SqlParameter[] 全部参数名称和类型
     /// <summary>
     /// 获取 SqlParameter[] 全部参数名称和类型
@@ -74,6 +102,7 @@ public class ulSqlParameter
     }
     #endregion 
     
+>>>>>>> .r18
     /********************** 输入参数 **********************/
 
     #region 添加输入参数 -- 完整类型
