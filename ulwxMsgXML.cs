@@ -5,7 +5,7 @@ using System.Web.Security;
 /// <summary>
 /// ulwxMsgXML 的摘要说明
 /// Author: julinn
-/// update: 2014-05-21 14:07:46
+/// update: 2014-12-01 15:26:15
 /// Webnet: www.liuju.net
 /// GitHub: https://github.com/julinn/LinnStudio
 /// </summary>
@@ -34,6 +34,12 @@ public class ulwxMsgXML
     /// 创建时间  
     /// </summary>  
     public string CreateTime { get { return _CreateTime; } set { _CreateTime = value; } }
+
+    private string _CreateTimeStr = "";
+    /// <summary>  
+    /// 创建时间String 格式  
+    /// </summary>  
+    public string CreateTimeStr { get { return _CreateTimeStr; } set { _CreateTimeStr = value; } }
 
     private string _MsgType = "";
     /// <summary>
@@ -125,6 +131,12 @@ public class ulwxMsgXML
     /// </summary>
     public string Event { get { return _Event; } set { _Event = value; } }
 
+    private string _eventKey = "";
+    /// <summary>
+    /// CLICK事件KEY值，与自定义菜单接口中KEY值对应
+    /// </summary>
+    public string EventKey { get { return _eventKey; } set { _eventKey = value; } }
+
     #endregion 
 
     #region unix时间转换为datetime
@@ -168,13 +180,15 @@ public class ulwxMsgXML
         DevpID = root.SelectSingleNode("ToUserName").InnerText;
         UserID = root.SelectSingleNode("FromUserName").InnerText;
         CreateTime = root.SelectSingleNode("CreateTime").InnerText;
-        CreateTime = UnixTimeToTime(CreateTime).ToString();
+        CreateTimeStr = UnixTimeToTime(CreateTime).ToString();
         MsgType = root.SelectSingleNode("MsgType").InnerText;
         switch (MsgType)
         {
             case "event":
                 {
                     Event = root.SelectSingleNode("Event").InnerText;
+                    if(Event.ToUpper() == "CLICK")
+                        EventKey = root.SelectSingleNode("EventKey").InnerText;
                     break;
                 }
             case "text":
@@ -262,15 +276,18 @@ public class ulwxMsgXML
     /// <returns></returns>
     public string GetFormatTransferCustomerService()
     {
-        /*
+        
         return "<xml>"
                    + "<ToUserName><![CDATA[" + DevpID + "]]></ToUserName>"
                    + "<FromUserName><![CDATA[" + UserID + "]]></FromUserName>"
-                   + "<CreateTime>" + ConvertDateTimeInt(DateTime.Now) + "</CreateTime>"
+                   + "<CreateTime>" + CreateTime + "</CreateTime>"
                    + "<MsgType><![CDATA[transfer_customer_service]]></MsgType>";
-         */
+
+     
+        /*
         return GetFormatHead()
             + "<MsgType><![CDATA[transfer_customer_service]]></MsgType>";
+         */
     }
 
     /// <summary>
