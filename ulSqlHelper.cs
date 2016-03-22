@@ -15,7 +15,7 @@ namespace ulLinnStudio
     /// <add name="ConnectionString" connectionString="" providerName="System.Data.SqlClient"/>
     /// </connectionStrings>
     /// Author: julinn
-    /// update: 2015-02-04 09:13:55
+    /// update: 2016-03-22 14:41:50
     /// Webnet: www.liuju.net
     /// GitHub: https://github.com/julinn/LinnStudio
     /// </summary>
@@ -36,12 +36,20 @@ namespace ulLinnStudio
         /// </summary>
         /// <param name="sKey"></param>
         /// <param name="sValue"></param>
-        public static void AddAppSettingsSection(string sKey, string sValue)
+        public static bool AddAppSettingsSection(string sKey, string sValue)
         {
-            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-            AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
-            appSection.Settings.Add(sKey, sValue);
-            config.Save();
+            try
+            {
+                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+                AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
+                appSection.Settings.Add(sKey, sValue);
+                config.Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 
@@ -50,12 +58,20 @@ namespace ulLinnStudio
         /// 删除设置节点
         /// </summary>
         /// <param name="sKey"></param>
-        public static void DelAppSettingsSection(string sKey)
+        public static bool DelAppSettingsSection(string sKey)
         {
-            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-            AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
-            appSection.Settings.Remove(sKey);
-            config.Save();
+            try
+            {
+                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+                AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
+                appSection.Settings.Remove(sKey);
+                config.Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 
@@ -65,12 +81,20 @@ namespace ulLinnStudio
         /// </summary>
         /// <param name="sKey"></param>
         /// <param name="sValue"></param>
-        public static void EditAppSettingsSection(string sKey, string sValue)
+        public static bool EditAppSettingsSection(string sKey, string sValue)
         {
-            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-            AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
-            appSection.Settings[sKey].Value = sValue;
-            config.Save();
+            try
+            {
+                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+                AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
+                appSection.Settings[sKey].Value = sValue;
+                config.Save();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 
@@ -82,7 +106,14 @@ namespace ulLinnStudio
         /// <returns></returns>
         public static string ReadAppSettingsSection(string sKey)
         {
-            return ConfigurationManager.AppSettings[sKey].ToString();
+            try
+            {
+                return ConfigurationManager.AppSettings[sKey].ToString();
+            }
+            catch
+            {
+                return "";
+            }
         }
         #endregion
 
