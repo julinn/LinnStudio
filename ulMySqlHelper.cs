@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// <summary>
 /// ulMySqlHelper 的摘要说明
 /// 作者：julinn 
-/// 更新日期：2015-08-17 17:43:18
+/// 更新日期：2016-05-12 23:23:15
 /// 需要配套 MySql.Data.dll 使用
 /// </summary>
 public class ulMySqlHelper
@@ -167,6 +167,8 @@ public class ulMySqlHelper
     #region TestConnString 测试连接字符串
     public static bool TestConnString(string connStr)
     {
+        if (connStr == "")
+            connStr = ReadConnString();
         using (MySqlConnection connection = new MySqlConnection(connStr))
         {
             try
