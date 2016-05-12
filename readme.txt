@@ -14,6 +14,9 @@ ulSqlHelper.cs        //sql基础操作类（MSSQL）
 
 ulwxMsgXML.cs 	      //微信接收到的XML处理分析类 
 
+MySqlHelper.cs        //sql基础操作类（MySQL）
+MySql.Data.dll
+
 ========== js ========== 
 
 msgbox.js            //自动关闭的消息提示框
