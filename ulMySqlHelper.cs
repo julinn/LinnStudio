@@ -11,7 +11,7 @@ using System.Collections.Generic;
 /// <summary>
 /// ulMySqlHelper 的摘要说明
 /// 作者：julinn 
-/// 更新日期：2016-05-12 23:23:15
+/// 更新日期：2016-05-22 12:03:44
 /// 需要配套 MySql.Data.dll 使用
 /// </summary>
 public class ulMySqlHelper
@@ -182,6 +182,25 @@ public class ulMySqlHelper
                 connection.Close();
                 return false;
             }
+        }
+    }
+    #endregion 
+
+    #region GetAppSetting 读取webConfig AppSettings Key值
+    /// <summary>
+    /// GetAppSetting 读取webConfig AppSettings Key值
+    /// </summary>
+    /// <param name="keyName"></param>
+    /// <returns></returns>
+    public static string GetAppSetting(string keyName)
+    {
+        try
+        {
+            return System.Configuration.ConfigurationManager.AppSettings[keyName].ToString();
+        }
+        catch
+        {
+            return "";
         }
     }
     #endregion 
