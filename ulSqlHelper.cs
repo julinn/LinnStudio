@@ -15,7 +15,7 @@ namespace ulLinnStudio
     /// <add name="ConnectionString" connectionString="" providerName="System.Data.SqlClient"/>
     /// </connectionStrings>
     /// Author: julinn
-    /// update: 2016-03-22 14:41:50
+    /// update: 2016-05-30 18:00:49
     /// Webnet: www.liuju.net
     /// GitHub: https://github.com/julinn/LinnStudio
     /// </summary>
@@ -30,75 +30,51 @@ namespace ulLinnStudio
         }
 
         //基础操作部分
-        #region 添加设置节点
+        #region AddAppSettingsSection 添加设置节点
         /// <summary>
         /// 添加设置节点
         /// </summary>
         /// <param name="sKey"></param>
         /// <param name="sValue"></param>
-        public static bool AddAppSettingsSection(string sKey, string sValue)
+        public static void AddAppSettingsSection(string sKey, string sValue)
         {
-            try
-            {
-                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-                AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
-                appSection.Settings.Add(sKey, sValue);
-                config.Save();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
+            appSection.Settings.Add(sKey, sValue);
+            config.Save();
         }
         #endregion
 
-        #region 删除设置节点
+        #region DelAppSettingsSection 删除设置节点
         /// <summary>
         /// 删除设置节点
         /// </summary>
         /// <param name="sKey"></param>
-        public static bool DelAppSettingsSection(string sKey)
+        public static void DelAppSettingsSection(string sKey)
         {
-            try
-            {
-                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-                AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
-                appSection.Settings.Remove(sKey);
-                config.Save();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
+            appSection.Settings.Remove(sKey);
+            config.Save();
         }
         #endregion
 
-        #region 编辑设置节点
+        #region EditAppSettingsSection 编辑设置节点
         /// <summary>
         /// 编辑设置节点
         /// </summary>
         /// <param name="sKey"></param>
         /// <param name="sValue"></param>
-        public static bool EditAppSettingsSection(string sKey, string sValue)
+        public static void EditAppSettingsSection(string sKey, string sValue)
         {
-            try
-            {
-                Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
-                AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
-                appSection.Settings[sKey].Value = sValue;
-                config.Save();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            Configuration config = WebConfigurationManager.OpenWebConfiguration("~");
+            AppSettingsSection appSection = (AppSettingsSection)config.GetSection("appSettings");
+            appSection.Settings[sKey].Value = sValue;
+            config.Save();
         }
         #endregion
 
-        #region 读取AppSettings节点配置
+        #region ReadAppSettingsSection 读取AppSettings节点配置
         /// <summary>
         /// 读取AppSettings节点配置
         /// </summary>
@@ -117,7 +93,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 简单加密 base64
+        #region SimpleEncStr 简单加密 base64
         /// <summary>
         /// 简单加密 base64
         /// </summary>
@@ -130,7 +106,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 简单解密 base64
+        #region SimpleDecStr 简单解密 base64
         /// <summary>
         /// 简单解密 base64
         /// </summary>
@@ -143,7 +119,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 读取连接字符串
+        #region ReadConnString 读取连接字符串
         public static string ReadConnString()
         {
             try
@@ -157,7 +133,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 保存连接字符串,配置节点：ConnectionString
+        #region SaveConnString 保存连接字符串,配置节点：ConnectionString
         /// <summary>
         /// 保存连接字符串,配置节点：ConnectionString
         /// </summary>
@@ -188,7 +164,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 简单的版权信息（底部）
+        #region LinnSign 简单的版权信息（底部）
         /// <summary>
         /// 简单的版权信息（底部）
         /// </summary>
@@ -202,8 +178,47 @@ namespace ulLinnStudio
         }
         #endregion
 
+        #region IsLetter_Number 检查字符串是否只包含字母和数字
+        /// <summary>
+        /// 检查字符串是否只包含字母和数字
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static bool IsLetter_Number(string str)
+        {
+            System.Text.RegularExpressions.Regex reg1 = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9]+$");
+            return reg1.IsMatch(str);
+        }
+        #endregion 
+
+        #region StrToInt 字符串转整形
+        public static int StrToInt(string str)
+        {
+            try
+            {
+                return int.Parse(str);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        public static int StrToInt(string str, int DefValue)
+        {
+            try
+            {
+                return int.Parse(str);
+            }
+            catch
+            {
+                return DefValue;
+            }
+        }
+        #endregion 
+
         //数据库操作部分
-        #region 格式化连接字符串
+        #region FormatConnStr 格式化连接字符串
         /// <summary>
         /// 格式化连接字符串
         /// </summary>
@@ -218,7 +233,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 测试连接字符串
+        #region TestConnstring 测试连接字符串
         /// <summary>
         /// 测试连接字符串
         /// </summary>
@@ -228,10 +243,14 @@ namespace ulLinnStudio
         {
             try
             {
-                SqlConnection conn = new SqlConnection(ConnStr);
-                conn.Open();
-                conn.Close();
-                return true;
+                if (ConnStr == "")
+                    ConnStr = ReadConnString();
+                using (SqlConnection conn = new SqlConnection(ConnStr))
+                {
+                    conn.Open();
+                    conn.Close();
+                    return true;
+                }
             }
             catch
             {
@@ -240,7 +259,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 读取第一行第一列记录
+        #region GetFirstData 读取第一行第一列记录
         /// <summary>
         /// 读取第一行第一列记录
         /// </summary>
@@ -248,36 +267,37 @@ namespace ulLinnStudio
         /// <returns></returns>
         public static string GetFirstData(string sql)
         {
-            string ret = "";
-            SqlConnection conn = new SqlConnection(FConnString);
+            string ret = "";            
             try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                SqlDataReader dr = cmd.ExecuteReader();
-                if (dr.HasRows)
-                    if (dr.Read())
-                        ret = dr[0].ToString();
-                    else
-                        ret = "";
-                else
-                    ret = "";
-                dr.Close();
-                conn.Close();
-                return ret;
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {                    
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        conn.Open();
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            if (dr.HasRows)
+                                if (dr.Read())
+                                    ret = dr[0].ToString();
+                                else
+                                    ret = "";
+                            else
+                                ret = "";
+                            dr.Close();
+                        }
+                    }
+                }
             }
             catch
             {
                 return "";
             }
-            finally
-            {
-                conn.Close();
-            }
+            return ret;
         }
         #endregion
 
-        #region 执行SQL语句
+        #region ExecuteSQL 执行SQL语句
         /// <summary>
         /// 执行SQL语句
         /// </summary>
@@ -285,29 +305,57 @@ namespace ulLinnStudio
         /// <returns></returns>
         public static bool ExecuteSQL(string sql)
         {
-            bool ret = false;
-            SqlConnection conn = new SqlConnection(FConnString);
+            bool ret = false;            
             try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                ret = true;
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {                        
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        ret = true;
+                    }
+                }
             }
             catch
             {
                 ret = false;
             }
-            finally
+            return ret;
+        }
+        #endregion 
+
+        #region ExecuteSQL 执行SQL语句
+        public static bool ExecuteSQL(string sql, params SqlParameter[] parameters)
+        {
+            bool ret = false;
+            try
             {
-                conn.Close();
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {                    
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = sql;
+                        cmd.Parameters.AddRange(parameters);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        ret = true;
+                    }
+                }
+            }
+            catch
+            {
+                ret = false;
             }
             return ret;
         }
+
         #endregion
 
-        #region 执行SQL语句,返回受影响行数，异常返回-1
+        #region ExecuteNonQuery 执行SQL语句,返回受影响行数，异常返回-1
         /// <summary>
         /// 执行SQL语句,返回受影响行数，异常返回-1
         /// </summary>
@@ -315,25 +363,26 @@ namespace ulLinnStudio
         /// <returns></returns>
         public static int ExecuteNonQuery(string sql)
         {
-            SqlConnection conn = new SqlConnection(FConnString);
+            
             try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                return cmd.ExecuteNonQuery();
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {                    
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        conn.Open();
+                        return cmd.ExecuteNonQuery();
+                    }
+                }
             }
             catch
             {
                 return -1;
             }
-            finally
-            {
-                conn.Close();
-            }
         }
         #endregion
 
-        #region 执行SQL语句,返回受影响行数，异常返回-1
+        #region ExecuteNonQuery 执行SQL语句,返回受影响行数，异常返回-1
         /// <summary>
         /// 执行SQL语句,返回受影响行数，异常返回-1
         /// </summary>
@@ -342,57 +391,58 @@ namespace ulLinnStudio
         /// <returns></returns>
         public static int ExecuteNonQuery(string sql, params SqlParameter[] parameters)
         {
-            int ret = 0;
-            SqlConnection conn = new SqlConnection(FConnString);
+            int ret = 0;            
             try
             {
-                conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = sql;
-                cmd.Parameters.AddRange(parameters);
-                return cmd.ExecuteNonQuery();
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {                    
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        //cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = sql;
+                        cmd.Parameters.AddRange(parameters);
+                        return cmd.ExecuteNonQuery();
+                    }
+                }
             }
             catch
             {
                 ret = -1;
             }
-            finally
-            {
-                conn.Close();
-            }
             return ret;
         }
         #endregion
 
-        #region 执行SQL语句,失败返回错误信息
+        #region ExecuteSQLErrorINFO 执行SQL语句,失败返回错误信息
         /// <summary>
         ///  执行SQL语句,失败返回错误信息
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
         public static string ExecuteSQLErrorINFO(string sql)
-        {
-            SqlConnection conn = new SqlConnection(FConnString);
+        {            
             try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return "";
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        return "";
+                    }
+                }
             }
             catch (Exception e)
             {
                 return e.Message;
             }
-            finally
-            {
-                conn.Close();
-            }
         }
         #endregion
 
-        #region 执行SQL语句,失败返回错误信息
+        #region ExecuteSQLErrorINFO 执行SQL语句,失败返回错误信息
         /// <summary>
         /// 执行SQL语句,失败返回错误信息
         /// </summary>
@@ -400,30 +450,30 @@ namespace ulLinnStudio
         /// <param name="parameters"></param>
         /// <returns></returns>
         public static string ExecuteSQLErrorINFO(string sql, params SqlParameter[] parameters)
-        {
-            SqlConnection conn = new SqlConnection(FConnString);
+        {            
             try
             {
-                conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = sql;
-                cmd.Parameters.AddRange(parameters);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-                return "";
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {                    
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = sql;
+                        cmd.Parameters.AddRange(parameters);
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        return "";
+                    }
+                }
             }
             catch (Exception e)
             {
                 return e.Message;
             }
-            finally
-            {
-                conn.Close();
-            }
         }
         #endregion
 
-        #region 获取数据集
+        #region GetDataset 获取数据集
         /// <summary>
         /// 获取数据集，True：有行；False没有行/异常
         /// </summary>
@@ -432,31 +482,35 @@ namespace ulLinnStudio
         /// <returns></returns>
         public static bool GetDataset(DataSet ds, string sql)
         {
-            SqlConnection conn = new SqlConnection(FConnString);
+            
             try
             {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
-                conn.Close();
-                if (ds.Tables[0].Rows.Count > 0)
-                    return true;
-                else
-                    return false;
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        conn.Open();
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ds);
+                            conn.Close();
+                            if (ds.Tables[0].Rows.Count > 0)
+                                return true;
+                            else
+                                return false;
+                        }
+                    }
+                }
             }
             catch
             {
                 return false;
             }
-            finally
-            {
-                conn.Close();
-            }
-        }
+        }     
+
         #endregion
 
-        #region 获取数据集
+        #region GetDataset 获取数据集
         /// <summary>
         /// 获取数据集，True：有行；False没有行/异常
         /// </summary>
@@ -465,34 +519,36 @@ namespace ulLinnStudio
         /// <param name="parameters"></param>
         /// <returns></returns>
         public static bool GetDataset(DataSet ds, string sql, params SqlParameter[] parameters)
-        {
-            SqlConnection conn = new SqlConnection(FConnString);
+        {            
             try
             {
-                conn.Open();
-                SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = sql;
-                cmd.Parameters.AddRange(parameters);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
-                conn.Close();
-                if (ds.Tables[0].Rows.Count > 0)
-                    return true;
-                else
-                    return false;
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {                    
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = sql;
+                        cmd.Parameters.AddRange(parameters);
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ds);
+                            conn.Close();
+                            if (ds.Tables[0].Rows.Count > 0)
+                                return true;
+                            else
+                                return false;
+                        }
+                    }
+                }
             }
             catch
             {
                 return false;
             }
-            finally
-            {
-                conn.Close();
-            }
         }
         #endregion
 
-        #region 获取DataTable
+        #region GetDatatable 获取DataTable
         /// <summary>
         /// 获取DataTable
         /// </summary>
@@ -507,19 +563,61 @@ namespace ulLinnStudio
             dt = new DataTable();
             try
             {
-                using(SqlConnection conn = new SqlConnection(FConnString))
+                using (SqlConnection conn = new SqlConnection(FConnString))
                 {
-                    using(SqlCommand cmd = new SqlCommand(sql, conn))
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         conn.Open();
-                        SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
-                        dt.Load(dr);
-                        if (dt.Rows.Count > 0)
-                            b = true;
+                        using (SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                        {
+                            dt.Load(dr);
+                            if (dt.Rows.Count > 0)
+                                b = true;
+                        }
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
+            {
+                errmsg = ex.Message;
+            }
+            return b;
+        }
+        #endregion 
+
+        #region GetDatatable 获取DataTable
+        /// <summary>
+        /// 获取DataTable
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="dt"></param>
+        /// <param name="errmsg"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public static bool GetDatatable(string sql, out DataTable dt, out string errmsg, params SqlParameter[] parameters)
+        {
+            bool b = false;
+            errmsg = "";
+            dt = new DataTable();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(FConnString))
+                {                    
+                    using (SqlCommand cmd = conn.CreateCommand())
+                    {
+                        conn.Open();
+                        cmd.CommandText = sql;
+                        cmd.Parameters.AddRange(parameters);
+                        using (SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                        {
+                            dt.Load(dr);
+                            if (dt.Rows.Count > 0)
+                                b = true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
             {
                 errmsg = ex.Message;
             }
@@ -528,7 +626,7 @@ namespace ulLinnStudio
         #endregion 
 
         //执行SQL脚本文件
-        #region 执行SQL脚本文件
+        #region ExecuteSqlFile 执行SQL脚本文件
         /// <summary>
         /// 执行SQL脚本文件
         /// </summary>
@@ -564,8 +662,29 @@ namespace ulLinnStudio
         }
         #endregion 
 
+        #region CreateDataBase 创建数据库
+        public static string CreateDataBase(string ServerIP, string UID, string Pwd, string CreatedbName)
+        {
+            string ret = "";
+            try
+            {
+                if (!IsLetter_Number(CreatedbName))
+                    return "数据库名字只能包含字母和数字";
+                string conn = FormatConnStr(ServerIP, UID, Pwd, "master");
+                string sql = "IF NOT EXISTS (SELECT 1 FROM master.dbo.sysdatabases WHERE name = '" + CreatedbName
+                    + "') CREATE DATABASE " + CreatedbName;
+                ret = ExecuteSQLErrorINFO(sql);
+            }
+            catch (Exception ex)
+            {
+                ret = "创建数据库失败：" + ex.Message;
+            }
+            return ret;
+        }
+        #endregion 
+        
         //================================================= 参数部分 =================================================
-        #region 函数原型
+        #region AddParameter 函数原型
         /// <summary>
         /// 函数原型
         /// </summary>
@@ -588,7 +707,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 获取 SqlParameter[] 全部参数名称和类型
+        #region GetAllParametersName 获取 SqlParameter[] 全部参数名称和类型
         /// <summary>
         /// 获取 SqlParameter[] 全部参数名称和类型
         /// </summary>
@@ -616,7 +735,7 @@ namespace ulLinnStudio
 
         /********************** 输入参数 **********************/
 
-        #region 添加输入参数 -- 完整类型
+        #region AddInParameter 添加输入参数 -- 完整类型
         /// <summary>
         /// 添加输入参数 -- 完整类型
         /// </summary>
@@ -631,7 +750,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 添加输入参数 -- 省略长度
+        #region AddInParameter 添加输入参数 -- 省略长度
         /// <summary>
         /// 添加输入参数 -- 省略长度
         /// </summary>
@@ -645,7 +764,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region  添加输入参数 -- varchar（最大8K）
+        #region  AddInVarcharParameter 添加输入参数 -- varchar（最大8K）
         /// <summary>
         /// 添加输入参数 -- varchar（最大8K）
         /// </summary>
@@ -659,7 +778,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region  添加输入参数 -- varchar（最大8K）
+        #region AddInVarcharParameter 添加输入参数 -- varchar（最大8K）
         /// <summary>
         /// 添加输入参数 -- varchar（最大8K）
         /// </summary>
@@ -675,7 +794,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 添加输入参数 -- Text 最大2G
+        #region AddInTextParameter 添加输入参数 -- Text 最大2G
         /// <summary>
         /// 添加输入参数 -- Text 最大2G
         /// </summary>
@@ -688,7 +807,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 添加输入参数 -- int
+        #region AddInIntParameter 添加输入参数 -- int
         /// <summary>
         /// 添加输入参数 -- int
         /// </summary>
@@ -701,7 +820,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region  添加输入参数 -- Decimal
+        #region AddInDecimalParameter 添加输入参数 -- Decimal
         /// <summary>
         /// 添加输入参数 -- Decimal
         /// </summary>
@@ -716,7 +835,7 @@ namespace ulLinnStudio
 
         /********************** 输入、输出参数 **********************/
 
-        #region 添加输入、输出参数 -- 完整类型
+        #region AddInOutParameter 添加输入、输出参数 -- 完整类型
         /// <summary>
         /// 添加输入、输出参数 -- 完整类型
         /// </summary>
@@ -731,7 +850,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 添加输入、输出参数 -- 省略长度
+        #region AddInOutParameter 添加输入、输出参数 -- 省略长度
         /// <summary>
         /// 添加输入、输出参数 -- 省略长度
         /// </summary>
@@ -745,7 +864,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 添加输入、输出参数 -- int
+        #region AddInOutIntParameter 添加输入、输出参数 -- int
         /// <summary>
         /// 添加输入、输出参数 -- int
         /// </summary>
@@ -758,7 +877,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region   添加输入、输出参数 -- Decimal
+        #region  AddInOutDecimalParameter 添加输入、输出参数 -- Decimal
         /// <summary>
         /// 添加输入、输出参数 -- Decimal
         /// </summary>
@@ -771,7 +890,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 添加输入、输出参数 -- varchar（最大8K）
+        #region AddInOutVarcharParameter 添加输入、输出参数 -- varchar（最大8K）
         /// <summary>
         /// 添加输入、输出参数 -- varchar（最大8K）
         /// </summary>
@@ -785,7 +904,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region  添加输入、输出参数 -- varchar（默认最大8K）
+        #region AddInOutVarcharParameter 添加输入、输出参数 -- varchar（默认最大8K）
         /// <summary>
         /// 添加输入、输出参数 -- varchar（默认最大8K）
         /// </summary>
@@ -800,7 +919,7 @@ namespace ulLinnStudio
 
         /********************** 输出参数 **********************/
 
-        #region 添加输出参数
+        #region AddOutParameter 添加输出参数
         /// <summary>
         /// 添加输出参数
         /// </summary>
@@ -813,7 +932,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region  添加输出参数 -- int
+        #region AddOutIntParameter 添加输出参数 -- int
         /// <summary>
         /// 添加输出参数 -- int
         /// </summary>
@@ -825,7 +944,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region 添加输出参数 -- Decimal
+        #region AddOutDecimalParameter 添加输出参数 -- Decimal
         /// <summary>
         /// 添加输出参数 -- Decimal
         /// </summary>
@@ -837,7 +956,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region  添加输出参数 -- Varchar（最大8K）
+        #region AddOutVarcharParameter 添加输出参数 -- Varchar（最大8K）
         /// <summary>
         /// 添加输出参数 -- Varchar（最大8K）
         /// </summary>
@@ -851,7 +970,7 @@ namespace ulLinnStudio
 
         /********************** 数据转换 **********************/
 
-        #region SqlParameter value  to int
+        #region GetIntValue SqlParameter value  to int
         /// <summary>
         /// SqlParameter value  to int
         /// </summary>
@@ -866,7 +985,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region string to int
+        #region GetIntValue string to int
         /// <summary>
         /// string to int
         /// </summary>
@@ -881,7 +1000,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region SqlParameter value to string
+        #region GetStrValue SqlParameter value to string
         /// <summary>
         /// SqlParameter value to string
         /// </summary>
@@ -896,7 +1015,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region SqlParameter value to decimal
+        #region GetDecimalValue SqlParameter value to decimal
         /// <summary>
         /// SqlParameter value to decimal
         /// </summary>
@@ -911,7 +1030,7 @@ namespace ulLinnStudio
         }
         #endregion
 
-        #region string to decimal
+        #region GetDecimalValue string to decimal
         /// <summary>
         /// string to decimal
         /// </summary>
