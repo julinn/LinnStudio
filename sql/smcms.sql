@@ -14,6 +14,7 @@ CREATE TABLE smcms_article(
 ,CID int DEFAULT 1
 ,UserID varchar(20)
 ,FDate datetime DEFAULT getdate()
+,IsTop int DEFAULT 0
 )
 GO
 
@@ -23,6 +24,13 @@ CREATE TABLE smcms_admin(
 ,UserName varchar(20)
 ,Passwd varchar(50)
 ,LevID int DEFAULT 0
+)
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sysobjects WHERE name = 'smcms_config' AND type = 'u')
+CREATE TABLE smcms_config(
+  KeyName varchar(100) PRIMARY KEY 
+ ,KeyValue text
 )
 GO
 
@@ -44,23 +52,6 @@ BEGIN
 END
 GO
 
-IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'proc_smcms_Delete' AND type = 'p')
-  DROP PROC proc_smcms_Delete
-GO
-CREATE PROC proc_smcms_Delete
- @Table varchar(20)
-,@ID varchar(20)
-AS
-BEGIN
-  IF @Table = 'class'
-    DELETE FROM smcms_class WHERE ID = @ID 
-  IF @Table = 'article'
-    DELETE FROM smcms_article WHERE ID = @ID 	
-  IF @Table = 'admin'
-    DELETE FROM smcms_admin WHERE UserID = @ID 
-END
-GO
-
 IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'proc_smcms_article_Edit' AND type = 'p')
   DROP PROC proc_smcms_article_Edit
 GO
@@ -70,12 +61,34 @@ CREATE PROC proc_smcms_article_Edit
 ,@Content text
 ,@CID int = 1
 ,@UserID varchar(20) = ''
+,@IsTop int = 0
 AS
 BEGIN
   IF @ID = 0
-    INSERT INTO smcms_article(CID, Title, Content, UserID)VALUES(@CID, @Title, @Content, @UserID)
+    INSERT INTO smcms_article(CID, Title, Content, UserID, IsTop)VALUES(@CID, @Title, @Content, @UserID, @IsTop)
   ELSE 
-  	UPDATE smcms_article SET CID = @CID, Title = @Title, Content = @Content WHERE ID = @ID 	
+  	UPDATE smcms_article SET CID = @CID, Title = @Title, Content = @Content, IsTop = @IsTop WHERE ID = @ID 	
+END
+GO
+
+IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'proc_smcms_article_Search' AND type = 'p')
+  DROP PROC proc_smcms_article_Search
+GO
+CREATE PROC proc_smcms_article_Search
+ @CID int = 0
+,@Str varchar(100) = ''
+AS
+BEGIN
+  DECLARE @Sql varchar(2000)
+  SET @Sql = 'select * from smcms_article where 1 = 1 '
+  IF @CID > 0
+    SET @Sql = @Sql + ' and CID = ' + CONVERT(varchar(20), @CID)
+  IF @Str <> ''
+  BEGIN
+  	SET @Str = '''%'+@Str + '%'''
+  	SET @Sql = @Sql + ' and Title like ' + @Str
+  END	
+  EXEC (@Sql)
 END
 GO
 
@@ -95,6 +108,49 @@ BEGIN
     UPDATE smcms_admin SET UserName = @UserName , Passwd = @Passwd , LevID = @LevID WHERE UserID = @UserID 
   ELSE 
   	INSERT INTO smcms_admin(UserID, UserName, Passwd, LevID)VALUES(@UserID , @UserName , @Passwd, @LevID)
+END
+GO
+
+IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'proc_smcms_Delete' AND type = 'p')
+  DROP PROC proc_smcms_Delete
+GO
+CREATE PROC proc_smcms_Delete
+ @Table varchar(20)
+,@ID varchar(20)
+AS
+BEGIN
+  IF @Table = 'class'
+    DELETE FROM smcms_class WHERE ID = @ID 
+  IF @Table = 'article'
+    DELETE FROM smcms_article WHERE ID = @ID 	
+  IF @Table = 'admin'
+    DELETE FROM smcms_admin WHERE UserID = @ID 
+END
+GO
+
+IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'proc_smcms_config' AND type = 'p')
+  DROP PROC proc_smcms_config
+GO
+CREATE PROC proc_smcms_config 
+ @key varchar(100) = ''
+,@value text = ''
+,@IsEdit int = 0
+AS
+BEGIN
+  IF @IsEdit = 0 
+  BEGIN
+  	IF @key = ''
+  	  SELECT * FROM  smcms_config
+  	ELSE 
+      SELECT KeyValue FROM smcms_config WHERE KeyName = @key 
+  END 
+  ELSE 
+  BEGIN
+  	IF EXISTS (SELECT 1 FROM smcms_config WHERE KeyName = @key )
+  	  UPDATE smcms_config SET KeyValue = @value WHERE KeyName = @key
+  	ELSE 
+  	  INSERT INTO smcms_config(KeyName, KeyValue)VALUES (@key, @value)
+  END	
 END
 GO
 
