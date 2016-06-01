@@ -71,4 +71,13 @@ public class mod_admin
         string sql = "exec proc_smcms_admin_Edit '" + UserID + "','" + UserName + "','" + Passwd + "'," + LevID.ToString();
         return ulLinnStudio.ulSqlHelper.ExecuteSQLErrorINFO(sql);
     }
+
+    public static string Delete(string uid)
+    {
+        if (uid == "admin")
+            return "管理员账号不可删除";
+        uid = uid.Replace("'", "").Replace(" ", "");
+        string sql = "delete from smcms_admin where UserID = '"+uid.ToString()+"'";
+        return ulLinnStudio.ulSqlHelper.ExecuteSQLErrorINFO(sql);
+    }
 }

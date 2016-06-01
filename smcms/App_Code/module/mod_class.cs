@@ -7,6 +7,8 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
+//
+using System.Data.SqlClient;
 
 /// <summary>
 ///mod_class 的摘要说明
@@ -53,8 +55,14 @@ public class mod_class
     {
         string ret = "";
         Name = Name.Replace("'", "").Replace(" ", "");
-        string sql = "exec proc_smcms_class_Edit " + ID.ToString() + ",'" + Name + "'," + PID.ToString();
-        ret = ulLinnStudio.ulSqlHelper.ExecuteSQLErrorINFO(sql);
+        //string sql = "exec proc_smcms_class_Edit " + ID.ToString() + ",'" + Name + "'," + PID.ToString();
+        string sql = "proc_smcms_class_Edit";
+        SqlParameter[] p = new SqlParameter[] { 
+           ulLinnStudio.ulSqlHelper.AddInIntParameter("@ID", ID),
+           ulLinnStudio.ulSqlHelper.AddInVarcharParameter("@Name", Name, 30),
+           ulLinnStudio.ulSqlHelper.AddInIntParameter("@PID", PID)
+        };
+        ret = ulLinnStudio.ulSqlHelper.ExecuteSQLErrorINFO(sql, p);
         return ret;
     }
 
