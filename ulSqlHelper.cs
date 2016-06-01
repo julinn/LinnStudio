@@ -15,7 +15,7 @@ namespace ulLinnStudio
     /// <add name="ConnectionString" connectionString="" providerName="System.Data.SqlClient"/>
     /// </connectionStrings>
     /// Author: julinn
-    /// update: 2016-06-01 23:20:00
+    /// update: 2016-06-02 00:10:24
     /// Webnet: www.liuju.net
     /// GitHub: https://github.com/julinn/LinnStudio
     /// </summary>
@@ -357,6 +357,7 @@ namespace ulLinnStudio
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
                         conn.Open();
+                        cmd.CommandType = CommandType.StoredProcedure; 
                         cmd.CommandText = sql;
                         cmd.Parameters.AddRange(parameters);
                         cmd.ExecuteNonQuery();
@@ -418,7 +419,7 @@ namespace ulLinnStudio
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
                         conn.Open();
-                        //cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = sql;
                         cmd.Parameters.AddRange(parameters);
                         return cmd.ExecuteNonQuery();
@@ -477,7 +478,8 @@ namespace ulLinnStudio
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
                         conn.Open();
-                        cmd.CommandText = sql;
+                        cmd.CommandType = CommandType.StoredProcedure;                        
+                        cmd.CommandText = sql;                        
                         cmd.Parameters.AddRange(parameters);
                         cmd.ExecuteNonQuery();
                         conn.Close();
@@ -546,6 +548,7 @@ namespace ulLinnStudio
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
                         conn.Open();
+                        cmd.CommandType = CommandType.StoredProcedure; 
                         cmd.CommandText = sql;
                         cmd.Parameters.AddRange(parameters);
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -625,6 +628,7 @@ namespace ulLinnStudio
                     using (SqlCommand cmd = conn.CreateCommand())
                     {
                         conn.Open();
+                        cmd.CommandType = CommandType.StoredProcedure; 
                         cmd.CommandText = sql;
                         cmd.Parameters.AddRange(parameters);
                         using (SqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection))
