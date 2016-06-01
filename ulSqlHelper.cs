@@ -15,7 +15,7 @@ namespace ulLinnStudio
     /// <add name="ConnectionString" connectionString="" providerName="System.Data.SqlClient"/>
     /// </connectionStrings>
     /// Author: julinn
-    /// update: 2016-05-30 18:00:49
+    /// update: 2016-06-01 23:20:00
     /// Webnet: www.liuju.net
     /// GitHub: https://github.com/julinn/LinnStudio
     /// </summary>
@@ -213,6 +213,25 @@ namespace ulLinnStudio
             catch
             {
                 return DefValue;
+            }
+        }
+        #endregion 
+
+        #region GetMD5String 获取MD5加密字符串（大写）
+        /// <summary>
+        /// 获取MD5加密字符串（大写）
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string GetMD5String(string str)
+        {
+            try
+            {
+                return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(str, "MD5").ToUpper();
+            }
+            catch
+            {
+                return str.Replace("'", "").Replace(" ", "");
             }
         }
         #endregion 
