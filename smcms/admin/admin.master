@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="admin.master.cs" Inherits="admin_admin" %>
+
+<%@ Register src="ctlTop.ascx" tagname="ctlTop" tagprefix="uc1" %>
+<%@ Register src="ctlBottom.ascx" tagname="ctlBottom" tagprefix="uc2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            width: 100%;
+        }
+        .adm_left
+        {
+            width:200px;
+            text-align:center;
+            vertical-align:top;
+        }
+        .adm_user
+        {
+            vertical-align:top;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <uc1:ctlTop ID="ctlTop1" runat="server" />
+    </div>
+    <div>
+        <table cellspacing="1" class="style1">
+            <tr>
+                <td class="adm_left">
+                    &nbsp;</td>
+                <td class="adm_user">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder></td>
+            </tr>
+        </table>        
+    </div>
+    <div>
+        <uc2:ctlBottom ID="ctlBottom1" runat="server" />
+    </div>
+    </form>
+</body>
+</html>
