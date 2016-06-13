@@ -95,4 +95,18 @@ public class mod_class
         string sql = "delete from smcms_class where ID = " + iID.ToString();
         return ulLinnStudio.ulSqlHelper.ExecuteSQLErrorINFO(sql);
     }
+
+    public bool AddNavigar()
+    {
+        string navgar = cms.GetNavigar(),
+            page = "class.aspx?id=" + ID.ToString();
+        if (!navgar.Contains(page))
+        {
+            navgar = navgar + "<li><a href=\"" + page + "\">" + Name + "</a></li>";
+            cms.FgConfig.Clear();
+            return cms.SaveConfig("Navigar", navgar);            
+        }
+        else
+            return true;
+    }
 }

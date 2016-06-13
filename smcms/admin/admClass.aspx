@@ -37,6 +37,8 @@
                 &nbsp;</td>
             <td>
                 <asp:Button ID="btnSave" runat="server" Text="保 存" onclick="btnSave_Click" />
+                <asp:Button ID="btnAddNavigar" runat="server" Text="加入导航" 
+                    onclick="btnAddNavigar_Click" />
             </td>
         </tr>
         <tr>
@@ -46,5 +48,17 @@
                 &nbsp;</td>
         </tr>
     </table>
+    <div>
+      
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+            DataKeyNames="ID" onselectedindexchanged="GridView1_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="ID" HeaderText="ID" />
+                <asp:BoundField DataField="Name" HeaderText="名称" />
+                <asp:CommandField ShowSelectButton="True" />
+            </Columns>
+        </asp:GridView>
+      
+    </div>
 </asp:Content>
 

@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 //
 using System.Data.SqlClient;
+using System.Text;
 
 /// <summary>
 ///article 的摘要说明
@@ -81,4 +82,69 @@ public class mod_article
         string sql = "delete from smcms_article where ID = " + iID.ToString();
         return ulLinnStudio.ulSqlHelper.ExecuteSQLErrorINFO(sql);
     }
+
+    public static DataTable Search(int classID, int iCount, string str)
+    {
+        string sql = "proc_smcms_article_Search",
+            err = "";
+        SqlParameter[] p = new SqlParameter[] { 
+          ulLinnStudio.ulSqlHelper.AddInIntParameter("@CID", classID),
+          ulLinnStudio.ulSqlHelper.AddInVarcharParameter("@Str", str),
+          ulLinnStudio.ulSqlHelper.AddInIntParameter("@Count", iCount)
+        };
+        DataTable dt;
+        ulLinnStudio.ulSqlHelper.GetDatatable(sql, out dt, out err, p);
+        return dt;
+    }
+
+    public static string GetListString(int classID, int iCount, int titleLength)
+    {
+        string ret = "", title = "", id = "0", shortTitle = "";
+        DataTable dt = Search(classID, iCount, "");
+        if (dt.Rows.Count > 0)
+        {
+            for(int i = 0; i < dt.Rows.Count ; i ++)
+            {
+                id = dt.Rows[i]["ID"].ToString();
+                title = dt.Rows[i]["Title"].ToString();
+                shortTitle = title;
+                if (titleLength > 0)
+                    shortTitle = CutTitle(shortTitle, titleLength);
+                ret = ret + "<li><a href=\"./article.aspx?id=" + id + "\" title=\""+title+"\">" + shortTitle + "</a></li>";
+            }
+        }
+        return ret;
+    }
+
+    /// <summary>  
+    /// 截取指定长度中英文字符串(宽度一样)  
+    /// </summary>  
+    /// <param name="str">要截取的字符串</param>  
+    /// <param name="length">截取长度,中文字符长度</param>  
+    /// <returns>截取后的字符串</returns>  
+    public static string CutTitle(string str, int length)
+    {
+        if (str == null)
+            return string.Empty;
+
+        int len = length * 2;
+        int j = 0, k = 0;
+        Encoding encoding = Encoding.GetEncoding("gb2312");
+
+        for (int i = 0; i < str.Length; i++)
+        {
+            byte[] bytes = encoding.GetBytes(str.Substring(i, 1));
+            if (bytes.Length == 2)//不是英文  
+                j += 2;
+            else
+                j++;
+
+            if (j <= len)
+                k += 1;
+
+            if (j >= len)
+                return str.Substring(0, k) + "...";
+        }
+        return str;
+    } 
 }

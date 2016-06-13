@@ -2,9 +2,38 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>无标题页</title>
+    <@header>
+    <title>首页</title>
+    <style type="text/css">
+        .style1 {
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
+    <table cellspacing="1" class="style1">
+        <tr>
+            <td>
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td>
+                <table cellspacing="1" class="style1">
+                    <tr>
+                        <td>
+                           <ul><@class=1;count=2;length=20@></ul></td>
+                        <td>
+                           <ul><@class=1;count=4;length=20@></ul></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+        </tr>
+    </table>
+<@footer>
 </body>
 </html>
