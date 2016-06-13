@@ -77,10 +77,13 @@ GO
 CREATE PROC proc_smcms_article_Search
  @CID int = 0
 ,@Str varchar(100) = ''
+,@Count int = 0
 AS
 BEGIN
-  DECLARE @Sql varchar(2000)
+  DECLARE @Sql varchar(2000)  
   SET @Sql = 'select * from smcms_article where 1 = 1 '
+  IF @Count > 0
+    SET @Sql = 'select top '+convert(varchar(20), @Count)+' * from smcms_article where 1 = 1 '
   IF @CID > 0
     SET @Sql = @Sql + ' and CID = ' + CONVERT(varchar(20), @CID)
   IF @Str <> ''
