@@ -78,6 +78,7 @@ CREATE PROC proc_smcms_article_Search
  @CID int = 0
 ,@Str varchar(100) = ''
 ,@Count int = 0
+,@ID int = 0
 AS
 BEGIN
   DECLARE @Sql varchar(2000)  
@@ -91,7 +92,42 @@ BEGIN
   	SET @Str = '''%'+@Str + '%'''
   	SET @Sql = @Sql + ' and Title like ' + @Str
   END	
+  IF @ID > 0
+    SET @Sql = @Sql + ' and ID = ' + CONVERT(varchar(20), @ID)
+  SET @Sql = @Sql + ' order by  IsTop desc, FDate desc'
   EXEC (@Sql)
+END
+GO
+
+IF EXISTS(SELECT 1 FROM sysobjects WHERE name = 'proc_smcms_article_SearchPage' AND type = 'p')
+  DROP PROC proc_smcms_article_SearchPage
+GO
+CREATE PROC proc_smcms_article_SearchPage
+ @CID int
+,@Page int = 1
+,@PageSize int = 20
+AS
+BEGIN
+  DECLARE @From int = 0, @To int = @PageSize, @Count int = 0, @PageCount int = 1
+  IF @Page < 1 
+    SET @Page = 1
+  SELECT @Count = count(1) FROM smcms_article WHERE CID = @CID  
+  SET @PageCount =  CEILING(CAST(@Count AS decimal) / @PageSize) 
+  IF @Page > @PageCount
+    SET @Page = @PageCount
+  SET @From = (@Page - 1) * @PageSize
+  SET @To = @From + @PageSize  
+  IF object_id('tempdb..#articel') IS NOT NULL DROP TABLE #articel	
+  CREATE TABLE #articel(
+    RecID int IDENTITY(1,1),
+    ID int,
+    Title varchar(200),
+    FDate datetime
+  )
+  INSERT INTO #articel(ID,Title, FDate) SELECT ID,Title, FDate
+         FROM smcms_article WHERE CID = @CID ORDER BY IsTop DESC, FDate DESC 
+  SELECT *, @Count AS [Count], @Page AS [Page], @PageCount AS [PageCount] 
+  FROM #articel WHERE RecID > @From AND RecID <= @To ORDER BY RecID 
 END
 GO
 
