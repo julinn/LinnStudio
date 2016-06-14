@@ -1,10 +1,26 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>无标题页</title>
+    <title><@title></title>
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
+    <div><@header></div>
+    <table cellspacing="1" class="width_100_">
+        <tr>
+            <td class="width_300 text_top">
+              <@class=1;count=5;length=10@>
+            </td>
+            <td class="text_top">
+            <div class="text_center"><@title></div>
+            <hr />
+            <@content>
+            <hr />
+            <@last><br />
+            <@next>
+            </td>
+        </tr>
+    </table>
+    <div><@footer></div>
 </body>
 </html>

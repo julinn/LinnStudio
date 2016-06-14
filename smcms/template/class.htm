@@ -2,9 +2,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>无标题页</title>
-</head>
+    <title>文章分类</title>
+    <link href="css/css.css" rel="stylesheet" type="text/css" />
+    </head>
 <body>
-
+  <div>
+     <@header>
+  </div>
+     <table cellspacing="1" class="width_100_">
+         <tr>
+             <td class="width_300 text_top text_center">
+                 <@class=1;count=4;length=15@></td>
+             <td class="text_top">
+                 <div><@article></div>
+                 <hr />
+                 <div><@page></div>
+                 </td>
+         </tr>
+     </table>
+   <div>
+    <@footer>
+  </div>
 </body>
 </html>

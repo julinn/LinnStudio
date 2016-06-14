@@ -42,6 +42,7 @@ public class mod_article
 		//
 		//TODO: 在此处添加构造函数逻辑
 		//
+        iniData(iID);
 	}
 
     private void iniData(int iID)
@@ -56,11 +57,35 @@ public class mod_article
             ID = ulLinnStudio.ulSqlHelper.GetIntValue(dt.Rows[0]["ID"].ToString());
             Title = dt.Rows[0]["Title"].ToString();
             Content = dt.Rows[0]["Content"].ToString();
-            CID = ulLinnStudio.ulSqlHelper.GetIntValue(dt.Rows[0]["Content"].ToString());
+            CID = ulLinnStudio.ulSqlHelper.GetIntValue(dt.Rows[0]["CID"].ToString());
             UserID = dt.Rows[0]["UserID"].ToString();
             FDate = dt.Rows[0]["FDate"].ToString();
             IsTop = ulLinnStudio.ulSqlHelper.GetIntValue(dt.Rows[0]["IsTop"].ToString());
         }
+    }
+
+    public string Last()
+    {
+        string ret = "没有了", err;
+        string sql = "select top 1 * from smcms_article where CID = "+CID.ToString()+" and ID < "+ID.ToString() + " order by ID DESC ";
+        DataTable dt;
+        if(ulLinnStudio.ulSqlHelper.GetDatatable(sql, out dt,out err))
+        {
+            ret = "上一篇：<a href=\"./article.aspx?id="+dt.Rows[0]["ID"].ToString()+"\">"+dt.Rows[0]["Title"].ToString()+"</a>";
+        }
+        return ret;
+    }
+
+    public string Next()
+    {
+        string ret = "没有了", err;
+        string sql = "select top 1 * from smcms_article where CID = " + CID.ToString() + " and ID > " + ID.ToString() + " order by ID ";
+        DataTable dt;
+        if (ulLinnStudio.ulSqlHelper.GetDatatable(sql, out dt, out err))
+        {
+            ret = "下一篇：<a href=\"./article.aspx?id=" + dt.Rows[0]["ID"].ToString() + "\">" + dt.Rows[0]["Title"].ToString() + "</a>";
+        }
+        return ret;
     }
 
     public string Save()
@@ -114,6 +139,20 @@ public class mod_article
             }
         }
         return ret;
+    }
+
+    public static DataTable SearchPage(int classID, int page, int pageSize)
+    {
+        string sql = "proc_smcms_article_SearchPage",
+            err = "";
+        SqlParameter[] p = new SqlParameter[] {
+          ulLinnStudio.ulSqlHelper.AddInIntParameter("@CID", classID),
+          ulLinnStudio.ulSqlHelper.AddInIntParameter("@Page", page),
+          ulLinnStudio.ulSqlHelper.AddInIntParameter("@PageSize", pageSize)
+        };
+        DataTable dt;
+        ulLinnStudio.ulSqlHelper.GetDatatable(sql, out dt, out err, p);
+        return dt;
     }
 
     /// <summary>  

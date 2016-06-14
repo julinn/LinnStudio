@@ -13,6 +13,7 @@ public partial class _class : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!IsPostBack)
+            Response.Write(cms.GetClass(this.Page));
     }
 }
