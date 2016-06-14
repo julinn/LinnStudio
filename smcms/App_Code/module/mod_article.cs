@@ -66,7 +66,7 @@ public class mod_article
 
     public string Last()
     {
-        string ret = "没有了", err;
+        string ret = "上一篇：没有了", err;
         string sql = "select top 1 * from smcms_article where CID = "+CID.ToString()+" and ID < "+ID.ToString() + " order by ID DESC ";
         DataTable dt;
         if(ulLinnStudio.ulSqlHelper.GetDatatable(sql, out dt,out err))
@@ -78,7 +78,7 @@ public class mod_article
 
     public string Next()
     {
-        string ret = "没有了", err;
+        string ret = "下一篇：没有了", err;
         string sql = "select top 1 * from smcms_article where CID = " + CID.ToString() + " and ID > " + ID.ToString() + " order by ID ";
         DataTable dt;
         if (ulLinnStudio.ulSqlHelper.GetDatatable(sql, out dt, out err))

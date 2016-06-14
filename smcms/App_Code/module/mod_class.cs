@@ -90,6 +90,22 @@ public class mod_class
         return ret;
     }
 
+    public static void GetList(DropDownList ddl)
+    {
+        ddl.Items.Clear();
+        DataTable dt = GetData();
+        if (dt.Rows.Count > 0)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                ListItem li = new ListItem();
+                li.Text = dt.Rows[i]["Name"].ToString();
+                li.Value = dt.Rows[i]["ID"].ToString();
+                ddl.Items.Add(li);
+            }
+        }
+    }
+
     public static string Delete(int iID)
     {
         string sql = "delete from smcms_class where ID = " + iID.ToString();

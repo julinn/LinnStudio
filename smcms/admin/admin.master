@@ -3,6 +3,8 @@
 <%@ Register src="ctlTop.ascx" tagname="ctlTop" tagprefix="uc1" %>
 <%@ Register src="ctlBottom.ascx" tagname="ctlBottom" tagprefix="uc2" %>
 
+<%@ Register src="ctlLeftMenu.ascx" tagname="ctlLeftMenu" tagprefix="uc3" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,7 +38,8 @@
         <table cellspacing="1" class="style1">
             <tr>
                 <td class="adm_left">
-                    &nbsp;</td>
+                    <uc3:ctlLeftMenu ID="ctlLeftMenu1" runat="server" />
+                </td>
                 <td class="adm_user">
                     <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         

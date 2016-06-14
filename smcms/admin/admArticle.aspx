@@ -16,16 +16,30 @@
                     <table cellspacing="1" class="style1">
                         <tr>
                             <td>
-                                &nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <asp:TextBox ID="txtContent" runat="server" TextMode="MultiLine" Height="200px" Width="600px"></asp:TextBox>
+                                <asp:Label ID="lbFlag" runat="server" ></asp:Label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Button" />
+                                标题：<asp:TextBox ID="edtTitle" runat="server" Width="542px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                类别：<asp:DropDownList ID="ddlClass" runat="server" Width="138px">
+                                </asp:DropDownList>
+                                &nbsp;<asp:CheckBox ID="chkIstop" runat="server" Text="置顶" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:TextBox ID="txtContent" runat="server" Height="200px" TextMode="MultiLine" 
+                                    Width="600px"></asp:TextBox>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="保 存" />
                             </td>
                         </tr>
                         <tr>

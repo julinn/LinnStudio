@@ -292,7 +292,7 @@ public class cms
 
     private static string GetPageInfo(int classID, int currPage, int pageCount, int pageSize)
     {
-        string info = currPage.ToString() + " / " + pageCount.ToString(), p1 = "没有了", p2 = "没有了";
+        string info = "第 "+currPage.ToString() + " 页 / 共 " + pageCount.ToString() + " 页", p1 = "", p2 = "";
         if (currPage > 1)
             p1 = "<a href=\"./class.aspx?id=" + classID.ToString() + "&page=" + (currPage - 1).ToString() 
                 + "&size=" + pageSize + "\">上一页</a>";
