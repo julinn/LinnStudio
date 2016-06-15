@@ -27,6 +27,11 @@
         {
             vertical-align:top;
         }
+        .text_right
+        {
+            text-align:right;
+        }
+        .width_100{ width:100px;}
     </style>
 </head>
 <body>
