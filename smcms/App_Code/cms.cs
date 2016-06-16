@@ -322,4 +322,15 @@ public class cms
         str = str.Replace("<@next>", art.Next());
         page.Response.Write(str);
     }
+
+    public static bool adminLogin(string uid, string pwd)
+    {
+        bool b = false;
+        uid = uid.Replace("'", "").Replace(" ", "");
+        pwd = ulLinnStudio.ulSqlHelper.GetMD5String(pwd);
+        string sql = "select UserID from smcms_admin where UserID = '" + uid + "' and Passwd = '" + pwd + "'";
+        if (ulLinnStudio.ulSqlHelper.GetFirstData(sql).ToLower() == "admin")
+            b = true;
+        return b;
+    }
 }

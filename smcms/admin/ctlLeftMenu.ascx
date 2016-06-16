@@ -32,6 +32,6 @@
     </tr>
     <tr>
         <td>
-            &nbsp;</td>
+            <a href="admLogin.aspx?act=out">退出登录</a></td>
     </tr>
 </table>
