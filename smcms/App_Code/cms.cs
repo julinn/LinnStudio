@@ -22,6 +22,7 @@ public class cms
     private static string FsIndex = "";
     private static Dictionary<string, string> FgArticleList = new Dictionary<string, string>();
     public static Dictionary<string, string> FgConfig = new Dictionary<string, string>();
+    public static Dictionary<string, int> FgLogin = new Dictionary<string, int>();
 	public cms()
 	{
 		//
@@ -332,5 +333,16 @@ public class cms
         if (ulLinnStudio.ulSqlHelper.GetFirstData(sql).ToLower() == "admin")
             b = true;
         return b;
+    }
+
+    public static string adminLockCheck()
+    {
+        string ret = "";
+        return ret;
+    }
+
+    private static void adminLockAdd()
+    {
+        string key = DateTime.Now.ToString("yyyyMMdd");
     }
 }
