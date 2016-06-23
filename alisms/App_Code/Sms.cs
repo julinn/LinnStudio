@@ -16,6 +16,8 @@ public class Sms
     public static string Fappsecret = "";
     //缓存，1个号码一天只能获取 3次验证码
     public static int FismsCount = 3;
+    //短信验证码间隔时间，默认60秒，一分钟只能获取一次验证码
+    public static int Fispantime = 60;
 
 	public Sms()
 	{
@@ -46,7 +48,10 @@ public class Sms
         try
         {
             System.Web.Caching.Cache obj = HttpRuntime.Cache;
-            return (string)obj[cacheKey];
+            if (obj[cacheKey] == null)
+                return "";
+            else
+                return (string)obj[cacheKey];
         }
         catch
         {
@@ -121,15 +126,35 @@ public class Sms
     }
     #endregion 
 
+    //检查手机号码是否可发送验证码
     public static string CheckTelValid(string telNo)
     {
         string ret = "";
+        if (!CheckIsTel(telNo))
+            return "手机号码错误";
         string flag = GetCacheString("log_" + telNo);
         if (flag != "")
             ret = "1分钟内不可重复获取验证码";
         return ret;
     }
 
+    //检查是否是手机号码
+    public static bool CheckIsTel(string telNo)
+    {
+        bool b = false;
+        try
+        {
+            if (telNo.Length == 11 && Int64.Parse(telNo) > 0)
+                b = true;
+        }
+        catch
+        {
+            return false;
+        }
+        return b;
+    }
+
+    //检查是否没有超过每天最大数量
     public static string CheckTelCount(string telNo)
     {
         string ret = "";
@@ -140,11 +165,12 @@ public class Sms
         return ret;
     }
 
+    //验证码发送成功后，设置缓存
     public static void SendOk(string telNo)
     {
         try
         {
-            SetCache("log_" + telNo, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), 60);
+            SetCache("log_" + telNo, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"), Fispantime);
             string key = telNo + DateTime.Now.ToString("yyyy-MM-dd");
             int iCount = StrToInt(GetCacheString(key)) + 1;
             DateTime dtDay = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd") + " 23:59:59");
@@ -156,6 +182,7 @@ public class Sms
         }
     }
 
+    //字符串转整数
     public static int StrToInt(string str)
     {
         try
