@@ -36,7 +36,10 @@ public class ulCache
         try
         {
             System.Web.Caching.Cache obj = HttpRuntime.Cache;
-            return (string)obj[cacheKey];
+            if (obj[cacheKey] == null)
+                return "";
+            else
+                return (string)obj[cacheKey];
         }
         catch
         {
