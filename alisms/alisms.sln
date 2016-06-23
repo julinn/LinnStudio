@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "alisms", ".", "{4D497287-25B3-445E-BDE1-96625CCDD124}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "2.0"
+		Debug.AspNetCompiler.VirtualPath = "/alisms"
+		Debug.AspNetCompiler.PhysicalPath = "D:\Linn\GitSVN\LinnStudio\trunk\alisms\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\alisms\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/alisms"
+		Release.AspNetCompiler.PhysicalPath = "D:\Linn\GitSVN\LinnStudio\trunk\alisms\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\alisms\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "20352"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D497287-25B3-445E-BDE1-96625CCDD124}.Debug|.NET.ActiveCfg = Debug|.NET
+		{4D497287-25B3-445E-BDE1-96625CCDD124}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
