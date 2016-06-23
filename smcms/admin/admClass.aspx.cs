@@ -21,6 +21,11 @@ public partial class admin_admClass : System.Web.UI.Page
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
+        if (edtName.Text == "")
+        {
+            lbMsg.Text = "名称不能为空";
+            return;
+        }
         int id = ulLinnStudio.ulSqlHelper.GetIntValue(edtID.Text);
         int pid = 0;// ulLinnStudio.ulSqlHelper.GetIntValue(edtPID.Text);
         mod_class cls = new mod_class(id);

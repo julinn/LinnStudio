@@ -18,6 +18,16 @@ public partial class admin_admArticle : System.Web.UI.Page
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
+        if (edtTitle.Text == "")
+        {
+            Label1.Text = "标题不能为空";
+            return;
+        }
+        if (txtContent.Text == "")
+        {
+            Label1.Text = "内容不能为空";
+            return;
+        }
         int id = GetID();
         mod_article art = new mod_article(id);
         art.Title = edtTitle.Text;

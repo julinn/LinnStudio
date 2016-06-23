@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admArticle.aspx.cs" Inherits="admin_admArticle" Title="无标题页" ValidateRequest="false" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admArticle.aspx.cs" Inherits="admin_admArticle" Title="文章编辑" ValidateRequest="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script src="../nicEdit/nicEdit.js" type="text/javascript"></script>

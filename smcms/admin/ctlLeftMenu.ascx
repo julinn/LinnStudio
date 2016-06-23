@@ -32,6 +32,14 @@
     </tr>
     <tr>
         <td>
+            <a href="../index.aspx" target="_blank">查看首页</a></td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td>
             <a href="admLogin.aspx?act=out">退出登录</a></td>
     </tr>
 </table>

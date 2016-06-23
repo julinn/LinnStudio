@@ -33,6 +33,7 @@ public partial class admin_admLogin : System.Web.UI.Page
         if (edtCode.Text != lbCode.Text)
         {
             lbMsg.Text = "验证码错误";
+            GetCode();
             return;
         }
         if (cms.adminLogin(edtUID.Text, edtPwd.Text))
