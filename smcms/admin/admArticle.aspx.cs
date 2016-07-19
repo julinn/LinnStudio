@@ -63,6 +63,7 @@ public partial class admin_admArticle : System.Web.UI.Page
         lbFlag.Text = "添加文章";
         if (id > 0)
             lbFlag.Text = "编辑文章";
+        Button2.Visible = id > 0;
     }
 
     private void loadClass()
@@ -79,5 +80,12 @@ public partial class admin_admArticle : System.Web.UI.Page
                 ddlClass.Items.Add(li);
             }
         }
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        if (mod_article.AddNavigar(GetID(), edtTitle.Text))
+            Label1.Text = "加入导航成功";
+        else
+            Label1.Text = "加入导航失败，请稍候再试";
     }
 }

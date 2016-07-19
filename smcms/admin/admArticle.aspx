@@ -40,6 +40,8 @@
                         <tr>
                             <td>
                                 <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="保 存" />
+                                &nbsp;<asp:Button ID="Button2" runat="server" Text="加入导航" 
+                                    onclick="Button2_Click" />
                             </td>
                         </tr>
                         <tr>

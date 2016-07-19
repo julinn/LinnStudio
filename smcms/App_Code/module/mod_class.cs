@@ -119,10 +119,10 @@ public class mod_class
         if (!navgar.Contains(page))
         {
             navgar = navgar + "<li><a href=\"" + page + "\">" + Name + "</a></li>";
-            cms.FgConfig.Clear();
+            cms.CleanAllCache();
             return cms.SaveConfig("Navigar", navgar);            
         }
         else
-            return true;
+            return true;        
     }
 }

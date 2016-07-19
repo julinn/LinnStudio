@@ -155,6 +155,22 @@ public class mod_article
         return dt;
     }
 
+    public static bool AddNavigar(int iID, string Title)
+    {
+        if (iID == 0 || Title == "")
+            return false;
+        string navgar = cms.GetNavigar(),
+            page = "article.aspx?id=" + iID.ToString();
+        if (!navgar.Contains(page))
+        {
+            navgar = navgar + "<li><a href=\"" + page + "\">" + Title + "</a></li>";
+            cms.CleanAllCache();
+            return cms.SaveConfig("Navigar", navgar);
+        }
+        else
+            return true;   
+    }
+
     /// <summary>  
     /// 截取指定长度中英文字符串(宽度一样)  
     /// </summary>  

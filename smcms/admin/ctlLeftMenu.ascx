@@ -32,6 +32,14 @@
     </tr>
     <tr>
         <td>
+            <a href="admSetting.aspx">系统设置</a></td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td>
             <a href="../index.aspx" target="_blank">查看首页</a></td>
     </tr>
     <tr>

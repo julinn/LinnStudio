@@ -13,8 +13,9 @@ public partial class admin_conn : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //Response.Write(ulLinnStudio.ulSqlHelper.ReadConnString());
     }
+
     protected void btnSave_Click(object sender, EventArgs e)
     {
         string conn = ulLinnStudio.ulSqlHelper.FormatConnStr(edtIP.Text, edtUID.Text, edtPWd.Text, edtDb.Text);
