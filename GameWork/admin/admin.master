@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="admin.master.cs" Inherits="admin_admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .master
+        {
+            width: 100%;
+        }
+        .masterLeft
+        {
+        	width: 200px;
+        }
+        .master_Top
+        {
+        	vertical-align:top;
+        }
+        .master_Center
+        {
+        	text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table cellspacing="1" class="master">
+            <tr>
+                <td colspan="2">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="masterLeft master_Top master_Center">
+                    &nbsp;</td>
+                <td  class="master_Top">
+                    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">        
+                    </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    &nbsp;</td>
+            </tr>
+        </table>        
+    </div>
+    </form>
+</body>
+</html>
