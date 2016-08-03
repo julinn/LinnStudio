@@ -335,4 +335,19 @@ public class GW
         gv.DataSource = dt.DefaultView;
         gv.DataBind();
     }
+
+    public static string GetGuildName(Page page)
+    {
+        string ret = "";
+        int gid = GetGuildID(page);
+        if (gid == 0)
+            return "获取公会名称失败，请确认查询地址是否正确！";
+        string sql = "select Name from core_Guilds where ID = "+gid.ToString();
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "")
+            ret = "获取公会名称失败，请确认查询地址是否正确！";
+        else
+            ret = "【" + ret + "】<br/>财务查询系统";
+        return ret;
+    }
 }
