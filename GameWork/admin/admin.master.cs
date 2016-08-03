@@ -13,7 +13,7 @@ public partial class admin_admin : System.Web.UI.MasterPage
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //checkAdmin();
+        checkAdmin();
     }
 
     private void checkAdmin()

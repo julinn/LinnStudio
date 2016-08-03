@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="admin.master.cs" Inherits="admin_admin" %>
 
+<%@ Register src="admMenu.ascx" tagname="admMenu" tagprefix="uc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,6 +26,11 @@
         {
         	text-align:center;
         }
+        .master_Title
+        {
+        	text-align:right;
+        	width:80px;
+        }
     </style>
 </head>
 <body>
@@ -36,7 +43,8 @@
             </tr>
             <tr>
                 <td class="masterLeft master_Top master_Center">
-                    &nbsp;</td>
+                    <uc1:admMenu ID="admMenu1" runat="server" />
+                </td>
                 <td  class="master_Top">
                     <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">        
                     </asp:ContentPlaceHolder>
