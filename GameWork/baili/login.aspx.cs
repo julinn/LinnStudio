@@ -15,4 +15,12 @@ public partial class baili_login : System.Web.UI.Page
     {
 
     }
+    protected void btnOk_Click(object sender, EventArgs e)
+    {
+        //
+    }
+    protected void btnExit_Click(object sender, EventArgs e)
+    {
+        //
+    }
 }
