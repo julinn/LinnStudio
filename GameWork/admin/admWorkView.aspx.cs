@@ -20,52 +20,81 @@ public partial class admWorkView : System.Web.UI.Page
 
     private int GetWorkID()
     {
-        int id = 0;
-        if (Request.QueryString["id"] != null)
-            id = GW.StrToInt(Request.QueryString["id"].ToString());
+        int id = coreGW.FmtInt(lbTitle.ToolTip);
         if (id == 0)
         {
-            id = GW.GetLastWorkID(GW.GetSessionUID(Page), GW.GetSessionGuildID(Page));
-        }
+            if (Request.QueryString["id"] != null)
+                id = coreGW.FmtInt(Request.QueryString["id"].ToString());
+            if (id == 0)
+                id = coreGW.GetLastBillID();
+            if (id > 0)
+                lbTitle.ToolTip = id.ToString();
+        }        
         return id;
     }
 
     private void load()
     {
-        int id = 0,
-            iuid = GW.GetSessionUID(Page),
-            igid = GW.GetSessionGuildID(Page);
-        if (Request.QueryString["id"] != null)
-            id = GW.StrToInt(Request.QueryString["id"].ToString());
+        int id = GetWorkID();
         if (id == 0)
-        {
-            id = GW.GetLastWorkID(iuid, igid);
-        }
-        if (id == 0)
-            Response.Write("获取分红单ID失败，请稍后再重新查询编辑");
+            coreGW.MsgLableErr("获取分红单ID失败，请稍后再重新查询编辑", lbMsg);
         else
         {
             //主信息
             DataTable dtMain,
                 dtDetail;
-            if (GW.GetWorkMain(iuid, igid, id, out dtMain))
+            string audit = "";
+            if (coreGW.BillSearch(id,"", "", "", out dtMain) == "")
             {
                 lbTitle.Text = dtMain.Rows[0]["Title"].ToString();
                 lbContent.Text = dtMain.Rows[0]["Content"].ToString();
                 lbRemark.Text = dtMain.Rows[0]["Remark"].ToString();
-                lbTotal.Text = dtMain.Rows[0]["TotalAmount"].ToString();
+                //lbTotal.Text = dtMain.Rows[0]["TotalAmount"].ToString();
                 lbCount.Text = dtMain.Rows[0]["Count"].ToString();
                 lbAmount.Text = dtMain.Rows[0]["Amount"].ToString();
-                lbWorkDate.Text = GW.FmtDate(dtMain.Rows[0]["WorkDate"].ToString());
+                lbWorkDate.Text = coreGW.FmtDate(dtMain.Rows[0]["FDate"].ToString());
+                audit = dtMain.Rows[0]["AuditFlag"].ToString();
+                if (audit == "1")
+                {
+                    btnAddMore.Enabled = false;
+                    btnAudit.Enabled = false;
+                    btnEdit.Enabled = false;
+                }
             }
             //明细内容
-            if (GW.GetWorkDetail(iuid, igid, id, out dtDetail))
+            if (coreGW.BillDetailSearch(id, out dtDetail) == "")
             {
                 GridView1.DataSource = dtDetail.DefaultView;
                 GridView1.DataBind();
+                //
+                ShowUsers(dtDetail);
+                if(audit == "1")
+                    GridView1.Columns[5].Visible = false;
             }
         }
     }
+
+    private void ShowUsers(DataTable dt)
+    {
+        string ret = "", item = "", name = "", flag = ""; 
+        if (dt.Rows.Count > 0)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                name = dt.Rows[i]["UName"].ToString();
+                flag = dt.Rows[i]["PayFlag"].ToString();
+                item = name;
+                if (flag == "1")
+                    item = name + "1";
+                if (ret == "")
+                    ret = item;
+                else
+                    ret = ret + " " + item;
+            }
+        }
+        lbUsers.Text = ret;
+    }
+
     protected void btnAddMore_Click(object sender, EventArgs e)
     {
         int id = GetWorkID();
@@ -77,21 +106,46 @@ public partial class admWorkView : System.Web.UI.Page
     {
         try
         {
-            int id = GW.StrToInt(GridView1.DataKeys[e.RowIndex].Value.ToString()),
-                iuid = GW.GetSessionUID(Page),
-                igid = GW.GetSessionGuildID(Page),
+            int memid = coreGW.FmtInt(GridView1.DataKeys[e.RowIndex].Values[1].ToString()),
                 workid = GetWorkID();
-            if (id == 0)
+            if (memid == 0)
                 return;
-            string ret = GW.WorkUserOpt(iuid, igid, workid, id, 1);
+            string ret = coreGW.BillDetailOption(workid, memid, 1);// GW.WorkUserOpt(iuid, igid, workid, id, 1);
             if (ret == "")
                 load();
             else
-                Response.Write("错误：<br/>" + ret + "<hr />");
+                coreGW.MsgLableErr(ret, lbMsg);
         }
         catch (Exception ex)
         {
             Response.Write(ex.Message);
+        }
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        int id = GetWorkID();
+        if (id > 0)
+            Response.Redirect("./admWorkEdit.aspx?id=" + id.ToString());
+    }
+    protected void btnAudit_Click(object sender, EventArgs e)
+    {
+        int id = GetWorkID(),
+            uid = coreGW.GetSessionID(this.Page);
+        if (id == 0)
+        {
+            coreGW.MsgLableErr("获取单据ID失败，不能审核", lbMsg);
+            return;
+        }
+        string ret = coreGW.BillAudit(id, uid);
+        if (ret == "")
+        {
+            lbMsg.Text = "";
+            load();
+        }
+        else
+        {
+            coreGW.MsgLableErr(ret, lbMsg);
         }
     }
 }

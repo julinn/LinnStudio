@@ -15,7 +15,7 @@ public partial class admin_admUsers : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            GW.GetProfession(GW.GetSessionGuildID(Page), ddlProfession);
+            coreGW.GetProfession(ddlProfession);
             SearchUser();
             pnlEdit.Visible = false;
         }
@@ -29,42 +29,34 @@ public partial class admin_admUsers : System.Web.UI.Page
         pnlEdit.Visible = false;
         edtName.ToolTip = "0";
         edtName.Text = "";
-        edtLevel.Text = "";
-        edtQQ.Text = "";
+        edtKeycode.Text = "";
         if(ddlProfession.Items.Count > 0)
             ddlProfession.SelectedIndex = 0;
         edtRemark.Text = "";
-        edtTel.Text = "";
+        lbUNo.Text = "自动生成";
+        lbMsg.Text = "";
     }
 
     private void SearchUser()
-    {
-        int iGid = GW.GetSessionGuildID(Page),//GW.GetGuildID(Page),
-            iUID = GW.GetSessionUID(Page);
-        if (iGid == 0 || iUID == 0)
-            return;   
+    { 
         DataTable dt;
-        GW.GuildUserSearch(iUID, iGid, 0, edtStr.Text, out dt);
+        coreGW.MemberSearch(0, edtStr.Text, rblProfession.SelectedValue, out dt);
         GridView1.DataSource = dt.DefaultView;
         GridView1.DataBind();
+        edtStr.Focus();
     }
 
     private void loadEdit(int iID)
-    {
-        int iGid = GW.GetSessionGuildID(Page),
-            iUID = GW.GetSessionUID(Page);
-        if (iGid == 0 || iUID == 0)
-            return;   
+    {  
         DataTable dt;
-        if (GW.GuildUserSearch(iUID, iGid, iID, "", out dt))
+        if (coreGW.MemberSearch(iID, "", "", out dt) == "")
         {
             edtName.ToolTip = dt.Rows[0]["ID"].ToString();
             edtName.Text = dt.Rows[0]["UName"].ToString();
-            edtLevel.Text = dt.Rows[0]["Level"].ToString();
-            edtTel.Text = dt.Rows[0]["Tel"].ToString();
-            edtQQ.Text = dt.Rows[0]["QQ"].ToString();
+            edtKeycode.Text = dt.Rows[0]["KeyCode"].ToString();
             edtRemark.Text = dt.Rows[0]["Remark"].ToString();
             SetProfession(dt.Rows[0]["Profession"].ToString());
+            lbUNo.Text = dt.Rows[0]["UNo"].ToString();
             pnlEdit.Visible = true;
         }
     }
@@ -103,13 +95,15 @@ public partial class admin_admUsers : System.Web.UI.Page
     protected void btnSave_Click(object sender, EventArgs e)
     {
         //保存
-        int id = GW.StrToInt(edtName.ToolTip),
-            gid = GW.GetSessionGuildID(Page);
-        string ret = GW.GuildUserEdit(id, gid, edtName.Text, ddlProfession.SelectedValue, edtLevel.Text, edtTel.Text, edtQQ.Text, edtRemark.Text);
+        int id = coreGW.FmtInt(edtName.ToolTip);
+        string ret = coreGW.MemberEdit(id, edtName.Text, ddlProfession.SelectedValue, edtRemark.Text, edtKeycode.Text);
         if (ret == "")
         {
             CleanEdit();
-            SearchUser();
+            if (chkContinue.Checked)
+                pnlEdit.Visible = true;
+            else
+                SearchUser();
         }
         else
             lbMsg.Text = ret;

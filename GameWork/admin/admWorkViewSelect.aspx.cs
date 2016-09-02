@@ -14,18 +14,26 @@ public partial class admin_admWorkViewSelect : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
-            load();
+        {
+            Showuses();
+            search();
+        }
     }
 
     private int getWorkID()
     {
-        int id = 0;
-        if (Request.QueryString["id"] != null)
-            id = GW.StrToInt(Request.QueryString["id"].ToString());
+        int id = coreGW.FmtInt(lbUsers.ToolTip);
+        if (id == 0)
+        {
+            if (Request.QueryString["id"] != null)
+                id = GW.StrToInt(Request.QueryString["id"].ToString());
+            if (id > 0)
+                lbUsers.ToolTip = id.ToString();
+        }
         return id;
     }
 
-    private void load()
+    private void search()
     {
         int workid = getWorkID();
         if (workid == 0)
@@ -34,11 +42,9 @@ public partial class admin_admWorkViewSelect : System.Web.UI.Page
             return;
         }
         DataTable dt;
-        if (GW.WorkUserSearch(GW.GetSessionUID(Page), GW.GetSessionGuildID(Page), workid, out dt))
-        {
-            GridView1.DataSource = dt.DefaultView;
-            GridView1.DataBind();
-        }
+        string err = coreGW.BillMemberSearch(workid, edtSearch.Text, out dt);
+        GridView1.DataSource = dt.DefaultView;
+        GridView1.DataBind();
     }
 
     private string GetUsers()
@@ -61,16 +67,41 @@ public partial class admin_admWorkViewSelect : System.Web.UI.Page
         //Response.Write(s);
         return s;
     }
+
+    private void Showuses()
+    {
+        int id = getWorkID();
+        if (id > 0)
+            lbUsers.Text = coreGW.BillDetailSearch(id);
+    }
+
     protected void btnOk_Click(object sender, EventArgs e)
     {
         string users = GetUsers();
-        int uid = GW.GetSessionUID(Page),
-            gid = GW.GetSessionGuildID(Page),
-            workid = getWorkID();
-        string ret = GW.WorkUserAddMore(uid, gid, workid, users);
+        if (users == "")
+        {
+            Response.Write("保存失败：<br/>没有选择成员<hr />");
+            return;
+        }
+        int workid = getWorkID();
+        string ret = coreGW.BillDetailAddMore(workid, users);
         if (ret == "")
-            Response.Redirect("./admWorkView.aspx?id=" + workid.ToString());
+        {
+            Showuses();
+            search();// Response.Redirect("./admWorkView.aspx?id=" + workid.ToString());
+            edtSearch.Focus();
+        }
         else
-            Response.Write("保存失败：<br/>"+ret +"<hr />");
+            Response.Write("保存失败：<br/>" + ret + "<hr />");
+    }
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        //
+        search();
+    }
+    protected void btnReurn_Click(object sender, EventArgs e)
+    {
+        int workid = getWorkID();
+        Response.Redirect("./admWorkView.aspx?id=" + workid.ToString());
     }
 }

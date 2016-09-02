@@ -21,7 +21,7 @@ public partial class admWorkEdit : System.Web.UI.Page
     {
         int id = 0;
         if (Request.QueryString["id"] != null)
-            id = GW.StrToInt(Request.QueryString["id"].ToString());
+            id = coreGW.FmtInt(Request.QueryString["id"].ToString());
         if (id == 0)
             lbFlag.Text = "新建分红";
         else
@@ -29,8 +29,8 @@ public partial class admWorkEdit : System.Web.UI.Page
         lbFlag.ToolTip = id.ToString();
         if (id == 0)
         {
-            edtTitle.Text = "(" + DateTime.Now.ToString("yyyy-MM-dd") + ")";
-            edtWorkDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            edtTitle.Text = "";
+            edtWorkDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
         else
             loadEdit(id);
@@ -38,20 +38,25 @@ public partial class admWorkEdit : System.Web.UI.Page
 
     private void loadEdit(int id)
     {
-        int iUID = GW.GetSessionUID(Page),
-            iGID = GW.GetSessionGuildID(Page);
-        string  err= "",
-            sql = "select * from core_GuildsWorks where ID = " + id.ToString() + " and UID = " + iUID.ToString() + " and GuildID = " + iGID.ToString();
+        string err = "";
         DataTable dt;
-        if(ulMySqlHelper.GetaDatatable(sql, out dt, out err))
+        err = coreGW.BillSearch(id, "", "", "", out dt);
+        if(err == "")
         {
             edtTitle.Text = dt.Rows[0]["Title"].ToString();
             edtContent.Text = dt.Rows[0]["Content"].ToString();
-            edtTotal.Text = dt.Rows[0]["TotalAmount"].ToString();
             edtAmount.Text = dt.Rows[0]["Amount"].ToString();
-            edtCount.Text = dt.Rows[0]["Count"].ToString();
-            edtWorkDate.Text = GW.FmtDate(dt.Rows[0]["WorkDate"].ToString());
+            edtWorkDate.Text = GW.FmtDate(dt.Rows[0]["FDate"].ToString());
             edtRemark.Text = dt.Rows[0]["Remark"].ToString();
+            RadioButtonList1.SelectedValue = dt.Rows[0]["SellFlag"].ToString();
+            edtCount.Text = dt.Rows[0]["Count"].ToString();
+            string audit = dt.Rows[0]["AuditFlag"].ToString();
+            if (audit == "1")
+            {
+                btnSave.Enabled = false;
+                //lbMsg.Text = "已审核的分红单不能再修改了";
+                coreGW.MsgLableErr("已审核的分红单不能再修改了", lbMsg);
+            }
         }
     }
 
@@ -61,14 +66,27 @@ public partial class admWorkEdit : System.Web.UI.Page
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {
-        int iID = GW.StrToInt(lbFlag.ToolTip),
-            iGID = GW.GetSessionGuildID(Page),
-            iUID = GW.GetSessionUID(Page);
-        string ret = GW.GuildWorkEdit(iID, iUID, iGID, edtTitle.Text, edtContent.Text, edtWorkDate.Text, edtTotal.Text, edtCount.Text,
-            edtAmount.Text, edtRemark.Text);
+        int iID = coreGW.FmtInt(lbFlag.ToolTip),
+            isellflag = coreGW.FmtInt(RadioButtonList1.SelectedValue),
+            createid = GetCreateID();
+        string ret = coreGW.BillEdit(iID, edtTitle.Text, edtContent.Text, edtRemark.Text, edtWorkDate.Text, edtAmount.Text, edtCount.Text, isellflag, createid) ;
         if (ret == "")
             Response.Redirect("./admWorkView.aspx");
         else
             lbMsg.Text = ret;
+    }
+    private int GetCreateID()
+    {
+        try
+        {
+            int i = 0;
+            if (Session["ID"] != null)
+                i = coreGW.FmtInt(Session["ID"].ToString());
+            return i;
+        }
+        catch
+        {
+            return 0;
+        }
     }
 }

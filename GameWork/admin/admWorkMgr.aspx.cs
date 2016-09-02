@@ -14,19 +14,21 @@ public partial class admin_admWorkMgr : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
-            load();
+        {
+            edtFrom.Text = DateTime.Now.ToString("yyyy-MM") + "-01";
+            edtTo.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            search();
+        }
     }
     protected void btnAddNew_Click(object sender, EventArgs e)
     {
         Response.Redirect("./admWorkEdit.aspx");
     }
 
-    private void load()
+    private void search()
     {
-        int uid = GW.GetSessionUID(Page),
-            gid = GW.GetSessionGuildID(Page);
         DataTable dt;
-        GW.WorkSearch(uid, gid, "", "", "", out dt);
+        coreGW.BillSearch(0, edtstr.Text, edtFrom.Text, edtTo.Text, out dt);
         GridView1.DataSource = dt.DefaultView;
         GridView1.DataBind();
     }
@@ -42,5 +44,9 @@ public partial class admin_admWorkMgr : System.Web.UI.Page
         catch
         {
         }
+    }
+    protected void btnSearch_Click(object sender, EventArgs e)
+    {
+        search();
     }
 }

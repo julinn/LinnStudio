@@ -18,15 +18,9 @@ public partial class admin_admin : System.Web.UI.MasterPage
 
     private void checkAdmin()
     {
-        if (Session.Count < 1 || Session["UID"] == null || Session["UID"].ToString() == "" || Session["UserID"] == null || Session["UserID"].ToString() == "")
+        if (Session.Count < 1 || Session["ID"] == null || Session["ID"].ToString() == "" || Session["LevID"] == null || Session["LevID"].ToString() == ""
+            || Session["UserName"] == null || Session["UserName"].ToString() == "" || Session["UserID"] == null || Session["UserID"].ToString() == "")
             Response.Redirect("admlogin.aspx");
-        int gid = GetGID();
-        if (gid > 0)
-        {
-            //if not valid users guild
-            //...
-            //Response.Redirect("admlogin.aspx");
-        }
     }
 
     private int GetGID()

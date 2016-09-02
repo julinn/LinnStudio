@@ -81,6 +81,31 @@ public class coreGW
         gv.DataBind();
     }
 
+    public static int GetSessionID(Page page)
+    {
+        try
+        {
+            return FmtInt(page.Session["ID"].ToString());
+        }
+        catch
+        {
+            return 0;
+        }
+    }
+
+    public static void MsgLableOK(string msg, Label lb)
+    {
+        lb.Text = msg;
+        lb.Font.Bold = true;
+        lb.ForeColor = System.Drawing.Color.Green;
+    }
+    public static void MsgLableErr(string msg, Label lb)
+    {
+        lb.Text = msg;
+        lb.Font.Bold = true;
+        lb.ForeColor = System.Drawing.Color.Red;
+    }
+
     /// <summary>
     /// 管理登录
     /// </summary>
@@ -172,15 +197,16 @@ public class coreGW
    /// <param name="sellflag"></param>
    /// <param name="createid"></param>
    /// <returns></returns>
-    public static string BillEdit(int id, string title, string content, string remark, string fdate, string amount, int sellflag, int createid)
+    public static string BillEdit(int id, string title, string content, string remark, string fdate, string amount, string count, int sellflag, int createid)
     {
         title = FmtStr(title);
         content = FmtStr(content);
         remark = FmtStr(remark);
         fdate = FmtDatetime(fdate);
         amount = FmtAmount(amount).ToString();
+        count = FmtInt(count).ToString();
         string ret = "", 
-            sql = "call proc_gw_Bill_Edit(" + id.ToString() + ",'" + title + "','" + content + "','" + remark + "','" + fdate + "'," + amount + "," + sellflag.ToString() + "," + createid + ")";
+            sql = "call proc_gw_Bill_Edit(" + id.ToString() + ",'" + title + "','" + content + "','" + remark + "','" + fdate + "'," + amount + "," + count+"," + sellflag.ToString() + "," + createid + ")";
         ret = ulMySqlHelper.GetFirstVar(sql);
         if (ret == "1")
             ret = "";
@@ -231,13 +257,13 @@ public class coreGW
         return ret;
     }
 
-    public static string MemberSearch(string str, string profession, out DataTable dt)
+    public static string MemberSearch(int id, string str, string profession, out DataTable dt)
     {
         str = FmtStr(str);
         profession = FmtStr(profession);
         string err = "",
             ret = "",
-            sql = "call proc_gw_Member_Search('"+str+"','"+profession+"')";
+            sql = "call proc_gw_Member_Search("+id.ToString()+",'"+str+"','"+profession+"')";
         ulMySqlHelper.GetaDatatable(sql, out dt, out err);
         if (err != "")
             ret = err;
@@ -245,22 +271,115 @@ public class coreGW
     }
 
     //IN `_Str` varchar(100), IN `_SellFlag` int, IN `_AuditFlag` int,IN `_FromDate` datetime,IN `_ToDate` datetime
-    public static void BillSearch(string title, string fromdate, string todate, out DataTable dt)
+    public static string BillSearch(int id, string title, string fromdate, string todate, out DataTable dt)
     {
         title = FmtStr(title);
         fromdate = FmtDate(fromdate) + " 00:00:00";
         todate = FmtDatetime(DateTime.Parse(FmtDate(todate)).AddDays(1).ToString());
-        string err = "",sql = "call proc_gw_Bill_Search('" + title + "',0,0,'" + fromdate + "','" + todate + "')";
+        string err = "",sql = "call proc_gw_Bill_Search("+id.ToString()+",'" + title + "',0,0,'" + fromdate + "','" + todate + "')";
         ulMySqlHelper.GetaDatatable(sql, out dt, out err);
+        return err;
     }
 
-    public static void BillDetailSearch(int billID, out DataTable dt)
+    public static string BillDetailSearch(int billID, out DataTable dt)
     {
         string err = "",
             sql = "call proc_gw_BillDetail_Search(" + billID.ToString() + ")";
         ulMySqlHelper.GetaDatatable(sql, out dt, out err);
+        return err;
     }
 
+    public static string BillDetailSearch(int billID)
+    {
+        string ret = "", err = "", item = "", name = "", flag = "";
+        DataTable dt;
+        err = BillDetailSearch(billID, out dt);
+        if (dt.Rows.Count > 0)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                name = dt.Rows[i]["UName"].ToString();
+                flag = dt.Rows[i]["PayFlag"].ToString();
+                item = name;
+                if (flag == "1")
+                    item = name + "1";
+                if (ret == "")
+                    ret = item;
+                else
+                    ret = ret + " " + item;
+            }
+        }
+        return ret;
+    }
 
+    public static int GetLastBillID()
+    {
+        string sql = "select max(ID) from gw_Bill";
+        string ret = ulMySqlHelper.GetFirstVar(sql);
+        return FmtInt(ret);
+    }
 
+    public static string BillMemberSearch(int id, string str, out DataTable dt)
+    {
+        str = FmtStr(str);
+        string sql = "call proc_gw_Bill_MemSearch(" + id.ToString() + ",'"+str+"')",
+            err = "";
+        ulMySqlHelper.GetaDatatable(sql, out dt, out err);
+        return err;
+    }
+
+    public static string wxMemberCheck(string wxopenid)
+    {
+        string sql = "select ID from gw_Member where wxOpenID = '" + wxopenid + "'",
+            sid = "",
+            ret = "还没有绑定账号信息，回复【编号-验证码】，绑定个人角色； 例如：001-888888";
+        sid = ulMySqlHelper.GetFirstVar(sql);
+        int id = FmtInt(sid);
+        if (id > 0)
+            ret = "<a href=\"http://1.smasp.net/search.aspx?id=" + id.ToString() + "\">点击这里查询分红信息</a>";
+        return ret;
+    }
+
+    public static string wxMemberBind(string wxOpenID, string cmd)
+    {
+        cmd = FmtStr(cmd).Replace(" ","");
+        string ret = "",
+            sql = "call proc_gw_Member_WXBind('" + wxOpenID + "','" + cmd + "')";
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "1")
+        {
+            ret = wxMemberCheck(wxOpenID);
+        }
+        return ret;
+    }
+
+    public static string wxAdminBind(string wxOpenID, string cmd)
+    {
+    }
+
+    public static string wxAdminGetKeyCode(string wxOpenID)
+    {
+
+    }
+
+    public static string MemberBillSearch(int id, int type, out DataTable dt)
+    {
+        string sql = "call proc_gw_Member_BillSearch(" + id.ToString() + "," + type.ToString() + ")",
+            ret = "";
+        ulMySqlHelper.GetaDatatable(sql, out dt, out ret);
+        return ret;
+    }
+
+    #region 检查是否微信浏览器
+    /// <summary>
+    /// 检查是否微信浏览器
+    /// </summary>
+    /// <param name="page"></param>
+    /// <returns></returns>
+    public static bool CheckBrowserIsWeixin(Page page)
+    {
+        string ua = page.Request.UserAgent;
+        return ua.Contains("MicroMessenger");
+    }
+    #endregion
 }

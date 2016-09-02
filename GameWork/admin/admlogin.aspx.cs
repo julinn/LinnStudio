@@ -27,13 +27,9 @@ public partial class admin_admlogin : System.Web.UI.Page
     {
         string userid = edtUserID.Text,
             passwd = edtPasswd.Text;
-        DataTable dt;
-        string ret = GW.adm_Login(userid, passwd, out dt);
+        string ret = coreGW.admLogin(this.Page, userid, passwd); 
         if (ret == "")
         {
-            Session["UID"] = dt.Rows[0]["UID"].ToString();
-            Session["UserID"] = dt.Rows[0]["UserID"].ToString();
-            Session["GuildID"] = dt.Rows[0]["DefGuildID"].ToString();
             Response.Redirect("admCenter.aspx");
         }
         else

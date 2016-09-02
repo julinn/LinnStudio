@@ -5,11 +5,25 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div></div>
 <hr />
-
     <table cellspacing="1" class="master">
         <tr>
             <td>
-                <asp:Button ID="btnOk" runat="server" Text="确 定" onclick="btnOk_Click" />
+                当前已选：</td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="lbUsers" runat="server" Text=""></asp:Label>
+&nbsp;<hr /></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Panel ID="pnlSearch" runat="server" DefaultButton="btnSearch">
+                <asp:TextBox ID="edtSearch" runat="server" onfocus="javascript:this.select()" ></asp:TextBox>
+&nbsp;<asp:Button ID="btnSearch" runat="server" Text="查 询" onclick="btnSearch_Click" />
+&nbsp;<asp:Button ID="btnOk" runat="server" Text="添加当前所选成员" onclick="btnOk_Click" />
+            &nbsp;<asp:Button ID="btnReurn" runat="server" Text="返回分红单" 
+                    onclick="btnReurn_Click" />
+            </asp:Panel>
             </td>
         </tr>
         <tr>

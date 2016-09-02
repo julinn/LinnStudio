@@ -15,25 +15,74 @@ public partial class search : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            if (Request.QueryString["str"] != null)
+            searchinfo();
+        }
+    }
+
+    private int GetID()
+    {
+        try
+        {
+            int id = 0;
+            DataTable dt;
+            if (Request.QueryString["id"] != null)
+                id = coreGW.FmtInt(Request.QueryString["id"].ToString());
+            if (id == 0 && edtName.Text == "")
+                return 0;
+            if (id > 0)
+                coreGW.MemberSearch(id, "", "", out dt);
+            else
             {
-                edtStr.Text = Request.QueryString["str"].ToString();
-                searchinfo();
+                coreGW.MemberSearch(0, edtName.Text, "", out dt);
+                if (dt.Rows.Count > 0)
+                    id = coreGW.FmtInt(dt.Rows[0]["ID"].ToString());
             }
+            if (id > 0 && dt.Rows.Count > 0)
+                edtName.Text = dt.Rows[0]["UName"].ToString();
+            
+            return id;
+        }
+        catch
+        {
+            return 0;
         }
     }
 
     private void searchinfo()
     {
-        int gid = GW.GetGuildID(Page);
-        if(gid == 0)
+        int id = GetID(),
+            type = coreGW.FmtInt(RadioButtonList1.SelectedValue.ToString());
+        if(id == 0)
         {
-            Response.Write("获取公会ID失败，请确认查询地址是否正确！");
+            //Response.Write("获取用户ID失败，请确认查询地址是否正确！");
+            edtName.Focus();
             return;
         }
-        GW.SearchSelf(gid, edtStr.Text, GridView1);
+        DataTable dt;
+        coreGW.MemberBillSearch(id, type, out dt);
+        GridView1.DataSource = dt.DefaultView;
+        GridView1.DataBind();
+        //计算合计
+        double dAmount = 0, dTotal = 0;
+        if (dt.Rows.Count > 0)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                dAmount = coreGW.FmtAmount(dt.Rows[i]["Amount"].ToString());
+                dTotal = dTotal + dAmount;
+            }
+        }
+        lbTotal.Text = "合计：" + dTotal.ToString();
     }
     protected void Button1_Click(object sender, EventArgs e)
+    {
+        searchinfo();
+    }
+    protected void RadioButtonList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        searchinfo();
+    }
+    protected void btnSearch_Click(object sender, EventArgs e)
     {
         searchinfo();
     }

@@ -1,5 +1,11 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admWorkEdit.aspx.cs" Inherits="admWorkEdit" Title="无标题页" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admWorkEdit.aspx.cs" Inherits="admWorkEdit" Title="分红编辑" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .style2
+        {
+            width: 284px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>
@@ -12,37 +18,41 @@
                 标题</td>
             <td colspan="3">
                 <asp:TextBox ID="edtTitle" runat="server" Width="425px"></asp:TextBox>
-            </td>
+                （主要掉落物品）</td>
         </tr>
         <tr>
             <td class="master_Title">
-                日期</td>
-            <td>
-                <asp:TextBox ID="edtWorkDate" runat="server"></asp:TextBox>
+                时间</td>
+            <td class="style2">
+                <asp:TextBox ID="edtWorkDate" runat="server" Width="237px"></asp:TextBox>
             </td>
             <td class="master_Title">
                 人数</td>
             <td>
                 <asp:TextBox ID="edtCount" runat="server"></asp:TextBox>
-            </td>
+                                    </td>
         </tr>
         <tr>
             <td class="master_Title">
-                人均</td>
-            <td>
-                <asp:TextBox ID="edtAmount" runat="server"></asp:TextBox>
+                出售状态</td>
+            <td class="style2">
+                <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatColumns="2">
+                    <asp:ListItem Selected="True" Value="0">未出售</asp:ListItem>
+                    <asp:ListItem Value="1">已出售</asp:ListItem>
+                </asp:RadioButtonList>
             </td>
             <td class="master_Title">
-                总金额</td>
+                人均分红</td>
             <td>
-                <asp:TextBox ID="edtTotal" runat="server"></asp:TextBox>
+                <asp:TextBox ID="edtAmount" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="master_Title">
                 内容</td>
             <td colspan="3">
-                <asp:TextBox ID="edtContent" runat="server" Width="425px"></asp:TextBox>
+                <asp:TextBox ID="edtContent" runat="server" Width="425px" Height="76px" 
+                    TextMode="MultiLine"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -70,7 +80,7 @@
         <tr>
             <td>
                 &nbsp;</td>
-            <td>
+            <td class="style2">
                 &nbsp;</td>
             <td>
                 &nbsp;</td>

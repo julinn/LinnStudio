@@ -1,6 +1,16 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admWorkView.aspx.cs" Inherits="admWorkView" Title="无标题页" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .style2
+        {
+            width: 336px;
+        }
+        .style3
+        {
+            color: #FF0000;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div>
@@ -17,7 +27,7 @@
         <tr>
             <td class="master_Title">
                 日期：</td>
-            <td>
+            <td class="style2">
                 <asp:Label ID="lbWorkDate" runat="server" Text=""></asp:Label>
             </td>
             <td class="master_Title">
@@ -29,14 +39,9 @@
         <tr>
             <td class="master_Title">
                 人均：</td>
-            <td>
+            <td class="style2">
                 <asp:Label ID="lbAmount" runat="server" Text=""></asp:Label>
             </td>
-            <td class="master_Title">
-                总金额：</td>
-            <td>
-                <asp:Label ID="lbTotal" runat="server" Text=""></asp:Label>
-                                    </td>
         </tr>
         <tr>
             <td class="master_Title">
@@ -56,8 +61,31 @@
             <td class="master_Title">
                 &nbsp;</td>
             <td colspan="3">
-                <asp:Button ID="btnAddMore" runat="server" Text="批量添加用户" 
+                <asp:Button ID="btnAddMore" runat="server" Text="批量添加成员" 
                     onclick="btnAddMore_Click" />
+            &nbsp;<asp:Button ID="btnEdit" runat="server" Text="修改分红单" 
+                    onclick="btnEdit_Click" />
+&nbsp;<asp:Button ID="btnAudit" runat="server" Text="审核分红单" OnClientClick ="return confirm('分红单审核以后将不可修改或变更，确定要审核吗？');" onclick="btnAudit_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td class="master_Title">
+                &nbsp;</td>
+            <td colspan="3" class="style3">
+                注：分红单审核以后不能再修改或变更，请仔细核对无误后再审核。</td>
+        </tr>
+        <tr>
+            <td class="master_Title">
+                成员列表：</td>
+            <td colspan="3">
+                <asp:Label ID="lbUsers" runat="server" Text=""></asp:Label>
+            </td>
+        </tr>
+        <tr>
+            <td class="master_Title">
+                &nbsp;</td>
+            <td colspan="3">
+                <asp:Label ID="lbMsg" runat="server" Text=""></asp:Label>
             </td>
         </tr>
     </table>
@@ -65,10 +93,13 @@
     <hr />
     <div>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="ID" onrowdeleting="GridView1_RowDeleting">
+            DataKeyNames="ID,MemID" onrowdeleting="GridView1_RowDeleting">
         <Columns>
             <asp:BoundField DataField="UName" HeaderText="角色名" />
             <asp:BoundField DataField="Profession" HeaderText="职业" />
+            <asp:BoundField DataField="PayState" HeaderText="结算状态" />
+            <asp:BoundField DataField="PayTime" HeaderText="结算时间" />
+            <asp:BoundField DataField="PayRemark" HeaderText="结算备注" />
             <asp:CommandField ShowDeleteButton="True" />
         </Columns>
                 </asp:GridView>
