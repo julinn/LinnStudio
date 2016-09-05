@@ -38,6 +38,14 @@
             </tr>
             <tr>
                 <td class="title">
+                    验证码：</td>
+                <td>
+                    <asp:TextBox ID="edtKeycode" runat="server"></asp:TextBox>
+                    <asp:Label ID="lbCode" runat="server" Text=""></asp:Label>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">
                     &nbsp;</td>
                 <td>
                     <asp:Label ID="lbMsg" runat="server" ForeColor="Red"></asp:Label>

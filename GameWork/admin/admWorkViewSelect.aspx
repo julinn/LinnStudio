@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admWorkViewSelect.aspx.cs" Inherits="admin_admWorkViewSelect" Title="无标题页" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admWorkViewSelect.aspx.cs" Inherits="admin_admWorkViewSelect" Title="参与人员选择" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

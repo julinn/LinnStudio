@@ -16,6 +16,8 @@ using System.Collections.Generic;
 /// </summary>
 public class coreGW
 {
+    public static int FLoginErrorCount = FmtInt(ulMySqlHelper.GetAppSetting("LoginErrorCount"));
+    public static Dictionary<string, int> FLoginErr = new Dictionary<string, int>();
 	public coreGW()
 	{
 		//
@@ -93,6 +95,39 @@ public class coreGW
         }
     }
 
+    public static void LoginErrAdd(string userid)
+    {
+        if (FLoginErrorCount == 0)
+            return;
+        if (FLoginErr.ContainsKey(userid))
+        {
+            int iErr = FLoginErr[userid] + 1;
+            FLoginErr[userid] = iErr;
+        }
+        else
+            FLoginErr.Add(userid, 1);
+    }
+    public static void LoginErrClear(string userid)
+    {
+        if (FLoginErrorCount == 0)
+            return;
+        if (FLoginErr.ContainsKey(userid))
+            FLoginErr.Remove(userid);
+    }
+    public static bool LoginErrCheck(string userid)
+    {
+        if (FLoginErrorCount == 0)
+            return true;
+        bool b = true;
+        if (FLoginErr.ContainsKey(userid))
+        {
+            if (FLoginErr[userid] >= FLoginErrorCount)
+                b = false;
+        }
+        return b;
+    }
+
+
     public static void MsgLableOK(string msg, Label lb)
     {
         lb.Text = msg;
@@ -113,25 +148,37 @@ public class coreGW
     /// <param name="userid">用户名</param>
     /// <param name="passwd">密码</param>
     /// <returns></returns>
-    public static string admLogin(Page page, string userid, string passwd)
+    public static string admLogin(Page page, string userid, string passwd, string keycode)
     {
         userid = FmtStr(userid);
         passwd = FmtStr(passwd);
+        keycode = FmtStr(keycode);
+        if (!LoginErrCheck(userid))
+            return "账号因连续 "+FLoginErrorCount.ToString()+" 次账号或密码错误被锁定！";
         string sql = "call proc_gw_User_Login('" + userid + "','" + passwd + "')",
-            err = "", ret = "用户名或密码错误！";
+            err = "", ret = "用户名或密码错误！", code = "";
         DataTable dt;
         if (ulMySqlHelper.GetaDatatable(sql, out dt, out err))
         {
+            if (keycode != "")
+            {
+                code = dt.Rows[0]["KeyCode"].ToString();
+                DateTime time = DateTime.Parse(FmtDatetime(dt.Rows[0]["CodeValid"].ToString()));
+                if (keycode != code || time < DateTime.Now)
+                    return "验证码错误";
+            }
             page.Session["ID"] = dt.Rows[0]["ID"].ToString();
             page.Session["UserID"] = dt.Rows[0]["UserID"].ToString();
             page.Session["UserName"] = dt.Rows[0]["UserName"].ToString();
             page.Session["LevID"] = dt.Rows[0]["LevID"].ToString();
+            LoginErrClear(userid);
             ret = "";
         }
         else
         {
             if (err != "")
                 ret = err;
+           LoginErrAdd(userid);
         }
         return ret;
     }
@@ -169,15 +216,17 @@ public class coreGW
     /// <param name="remark"></param>
     /// <param name="keycode"></param>
     /// <returns></returns>
-    public static string MemberEdit(int id, string uname, string profession, string remark, string keycode)
+    public static string MemberEdit(int id, string uname, string profession, string remark, string keycode, string pym, string state)
     {
         uname = FmtStr(uname);
         profession = FmtStr(profession);
         remark = FmtStr(remark);
         keycode = FmtStr(keycode);
+        pym = FmtStr(pym);
+        state = FmtInt(state).ToString();
         if (uname.Replace(" ", "") == "")
             return "角色名不能为空";
-        string sql = "call proc_gw_Member_Edit(" + id.ToString() + ",'" + uname + "','" + profession + "','" + remark + "','" + keycode + "')",
+        string sql = "call proc_gw_Member_Edit(" + id.ToString() + ",'" + uname + "','" + profession + "','" + remark + "','" + keycode + "','"+pym+"',"+state+")",
             ret = "保存失败";
         ret = ulMySqlHelper.GetFirstVar(sql);
         if (ret == "1")
@@ -257,6 +306,14 @@ public class coreGW
         return ret;
     }
 
+    /// <summary>
+    /// 成员检索
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="str"></param>
+    /// <param name="profession"></param>
+    /// <param name="dt"></param>
+    /// <returns></returns>
     public static string MemberSearch(int id, string str, string profession, out DataTable dt)
     {
         str = FmtStr(str);
@@ -271,16 +328,38 @@ public class coreGW
     }
 
     //IN `_Str` varchar(100), IN `_SellFlag` int, IN `_AuditFlag` int,IN `_FromDate` datetime,IN `_ToDate` datetime
-    public static string BillSearch(int id, string title, string fromdate, string todate, out DataTable dt)
+    /// <summary>
+    /// 账单检索
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="title"></param>
+    /// <param name="fromdate"></param>
+    /// <param name="todate"></param>
+    /// <param name="dt"></param>
+    /// <returns></returns>
+    public static string BillSearch(int id, string title, string fromdate, string todate, bool userDateQuery, string sellflag, string auditflag, out DataTable dt)
     {
         title = FmtStr(title);
         fromdate = FmtDate(fromdate) + " 00:00:00";
         todate = FmtDatetime(DateTime.Parse(FmtDate(todate)).AddDays(1).ToString());
-        string err = "",sql = "call proc_gw_Bill_Search("+id.ToString()+",'" + title + "',0,0,'" + fromdate + "','" + todate + "')";
+        if (!userDateQuery)
+        {
+            fromdate = "";
+            todate = "";
+        }
+        sellflag = FmtInt(sellflag).ToString();
+        auditflag = FmtInt(auditflag).ToString();
+        string err = "",sql = "call proc_gw_Bill_Search("+id.ToString()+",'" + title + "',"+sellflag+","+auditflag+",'" + fromdate + "','" + todate + "')";
         ulMySqlHelper.GetaDatatable(sql, out dt, out err);
         return err;
     }
 
+    /// <summary>
+    /// 账单明细查询
+    /// </summary>
+    /// <param name="billID"></param>
+    /// <param name="dt"></param>
+    /// <returns></returns>
     public static string BillDetailSearch(int billID, out DataTable dt)
     {
         string err = "",
@@ -289,6 +368,11 @@ public class coreGW
         return err;
     }
 
+    /// <summary>
+    /// 账单明细查询
+    /// </summary>
+    /// <param name="billID"></param>
+    /// <returns></returns>
     public static string BillDetailSearch(int billID)
     {
         string ret = "", err = "", item = "", name = "", flag = "";
@@ -312,6 +396,10 @@ public class coreGW
         return ret;
     }
 
+    /// <summary>
+    /// 获取最后一张账单ID
+    /// </summary>
+    /// <returns></returns>
     public static int GetLastBillID()
     {
         string sql = "select max(ID) from gw_Bill";
@@ -319,6 +407,13 @@ public class coreGW
         return FmtInt(ret);
     }
 
+    /// <summary>
+    /// 账单添加成员检索（排除已经添加过的成员）
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="str"></param>
+    /// <param name="dt"></param>
+    /// <returns></returns>
     public static string BillMemberSearch(int id, string str, out DataTable dt)
     {
         str = FmtStr(str);
@@ -328,6 +423,11 @@ public class coreGW
         return err;
     }
 
+    /// <summary>
+    /// 微信会员检测
+    /// </summary>
+    /// <param name="wxopenid"></param>
+    /// <returns></returns>
     public static string wxMemberCheck(string wxopenid)
     {
         string sql = "select ID from gw_Member where wxOpenID = '" + wxopenid + "'",
@@ -340,6 +440,12 @@ public class coreGW
         return ret;
     }
 
+    /// <summary>
+    /// 微信会员绑定
+    /// </summary>
+    /// <param name="wxOpenID"></param>
+    /// <param name="cmd"></param>
+    /// <returns></returns>
     public static string wxMemberBind(string wxOpenID, string cmd)
     {
         cmd = FmtStr(cmd).Replace(" ","");
@@ -353,15 +459,48 @@ public class coreGW
         return ret;
     }
 
+    /// <summary>
+    /// 微信管理员绑定
+    /// </summary>
+    /// <param name="wxOpenID"></param>
+    /// <param name="cmd"></param>
+    /// <returns></returns>
     public static string wxAdminBind(string wxOpenID, string cmd)
     {
+        string ret = "",
+            sql = "call proc_gw_User_wxBind('"+wxOpenID+"','"+cmd+"')";
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "1")
+        {
+            ret = wxAdminGetKeyCode(wxOpenID);
+        }
+        return ret;
     }
 
+    /// <summary>
+    /// 获取微信管理员登录验证码
+    /// </summary>
+    /// <param name="wxOpenID"></param>
+    /// <returns></returns>
     public static string wxAdminGetKeyCode(string wxOpenID)
     {
-
+        string ret = "",
+            sql = "call proc_gw_User_wxKeyCode('" + wxOpenID + "')";
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "")
+            ret = "还没有绑定账号，回复【账号;密码】进行绑定，例如：account;password";
+        else
+            ret = "验证码：" + ret + " \n 5分钟内有效，安全棒棒哒~";
+        return ret;
     }
 
+    /// <summary>
+    /// 会员账单查询（会员查询自己的账单）
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="type"></param>
+    /// <param name="dt"></param>
+    /// <returns></returns>
     public static string MemberBillSearch(int id, int type, out DataTable dt)
     {
         string sql = "call proc_gw_Member_BillSearch(" + id.ToString() + "," + type.ToString() + ")",
@@ -382,4 +521,54 @@ public class coreGW
         return ua.Contains("MicroMessenger");
     }
     #endregion
+
+    /// <summary>
+    /// 获取结算编号
+    /// </summary>
+    /// <returns></returns>
+    public static string GetPayCode()
+    {
+        try
+        {
+            Random rd = new Random();
+            string s = rd.Next(100000, 999999).ToString();
+            return DateTime.Now.ToString("yyyyMMddHHmmss") + s;
+        }
+        catch
+        {
+            return DateTime.Now.ToString("yyyyMMddHHmmss");
+        }
+    }
+
+    public static string MemberBillPay(int memID, string remark, double total)
+    {
+        //IN `_MemID` int,IN `_PayCode` varchar(60), IN `_Remark` varchar(1000), IN `_Amount` decimal(12,2)
+        remark = FmtStr(remark);
+        total = FmtAmount(total.ToString());
+        if (total == 0)
+            return "结算金额合计不能为0";
+        string ret = "结算失败，请稍后再重试。",
+            paycode = GetPayCode(),
+            sql = "call proc_gw_Member_Pay(" + memID.ToString() + ",'" + paycode+"','" + remark + "'," + total.ToString() + ")";
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "1")
+            ret = "";
+        return ret;
+    }
+
+    public static string UserChangePassword(int iUID, string oldPwd, string newPwd, string Newpwd1)
+    {
+        string ret = "";
+        oldPwd = FmtStr(oldPwd);
+        if (newPwd.Length == 0)
+            return "新密码不能为空";
+        if (newPwd != Newpwd1)
+            return "两次输入的密码不一致";
+        newPwd = FmtStr(newPwd);
+        string sql = "call proc_gw_User_ChangePwd(" + iUID.ToString() + ",'" + oldPwd + "','"+newPwd+"')";
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "1")
+            ret = "";
+        return ret;
+    }
 }

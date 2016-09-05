@@ -44,7 +44,7 @@ public partial class admWorkView : System.Web.UI.Page
             DataTable dtMain,
                 dtDetail;
             string audit = "";
-            if (coreGW.BillSearch(id,"", "", "", out dtMain) == "")
+            if (coreGW.BillSearch(id,"", "", "", false, "2", "2", out dtMain) == "")
             {
                 lbTitle.Text = dtMain.Rows[0]["Title"].ToString();
                 lbContent.Text = dtMain.Rows[0]["Content"].ToString();
@@ -71,6 +71,7 @@ public partial class admWorkView : System.Web.UI.Page
                 if(audit == "1")
                     GridView1.Columns[5].Visible = false;
             }
+            lbselectCount.Text = dtDetail.Rows.Count.ToString();
         }
     }
 

@@ -45,6 +45,11 @@ public partial class admin_admWorkViewSelect : System.Web.UI.Page
         string err = coreGW.BillMemberSearch(workid, edtSearch.Text, out dt);
         GridView1.DataSource = dt.DefaultView;
         GridView1.DataBind();
+        if (dt.Rows.Count == 1)
+        {
+            CheckBox CheckBox = (CheckBox)GridView1.Rows[0].Cells[0].FindControl("CheckBox1");
+            CheckBox.Checked = true;
+        }
     }
 
     private string GetUsers()

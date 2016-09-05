@@ -35,6 +35,8 @@ public partial class admin_admUsers : System.Web.UI.Page
         edtRemark.Text = "";
         lbUNo.Text = "自动生成";
         lbMsg.Text = "";
+        edtPym.Text = "";
+        rblState.SelectedValue = "1";
     }
 
     private void SearchUser()
@@ -43,6 +45,7 @@ public partial class admin_admUsers : System.Web.UI.Page
         coreGW.MemberSearch(0, edtStr.Text, rblProfession.SelectedValue, out dt);
         GridView1.DataSource = dt.DefaultView;
         GridView1.DataBind();
+        lbRecordCount.Text = " 查询结果记录数量：" + dt.Rows.Count.ToString();
         edtStr.Focus();
     }
 
@@ -57,6 +60,8 @@ public partial class admin_admUsers : System.Web.UI.Page
             edtRemark.Text = dt.Rows[0]["Remark"].ToString();
             SetProfession(dt.Rows[0]["Profession"].ToString());
             lbUNo.Text = dt.Rows[0]["UNo"].ToString();
+            rblState.SelectedValue = dt.Rows[0]["State"].ToString();
+            edtPym.Text = dt.Rows[0]["Pym"].ToString();
             pnlEdit.Visible = true;
         }
     }
@@ -96,7 +101,7 @@ public partial class admin_admUsers : System.Web.UI.Page
     {
         //保存
         int id = coreGW.FmtInt(edtName.ToolTip);
-        string ret = coreGW.MemberEdit(id, edtName.Text, ddlProfession.SelectedValue, edtRemark.Text, edtKeycode.Text);
+        string ret = coreGW.MemberEdit(id, edtName.Text, ddlProfession.SelectedValue, edtRemark.Text, edtKeycode.Text, edtPym.Text, rblState.SelectedValue);
         if (ret == "")
         {
             CleanEdit();

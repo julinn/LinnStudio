@@ -32,6 +32,18 @@
     </tr>
     <tr>
         <td>
+            <a href="admPay.aspx">结算管理</a></td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;</td>
+    </tr>
+    <tr>
+        <td>
+            <a href="admChangePwd.aspx">修改密码</a></td>
+    </tr>
+    <tr>
+        <td>
             &nbsp;</td>
     </tr>
     <tr>

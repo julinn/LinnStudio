@@ -28,7 +28,7 @@ public partial class admin_admWorkMgr : System.Web.UI.Page
     private void search()
     {
         DataTable dt;
-        coreGW.BillSearch(0, edtstr.Text, edtFrom.Text, edtTo.Text, out dt);
+        coreGW.BillSearch(0, edtstr.Text, edtFrom.Text, edtTo.Text, chkUserDate.Checked, rblSellFlag.SelectedValue, rblAutidFlag.SelectedValue, out dt);
         GridView1.DataSource = dt.DefaultView;
         GridView1.DataBind();
     }

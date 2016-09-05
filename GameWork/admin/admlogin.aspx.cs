@@ -20,14 +20,44 @@ public partial class admin_admlogin : System.Web.UI.Page
                 if (Request.QueryString["act"].ToString() == "out")
                     Session.Clear();
             }
+            if (ulMySqlHelper.GetAppSetting("WXCode") != "1")
+            {
+                lbCode.Text = GetCode();
+            }
         }
+    }
+
+    private string GetCode()
+    {
+        Random dr = new Random();
+        return dr.Next(1000, 9999).ToString();
     }
 
     private void login()
     {
         string userid = edtUserID.Text,
-            passwd = edtPasswd.Text;
-        string ret = coreGW.admLogin(this.Page, userid, passwd); 
+            passwd = edtPasswd.Text,
+            keycode = edtKeycode.Text;
+        keycode = coreGW.FmtStr(keycode).Replace(" ", "");
+        //注释用于调试 跳过验证码
+        /**/        
+        if (keycode.Length < 4)
+        {
+            lbMsg.Text = "验证码错误！";
+            return;
+        }
+        if (ulMySqlHelper.GetAppSetting("WXCode") != "1")
+        {
+            if (edtKeycode.Text != lbCode.Text)
+            {
+                lbMsg.Text = "验证码错误！";
+                return;
+            }
+            keycode = "";
+        }
+        //跳过结束=========
+
+        string ret = coreGW.admLogin(this.Page, userid, passwd, keycode); 
         if (ret == "")
         {
             Response.Redirect("admCenter.aspx");
@@ -39,7 +69,7 @@ public partial class admin_admlogin : System.Web.UI.Page
     }
     protected void btnExit_Click(object sender, EventArgs e)
     {
-        Response.Redirect("../index.aspx");
+        Response.Redirect("../search.aspx");
     }
     protected void btnOk_Click(object sender, EventArgs e)
     {

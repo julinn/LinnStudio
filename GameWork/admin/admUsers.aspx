@@ -59,6 +59,21 @@
                             </td>
                         </tr>
                         <tr>
+                            <td class="title">
+                                拼音码：</td>
+                            <td>
+                                <asp:TextBox ID="edtPym" runat="server"></asp:TextBox>
+                                (不填会自动生成)</td>
+                            <td class="title">
+                                状态：</td>
+                            <td>
+                                <asp:RadioButtonList ID="rblState" runat="server" RepeatColumns="2">
+                                    <asp:ListItem Selected="True" Value="1">正常</asp:ListItem>
+                                    <asp:ListItem Value="0">退会</asp:ListItem>
+                                </asp:RadioButtonList>
+                            </td>
+                        </tr>
+                        <tr>
                             <td>
                                 &nbsp;</td>
                             <td colspan="3">
@@ -87,7 +102,8 @@
             &nbsp;<asp:TextBox ID="edtStr" runat="server" onfocus="javascript:this.select()"></asp:TextBox>
                 <asp:Button ID="btnSearch" runat="server" onclick="btnSearch_Click" 
                     Text="查 询" />
-            &nbsp;<asp:RadioButtonList ID="rblProfession" runat="server" RepeatColumns="4" 
+                &nbsp;<asp:Label ID="lbRecordCount" runat="server" Text=""></asp:Label>
+                &nbsp;<asp:RadioButtonList ID="rblProfession" runat="server" RepeatColumns="4" 
                     Width="354px">
                     <asp:ListItem Selected="True" Value="">全部</asp:ListItem>
                     <asp:ListItem>战士</asp:ListItem>

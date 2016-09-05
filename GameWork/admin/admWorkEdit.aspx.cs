@@ -40,7 +40,7 @@ public partial class admWorkEdit : System.Web.UI.Page
     {
         string err = "";
         DataTable dt;
-        err = coreGW.BillSearch(id, "", "", "", out dt);
+        err = coreGW.BillSearch(id, "", "", "", false, "2", "2", out dt);
         if(err == "")
         {
             edtTitle.Text = dt.Rows[0]["Title"].ToString();
@@ -62,7 +62,13 @@ public partial class admWorkEdit : System.Web.UI.Page
 
     protected void btnExit_Click(object sender, EventArgs e)
     {
-        Response.Redirect("./admWorkMgr.aspx");
+        int id = 0;
+        if (Request.QueryString["id"] != null)
+            id = coreGW.FmtInt(Request.QueryString["id"].ToString());
+        if (id == 0)
+            Response.Redirect("./admWorkMgr.aspx");
+        else
+            Response.Redirect("./admWorkView.aspx?id="+id.ToString());
     }
     protected void btnSave_Click(object sender, EventArgs e)
     {

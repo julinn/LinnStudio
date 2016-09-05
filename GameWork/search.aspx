@@ -41,7 +41,7 @@
                 <asp:BoundField DataField="Amount" HeaderText="金额" />
                 <asp:BoundField DataField="State" HeaderText="状态" />
                 <asp:BoundField DataField="PayTime" HeaderText="结算时间" />
-                <asp:CommandField ShowSelectButton="True" />
+                <asp:HyperLinkField DataNavigateUrlFields="Url" Text="活动详情" />
             </Columns>
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />

@@ -176,7 +176,8 @@ public partial class wxapi : System.Web.UI.Page
         if (msgXml.Event == "subscribe")
         {
             resultxml = "欢迎关注！" + " \n " + "回复【1】，查询个人分红账单" + " \n " 
-                + "回复【编号-验证码】，绑定个人角色； 例如：001-888888" ;
+                + "回复【编号-验证码】，绑定个人角色； 例如：001-888888"  + " \n "
+                +"回复【2】，输入角色名自由查询分红账单";
         }
         //取消关注
         if (msgXml.Event == "unsubscribe")
@@ -243,6 +244,22 @@ public partial class wxapi : System.Web.UI.Page
             {
                 msg = coreGW.wxMemberBind(msgXml.UserID, msg);
             }
+            else if (msg == "9")
+            {
+                msg = coreGW.wxAdminGetKeyCode(msgXml.UserID);
+            }
+            else if (msg.Contains(";"))
+            {
+                msg = coreGW.wxAdminBind(msgXml.UserID, msg);
+            }
+            else if (msg == "2")
+            {
+                msg = "<a href=\"http://1.smasp.net/search.aspx\">点击这里自由查询</a>";
+            }
+            else
+                msg = "回复帮助：" + " \n " + "回复【1】，查询个人分红账单" + " \n " 
+                + "回复【编号-验证码】，绑定个人角色； 例如：001-888888"  + " \n "
+                +"回复【2】，输入角色名自由查询分红账单";
             resultxml = msgXml.GetFormatText(msg);
         }
         return resultxml;

@@ -92,8 +92,17 @@
     
     <hr />
     <div>
+    已选人数：
+     
+        <asp:Label ID="lbselectCount" runat="server" Text=""></asp:Label>
+    </div>
+    <hr />
+    <div>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
-            DataKeyNames="ID,MemID" onrowdeleting="GridView1_RowDeleting">
+            DataKeyNames="ID,MemID" onrowdeleting="GridView1_RowDeleting" 
+            BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" 
+            CellPadding="3" GridLines="Vertical">
+        <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
         <Columns>
             <asp:BoundField DataField="UName" HeaderText="角色名" />
             <asp:BoundField DataField="Profession" HeaderText="职业" />
@@ -102,6 +111,11 @@
             <asp:BoundField DataField="PayRemark" HeaderText="结算备注" />
             <asp:CommandField ShowDeleteButton="True" />
         </Columns>
+                <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+        <AlternatingRowStyle BackColor="#DCDCDC" />
                 </asp:GridView>
     </div>    
     
