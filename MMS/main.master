@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="main.master.cs" Inherits="main" %>
+
+<%@ Register src="mainNavigar.ascx" tagname="mainNavigar" tagprefix="uc1" %>
+
+<%@ Register src="mainBottom.ascx" tagname="mainBottom" tagprefix="uc2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .main {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>        
+            <table cellspacing="1" class="main">
+                <tr>
+                    <td>
+                        <uc1:mainNavigar ID="mainNavigar1" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                       </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <uc2:mainBottom ID="mainBottom1" runat="server" />
+                    </td>
+                </tr>
+            </table>           
+    </div>
+    </form>
+</body>
+</html>
