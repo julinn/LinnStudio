@@ -21,6 +21,10 @@
     	width: 300px;
     	vertical-align:top;
     }
+    .grid_100
+    {
+    	width:100%;
+    }
         .style2
         {
             width: 100%;
@@ -38,7 +42,22 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:GridView ID="gvWillPayCustomer" runat="server">
+                        <asp:GridView ID="gvWillPayCustomer" runat="server" AutoGenerateColumns="False" 
+                            CssClass="grid_100" DataKeyNames="CID" BackColor="White" 
+                            BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" 
+                            GridLines="Vertical">
+                            <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
+                            <Columns>
+                                <asp:BoundField DataField="CNO" HeaderText="会员号" />
+                                <asp:BoundField DataField="CName" HeaderText="姓名" />
+                                <asp:BoundField DataField="Tel" HeaderText="手机号" />
+                                <asp:CommandField ShowSelectButton="True" />
+                            </Columns>
+                            <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
+                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="#008A8C" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
+                            <AlternatingRowStyle BackColor="#DCDCDC" />
                         </asp:GridView>
                     </td>
                 </tr>
@@ -48,19 +67,30 @@
             <table cellspacing="1" class="style1">
                 <tr>
                     <td>
-                        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                        <asp:Button ID="Button1" runat="server" Text="Button" />
+                        <asp:TextBox ID="edtMemstr" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnMemSeach" runat="server" Text="查 找" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Panel ID="Panel1" runat="server">
-                        </asp:Panel>
+                        <asp:Label ID="lblMemInfo" runat="server" Text=""></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:GridView ID="GridView1" runat="server">
+                        <asp:GridView ID="gvDetail" runat="server" AutoGenerateColumns="False" CssClass="grid_100"
+                            DataKeyNames="ID" BackColor="White" BorderColor="#CC9966" 
+                            BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                            <RowStyle BackColor="White" ForeColor="#330099" />
+                            <Columns>
+                                <asp:BoundField DataField="GName" HeaderText="名称" />
+                                <asp:BoundField DataField="Price" HeaderText="价格" />
+                                <asp:CommandField ShowDeleteButton="True" />
+                            </Columns>
+                            <FooterStyle BackColor="#FFFFCC" ForeColor="#330099" />
+                            <PagerStyle BackColor="#FFFFCC" ForeColor="#330099" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="#663399" />
+                            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="#FFFFCC" />
                         </asp:GridView>
                     </td>
                 </tr>
@@ -74,13 +104,25 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                        <asp:Button ID="Button2" runat="server" Text="Button" />
+                        <asp:TextBox ID="edtGoodstr" runat="server"></asp:TextBox>
+                        <asp:Button ID="btnGoodSearch" runat="server" Text="查 找" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:GridView ID="GridView2" runat="server">
+                        <asp:GridView ID="gvGoods" runat="server" CssClass="grid_100" 
+                            AutoGenerateColumns="False" BackColor="White" BorderColor="#336666" 
+                            BorderStyle="Double" BorderWidth="3px" CellPadding="4" GridLines="Horizontal">
+                            <RowStyle BackColor="White" ForeColor="#333333" />
+                            <Columns>
+                                <asp:BoundField DataField="GName" HeaderText="名称" />
+                                <asp:BoundField DataField="Price" HeaderText="价格" />
+                                <asp:CommandField ShowSelectButton="True" />
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#333333" />
+                            <PagerStyle BackColor="#336666" ForeColor="White" HorizontalAlign="Center" />
+                            <SelectedRowStyle BackColor="#339966" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#336666" Font-Bold="True" ForeColor="White" />
                         </asp:GridView>
                     </td>
                 </tr>
