@@ -17,6 +17,7 @@ using System.Collections.Generic;
 public class coreGW
 {
     public static int FLoginErrorCount = FmtInt(ulMySqlHelper.GetAppSetting("LoginErrorCount"));
+    public static string FDomain = ulMySqlHelper.GetAppSetting("Domain");
     public static Dictionary<string, int> FLoginErr = new Dictionary<string, int>();
 	public coreGW()
 	{
@@ -24,6 +25,26 @@ public class coreGW
 		//TODO: 在此处添加构造函数逻辑
 		//
 	}
+
+    #region MD5 加密（返回大写）
+    /// <summary>
+    ///  MD5 加密（返回大写）
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
+    public static string GetMD5String(string str)
+    {
+        try
+        {
+            return System.Web.Security.FormsAuthentication.HashPasswordForStoringInConfigFile(str, "MD5").ToUpper();
+        }
+        catch
+        {
+            return str;
+        }
+    }
+    #endregion 
+
     public static int FmtInt(string str)
     {
         try
@@ -436,7 +457,7 @@ public class coreGW
         sid = ulMySqlHelper.GetFirstVar(sql);
         int id = FmtInt(sid);
         if (id > 0)
-            ret = "<a href=\"http://1.smasp.net/search.aspx?id=" + id.ToString() + "\">点击这里查询分红信息</a>";
+            ret = "<a href=\"http://"+FDomain+"/search.aspx?id=" + id.ToString() + "\">点击这里查询分红信息</a>";
         return ret;
     }
 
@@ -569,6 +590,35 @@ public class coreGW
         ret = ulMySqlHelper.GetFirstVar(sql);
         if (ret == "1")
             ret = "";
+        return ret;
+    }
+
+    /// <summary>
+    /// 获取解锁码
+    /// </summary>
+    /// <param name="userid">解锁账号</param>
+    /// <param name="nonstr">随机码</param>
+    /// <returns></returns>
+    public static string GetUserUnlockCode(string userid, string nonstr)
+    {
+        string ret = "";
+        userid = GetMD5String(userid + nonstr);
+        nonstr = GetMD5String(nonstr);
+        ret = GetMD5String(userid + nonstr);
+        return ret;
+    }
+
+    public static string UnlockUser(string userid, string nonstr, string code)
+    {
+        string ret = "解锁码错误！",
+        ucode = GetUserUnlockCode(userid, nonstr);
+        if (ucode == code)
+        {
+            LoginErrClear(userid);
+            ret = "";
+        }
+        else
+            ret = "解锁码错误！";
         return ret;
     }
 }

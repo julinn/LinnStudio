@@ -254,7 +254,7 @@ public partial class wxapi : System.Web.UI.Page
             }
             else if (msg == "2")
             {
-                msg = "<a href=\"http://1.smasp.net/search.aspx\">点击这里自由查询</a>";
+                msg = "<a href=\"http://"+coreGW.FDomain+"/search.aspx\">点击这里自由查询</a>";
             }
             else
                 msg = "回复帮助：" + " \n " + "回复【1】，查询个人分红账单" + " \n " 
@@ -275,7 +275,7 @@ public partial class wxapi : System.Web.UI.Page
     private string GetUserUrl(string sOpenID)
     {
         string ret = "";// CRM.ReadSysConfig("RegUrl");
-        ret = "http://1.smasp.net/index.aspx";
+        ret = "http://"+coreGW.FDomain+"/index.aspx";
         ret = ret + "?OpenID=" + sOpenID;
         return "<a href=\"" + ret + "\">点击这里登记个人信息</a>";
     }
