@@ -13,6 +13,14 @@ public partial class admin_admCenter : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+            loginLog();
+    }
 
+    private void loginLog()
+    {
+        int id = coreGW.GetSessionID(this.Page);
+        DataTable dt = coreGW.LogSearch(id, 1);
+        coreGW.DataBind(dt, GridView1);
     }
 }

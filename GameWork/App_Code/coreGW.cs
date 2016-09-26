@@ -162,6 +162,50 @@ public class coreGW
         lb.ForeColor = System.Drawing.Color.Red;
     }
 
+    public static string GetIP()
+    {
+        string result = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+        if (string.IsNullOrEmpty(result))
+        {
+            result = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+        }
+        if (string.IsNullOrEmpty(result))
+        {
+            result = HttpContext.Current.Request.UserHostAddress;
+        }
+        if (string.IsNullOrEmpty(result))
+        {
+            return "0.0.0.0";
+        }
+        return result;
+    }
+
+    public static string GetIP(Page page)
+    {
+        string result = "0.0.0.0";
+        try
+        {
+            result = page.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            if (string.IsNullOrEmpty(result))
+            {
+                result = page.Request.ServerVariables["REMOTE_ADDR"];
+            }
+            if (string.IsNullOrEmpty(result))
+            {
+                result = page.Request.UserHostAddress;
+            }
+            if (string.IsNullOrEmpty(result))
+            {
+                return "0.0.0.0";
+            }
+        }
+        catch
+        {
+            result = "0.0.0.0";
+        }
+        return result;
+    }
+
     /// <summary>
     /// 管理登录
     /// </summary>
@@ -193,6 +237,7 @@ public class coreGW
             page.Session["UserName"] = dt.Rows[0]["UserName"].ToString();
             page.Session["LevID"] = dt.Rows[0]["LevID"].ToString();
             LoginErrClear(userid);
+            LogWrite(FmtInt(dt.Rows[0]["ID"].ToString()), 1, "登录IP：" + GetIP(page));
             ret = "";
         }
         else
@@ -621,4 +666,45 @@ public class coreGW
             ret = "解锁码错误！";
         return ret;
     }
+
+    /// <summary>
+    /// 写入日志
+    /// </summary>
+    /// <param name="uid">用户ID</param>
+    /// <param name="classid">类型 1登录 2修改单据 3审核单据</param>    
+    /// <param name="content">日志内容</param>
+    /// <param name="billid">关联单据ID</param>
+    public static void LogWrite(int uid, int classid, string content, int billid)
+    {
+        content = FmtStr(content);
+        string sql = "call proc_gw_UserLog_Add("+uid.ToString()+","+classid.ToString()+","+billid.ToString()+",'"+content+"')";
+        ulMySqlHelper.ExecuteSql(sql);
+    }
+    /// <summary>
+    /// 写入日志
+    /// </summary>
+    /// <param name="uid">用户ID</param>
+    /// <param name="classid">类型 1登录 2修改单据 3审核单据</param>
+    /// <param name="content">日志内容</param>
+    public static void LogWrite(int uid, int classid, string content)
+    {
+        LogWrite(uid, classid, content, 0);
+    }
+
+    /// <summary>
+    /// 查询日志
+    /// </summary>
+    /// <param name="uid">用户ID</param>
+    /// <param name="classID">类型 0 单据日志； 1登录日志； > 1 各类型日志</param>
+    /// <returns></returns>
+    public static DataTable LogSearch(int uid, int classID)
+    {
+        string sql = "call proc_gw_UserLog_Search("+uid.ToString()+","+classID.ToString()+")",
+            err = "";
+        DataTable dt;
+        ulMySqlHelper.GetaDatatable(sql, out dt, out err);
+        return dt;
+    }
+
+
 }

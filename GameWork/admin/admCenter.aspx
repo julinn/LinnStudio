@@ -27,11 +27,22 @@
         </tr>
         <tr>
             <td>
-                &nbsp;</td>
+                <hr /></td>
         </tr>
         <tr>
             <td>
-                &nbsp;</td>
+                最近登录情况：
+                <hr /></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+                    <Columns>
+                        <asp:BoundField DataField="FDate" HeaderText="时间" />
+                        <asp:BoundField DataField="Content" HeaderText="说明" />
+                    </Columns>
+                </asp:GridView>
+            </td>
         </tr>
     </table>
 </asp:Content>
