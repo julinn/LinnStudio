@@ -14,7 +14,10 @@ public partial class admWorkView : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
+        {
             load();
+            loadLog();
+        }
     }
 
 
@@ -31,6 +34,13 @@ public partial class admWorkView : System.Web.UI.Page
                 lbTitle.ToolTip = id.ToString();
         }        
         return id;
+    }
+
+    private void loadLog()
+    {
+        int id = GetWorkID();
+        DataTable dt = coreGW.LogSearch(0, 0, id);
+        coreGW.DataBind(dt, GridView2);
     }
 
     private void load()

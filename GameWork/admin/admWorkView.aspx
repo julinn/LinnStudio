@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admWorkView.aspx.cs" Inherits="admWorkView" Title="无标题页" %>
+<%@ Page Language="C#" MasterPageFile="~/admin/admin.master" AutoEventWireup="true" CodeFile="admWorkView.aspx.cs" Inherits="admWorkView" Title="�ޱ���ҳ" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -19,40 +19,40 @@
     <table cellspacing="1" class="master">
         <tr>
             <td class="master_Title">
-                主题：</td>
+                ���⣺</td>
             <td colspan="3">
                 <asp:Label ID="lbTitle" runat="server" Text=""></asp:Label>
             </td>
         </tr>
         <tr>
             <td class="master_Title">
-                日期：</td>
+                ���ڣ�</td>
             <td class="style2">
                 <asp:Label ID="lbWorkDate" runat="server" Text=""></asp:Label>
             </td>
             <td class="master_Title">
-                人数：</td>
+                ������</td>
             <td>
                 <asp:Label ID="lbCount" runat="server" Text=""></asp:Label>
                                     </td>
         </tr>
         <tr>
             <td class="master_Title">
-                人均：</td>
+                �˾���</td>
             <td class="style2">
                 <asp:Label ID="lbAmount" runat="server" Text=""></asp:Label>
             </td>
         </tr>
         <tr>
             <td class="master_Title">
-                内容：</td>
+                ���ݣ�</td>
             <td colspan="3">
                 <asp:Label ID="lbContent" runat="server" Text=""></asp:Label>
             </td>
         </tr>
         <tr>
             <td class="master_Title">
-                备注：</td>
+                ��ע��</td>
             <td colspan="3">
                 <asp:Label ID="lbRemark" runat="server" Text=""></asp:Label>
             </td>
@@ -61,22 +61,22 @@
             <td class="master_Title">
                 &nbsp;</td>
             <td colspan="3">
-                <asp:Button ID="btnAddMore" runat="server" Text="批量添加成员" 
+                <asp:Button ID="btnAddMore" runat="server" Text="�������ӳ�Ա" 
                     onclick="btnAddMore_Click" />
-            &nbsp;<asp:Button ID="btnEdit" runat="server" Text="修改分红单" 
+            &nbsp;<asp:Button ID="btnEdit" runat="server" Text="�޸ķֺ쵥" 
                     onclick="btnEdit_Click" />
-&nbsp;<asp:Button ID="btnAudit" runat="server" Text="审核分红单" OnClientClick ="return confirm('分红单审核以后将不可修改或变更，确定要审核吗？');" onclick="btnAudit_Click" />
+&nbsp;<asp:Button ID="btnAudit" runat="server" Text="��˷ֺ쵥" OnClientClick ="return confirm('�ֺ쵥����Ժ󽫲����޸Ļ�����ȷ��Ҫ�����');" onclick="btnAudit_Click" />
             </td>
         </tr>
         <tr>
             <td class="master_Title">
                 &nbsp;</td>
             <td colspan="3" class="style3">
-                注：分红单审核以后不能再修改或变更，请仔细核对无误后再审核。</td>
+                ע���ֺ쵥����Ժ������޸Ļ���������ϸ�˶����������ˡ�</td>
         </tr>
         <tr>
             <td class="master_Title">
-                成员列表：</td>
+                ��Ա�б���</td>
             <td colspan="3">
                 <asp:Label ID="lbUsers" runat="server" Text=""></asp:Label>
             </td>
@@ -92,7 +92,7 @@
     
     <hr />
     <div>
-    已选人数：
+    ��ѡ������
      
         <asp:Label ID="lbselectCount" runat="server" Text=""></asp:Label>
     </div>
@@ -104,11 +104,11 @@
             CellPadding="3" GridLines="Vertical">
         <RowStyle BackColor="#EEEEEE" ForeColor="Black" />
         <Columns>
-            <asp:BoundField DataField="UName" HeaderText="角色名" />
-            <asp:BoundField DataField="Profession" HeaderText="职业" />
-            <asp:BoundField DataField="PayState" HeaderText="结算状态" />
-            <asp:BoundField DataField="PayTime" HeaderText="结算时间" />
-            <asp:BoundField DataField="PayRemark" HeaderText="结算备注" />
+            <asp:BoundField DataField="UName" HeaderText="��ɫ��" />
+            <asp:BoundField DataField="Profession" HeaderText="ְҵ" />
+            <asp:BoundField DataField="PayState" HeaderText="����״̬" />
+            <asp:BoundField DataField="PayTime" HeaderText="����ʱ��" />
+            <asp:BoundField DataField="PayRemark" HeaderText="���㱸ע" />
             <asp:CommandField ShowDeleteButton="True" />
         </Columns>
                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
@@ -118,6 +118,34 @@
         <AlternatingRowStyle BackColor="#DCDCDC" />
                 </asp:GridView>
     </div>    
+    <hr />
+    <div>��־��¼</div>
+    <hr />
+    <div>
+    
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
+            BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" 
+            CellPadding="3" GridLines="Horizontal" Width="740px">
+            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+            <Columns>
+                <asp:BoundField DataField="FDate" HeaderText="ʱ��">
+                    <ItemStyle Width="160px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="UserID" HeaderText="�û�">
+                    <ItemStyle Width="80px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="Content" HeaderText="�޸ı䶯">
+                    <ItemStyle Width="500px" />
+                </asp:BoundField>
+            </Columns>
+            <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+            <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+            <AlternatingRowStyle BackColor="#F7F7F7" />
+        </asp:GridView>
+    
+    </div>
     
 </asp:Content>
 

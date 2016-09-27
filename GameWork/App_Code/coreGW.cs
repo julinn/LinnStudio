@@ -696,14 +696,26 @@ public class coreGW
     /// </summary>
     /// <param name="uid">用户ID</param>
     /// <param name="classID">类型 0 单据日志； 1登录日志； > 1 各类型日志</param>
+    /// <param name="billID">单据ID</param>
     /// <returns></returns>
-    public static DataTable LogSearch(int uid, int classID)
+    public static DataTable LogSearch(int uid, int classID, int billID)
     {
-        string sql = "call proc_gw_UserLog_Search("+uid.ToString()+","+classID.ToString()+")",
+        string sql = "call proc_gw_UserLog_Search("+uid.ToString()+","+classID.ToString()+","+billID.ToString()+")",
             err = "";
         DataTable dt;
         ulMySqlHelper.GetaDatatable(sql, out dt, out err);
         return dt;
+    }
+
+    /// <summary>
+    /// 查询日志
+    /// </summary>
+    /// <param name="uid">用户</param>
+    /// <param name="classID">类型 0 单据日志； 1登录日志； > 1 各类型日志</param>
+    /// <returns></returns>
+    public static DataTable LogSearch(int uid, int classID)
+    {
+        return LogSearch(uid, classID, 0);
     }
 
 

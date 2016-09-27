@@ -77,7 +77,7 @@ public partial class admWorkEdit : System.Web.UI.Page
             createid = GetCreateID();
         string ret = coreGW.BillEdit(iID, edtTitle.Text, edtContent.Text, edtRemark.Text, edtWorkDate.Text, edtAmount.Text, edtCount.Text, isellflag, createid) ;
         if (ret == "")
-            Response.Redirect("./admWorkView.aspx");
+            Response.Redirect("./admWorkView.aspx?id="+iID.ToString());
         else
             lbMsg.Text = ret;
     }
