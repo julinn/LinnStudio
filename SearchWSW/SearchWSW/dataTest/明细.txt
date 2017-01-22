@@ -1,0 +1,773 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>【自己改变自己】随变裤，真正的四面弹，随意剪，穿自己想要的裤_微商网</title>
+<meta name="keywords" content="【自己改变自己】随变裤，真正的四面弹，随意剪，穿自己想要的裤—微商网" />
+<meta name="description" content="【自己改变自己】随变裤，真正的四面弹，随意剪，穿自己想要的裤— 传澄随变裤 1、百搭：每个女性的衣橱里总是少不了一个百搭产品小黑裤； 2、四面弹：普通的小黑裤，要么没弹力，要么就是两面谈，四面弹意味着上下左右，都有弹力非常舒适； 3、任意剪：在任意地方可以剪，不勾丝，你可以剪9分裤7分裤5分裤破洞等等每条裤子配一本手册，300多种DIY随意搭配； 4、10天无" />
+
+        <!-- Le styles -->
+        <link href="/templets/default/style/actmain.css" rel="stylesheet" type="text/css" />
+
+      <link href="/templets/default/style/actinfo.css" rel="stylesheet" type="text/css" />
+
+		<link href="/templets/default/style/common20140424.css" rel="stylesheet" type="text/css" />
+        <link href="/templets/default/style/style.css" rel="stylesheet" type="text/css" />
+
+       <link href="/templets/default/style/hfinfo.css" rel="stylesheet" type="text/css" />
+      
+     
+    </head>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
+	<div class="ztTop"><div class="wrap960">
+<h3 class="yahei"><a href="http://www.wshangw.net">微信货源网-微商网</a></h3>
+<p>最好的<a href="http://www.wshangw.net">微信</a>货源推广平台！</p>
+   <p>广告联系QQ：630492245 微商交流QQ群:391566635 微商网的宗旨是为微商的崛起而奋斗。</p>
+</div></div>
+<div class="main be1">
+	<div class="main1">
+    	<div class="l logo"><a href="/" target="_blank"><img src="/templets/default/images/logo.png" /></a></div>
+        <div class="l serch">
+    
+			<span>
+			<form  name="search_form" action="/plus/search.php">
+        <div class="form">
+         
+           <input type="hidden" name="kwtype" value="0" />
+           <input name="q" type="text"  id="search-keyword" value="想找什么货源?..." onfocus="if(this.value=='想找什么货源?...'){this.value='';}" class="inp1"  onblur="if(this.value==''){this.value='想找什么货源?...';}" />
+         
+          <button type="submit"  class="btn1"></button>
+        </div>
+        </form>
+			</span>
+            <p><b>热门搜索：</b>
+            <a href="http://www.wshangw.net/a/qitahuoyuan/2016/1002/8527.html" target="_blank">脂老虎</a>
+			<a href="http://www.wshangw.net/plus/search.php?kwtype=0&q=%D2%BB%CA%D6%BB%F5%D4%B4" target="_blank">一手货源</a>
+			<a href="http://www.wshangw.net/plus/search.php?kwtype=0&q=%C3%E2%B7%D1%B4%FA%C0%ED" target="_blank">免费代理</a>
+			<a href="http://www.wshangw.net/plus/search.php?kwtype=0&q=%B1%AC%BF%EE" target="_blank">爆款</a>
+		
+			
+            </p>
+        </div>
+		
+        <div class="r hot">
+             <a href="http://www.wshangw.net/a/nvzhuang_nanzhuang/2015/0627/4355.html" target="_blank" title="微商正品阿迪耐克运动服装诚招微信代理"><img alt="微商正品阿迪耐克运动服装诚招微信代理" src="/vip/2015-5-14-14-24.jpg" width="340" height="60" /></a>
+        </div>
+		<div style="width:150px; margin-right:45px; float:left; margin-top:-62px;">
+		<a href="http://www.wshangw.net/a/nanxie_nvxie/2014/1231/2733.html" target="_blank" title="正品运动鞋柜诚招微信免费代理 NIKE 阿迪 新百伦运动鞋"> <img alt="正品运动鞋柜诚招微信免费代理 NIKE 阿迪 新百伦运动鞋" src="/vip/2014-12-31-10-00.jpg" /></a>
+		</div>
+    </div>
+</div>
+<div class="main be2">
+	<div class="main1 nav">
+    	<li class="current"><a href="/" target="_self">首页<em>Index</em></a></li>
+		<li><a href="/a/nvzhuang_nanzhuang/" >女装/男装<em>Ladies/men</em></a></li>
+		<li><a href="/a/shechipinpai/">奢侈品牌<em>Luxury brands</em></a></li>
+		<li><a href="/a/nanxie_nvxie/" >男鞋/女鞋<em>Shoes</em></a></li>
+		<li><a href="/a/huazhuangpin/" >化妆品<em>Cosmetics</em></a></li>
+		<li><a href="/a/qitahuoyuan/">其他货源<em>Other sources</em></a></li>
+		<li><a href="/a/weishangqun/">微信群<em>WeiXin qun</em></a></li>
+		<li class="nBg"><a href="/a/weixinyingxiao/" target="_blank">微信营销<em>Marketing</em></a></li>
+			<li ><a href="/a/weixinyingxiao/" target="_blank">免费提交<em>Marketing</em></a></li>
+    </div>
+</div>
+<div style="height:30px; width:1000px;margin: 2px auto 0px auto;position: relative;overflow: hidden;border: 1px solid #e6e6e3;">
+<script type="text/javascript">
+    /*首页TOP*/
+    var cpro_id = "u1871003";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+</div>
+
+<div class="subPic">
+	<ul>
+		<li><a href="http://www.wshangw.net/a/nvzhuang_nanzhuang/2014/1105/1879.html" target="_blank" title="Danae Shop 女装 厂家货源 诚招实力代理 质量保证 支持七天无理"><img width="150" height="81" alt="Danae Shop 女装 厂家货源 诚招实力代理 质量保证 支持七天无理" src="/vip/2015-3-5-11-27.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/0523/4038.html" title="微商正品新百伦，一手货源，带您致富！！！！" target="_blank"><img width="150" height="81" alt="微商正品新百伦，一手货源，带您致富！！！！" src="/vip/2015-4-15-12-20.jpg"></a></li>
+
+	<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/0218/3217.html" target="_blank" title="微信鞋子批发商城"><img width="150" height="81" alt="微信鞋子批发商城" src="/vip/2015-2-18-9-37.jpg"></a></li>
+		
+			<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/0515/3954.html" title="实拍各品牌鞋子 厂家直供 一件代发 免费招代理" target="_blank"><img width="150" height="81" alt="实拍各品牌鞋子 厂家直供 一件代发 免费招代理" src="/vip/2015-5-15-11-29.jpg"></a></li>
+		   
+		   	<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1230/9403.html" title="台湾牛樟芝 新双赢交易模式" target="_blank"><img width="150" height="81" alt="台湾牛樟芝 新双赢交易模式" src="/vip/2016-12-30-12-11.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/0519/7279.html" title="华诚贸易（运动鞋网络批发）" target="_blank"><img width="150" height="81" alt="华诚贸易（运动鞋网络批发）" src="/vip/2016-5-19-11-31.jpg"></a></li>
+		
+	</ul>
+	
+		<ul >
+ <li><a href="http://www.wshangw.net/a/nvzhuang_nanzhuang/2016/0415/6974.html" target="_blank" title="时尚女装 厂家直销 一件代发 诚招代理"><img width="150" height="81" alt="时尚女装 厂家直销 一件代发 诚招代理" src="/vip/2016-4-15-11-50.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/1216/9270.html" title="广州高仿奢侈品牌男女鞋子工厂放货一件代发" target="_blank"><img width="150" height="81" alt="广州高仿奢侈品牌男女鞋子工厂放货一件代发" src="/vip/2016-12-16-11-05.jpg"></a></li>
+
+			<li><a href="http://www.wshangw.net/a/nvzhuang_nanzhuang/2015/0627/4356.html" title="时潮女装诚招代理，与你携手共赢" target="_blank"><img width="150" height="81" alt="时潮女装诚招代理，与你携手共赢" src="/vip/2015-6-27-11-37.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/shechipinpai/2017/0112/9515.html" title="老K奢侈品大牌男装" target="_blank"><img width="150" height="81" alt="老K奢侈品大牌男装" src="/vip/2017-1-12-15-29.jpg"></a></li>
+		
+		    <li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/1104/5514.html" target="_blank" title="九州贸易 莆田运动鞋厂家批发"><img width="150" height="81" alt="九州贸易 莆田运动鞋厂家批发" src="/vip/2016-1-27-1-38.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/nvzhuang_nanzhuang/2016/0322/6751.html" title="童装厂家诚招微信代理 一件代发 赠送微商营销软件" target="_blank"><img width="150" height="81" alt="童装厂家诚招微信代理 一件代发 赠送微商营销软件" src="/vip/2016-3-22-17-34.jpg"></a></li>
+		
+	</ul>
+	
+		<ul >
+		<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/0913/8349.html" title="老蒋 免税创始 诚招实力代理" target="_blank"><img width="150" height="81" alt="老蒋 免税创始 诚招实力代理" src="/vip/2016-12-05-11-15.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/0528/4077.html" title="各品牌鞋子厂家直供 一件代发 发货实拍 免费招代理" target="_blank"><img width="150" height="81" alt="运各品牌鞋子厂家直供 一件代发 发货实拍 免费招代理" src="/vip/2015-5-28-12-01.jpg"></a></li>
+			<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/0529/4088.html" title="我是工厂你是一手 免费招新百伦耐克阿迪达斯乔丹微商和实体代理" target="_blank"><img width="150" height="81" alt="我是工厂你是一手 免费招新百伦耐克阿迪达斯乔丹微商和实体代理" src="/vip/2015-5-29-16-12.jpg"></a></li>
+		
+		<li><a href="http://www.wshangw.net/a/huazhuangpin/2017/0106/9463.html"  target="_blank" title="舒来纽面向全国招区域代理商"><img width="150" height="81" alt="舒来纽面向全国招区域代理商" src="/vip/2017-1-6-16-29.jpg"></a></li>
+
+<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/1021/8720.html" title="商场专柜品牌撤柜断码鞋总仓，免费诚招全国代理，一件代发。" target="_blank"><img width="150" height="81" alt="商场专柜品牌撤柜断码鞋总仓，免费诚招全国代理，一件代发。" src="/vip/2016-10-21-10-12.jpg"></a></li>
+	
+	<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/1122/9043.html" title="凡牛鞋业厂家直销，绝对的一手货源，全网最低，均价40左右" target="_blank"><img width="150" height="81" alt="凡牛鞋业厂家直销，绝对的一手货源，全网最低，均价40左右" src="/vip/2017-1-18-11-45.jpg"></a></li>
+		
+	</ul>
+	
+		<ul >
+        <li><a href="http://www.wshangw.net/a/huazhuangpin/2016/1228/9386.html" title="微商最好卖的产品，古法红糖一手厂家代理" target="_blank"><img width="150" height="81" alt="微商最好卖的产品，古法红糖一手厂家代理" src="/vip/2016-11-23-11-43.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/0415/3696.html" title="香港正品鞋柜诚招校园微信免费代理 NIKE 阿迪 NB运动鞋" target="_blank"><img width="150" height="81" alt="香港正品鞋柜诚招校园微信免费代理 NIKE 阿迪 NB运动鞋" src="/vip/2015-4-15-12-08.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1224/9349.html" title="微信优级香烟批发一手货源" target="_blank"><img width="150" height="81" alt="微信优级香烟批发一手货源" src="/vip/2016-12-24-10-34.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/nvzhuang_nanzhuang/2015/0518/3988.html" title="微商阿迪耐克服装，一手货源，一件代发！" target="_blank"><img width="150" height="81" alt="微商阿迪耐克服装，一手货源，一件代发！" src="/vip/2015-4-15-12-15.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1229/9395.html" title="优品香烟批发一手货源" target="_blank"><img width="150" height="81" alt="优品香烟批发一手货源" src="/vip/2016-12-29-11-23.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/0816/8098.html" target="_blank" title="运动鞋厂家直销全网最低免费招代理+一件代发，来这你就是一手！"><img width="150" height="81" alt="运动鞋厂家直销全网最低免费招代理+一件代发，来这你就是一手！" src="/vip/2016-8-16-15-38.jpg"></a></li>
+		
+	</ul>
+	
+		<ul >
+		<li><a href="http://www.wshangw.net/a/guanyuwomen/jingzhunguanggaofuwu/2014/0828/10.html" title="微商网广告服务" target="_blank"><img width="150" height="81" alt="微商网广告服务" src="/vip/jzgg.jpg"></a></li>
+      
+	<li><a href="http://www.wshangw.net/a/qitahuoyuan/2015/0814/4836.html" title="口感媲美烟草货，可进超市品质香烟 免费诚招代理，欢迎试货。" target="_blank"><img width="150" height="81" alt="口感媲美烟草货，可进超市品质香烟 免费诚招代理，欢迎试货。" src="/vip/2015-8-14-11-23.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/0820/8134.html" title="耐克阿迪达斯等品牌运动鞋 原标原厂原盒正品公司货。" target="_blank"><img width="150" height="81" alt="耐克阿迪达斯等品牌运动鞋 原标原厂原盒正品公司货。" src="/vip/2016-8-20-15-27.jpg"></a></li>
+	
+		<li><a href="http://www.wshangw.net/a/qitahuoyuan/2017/0111/9506.html" title="长白山大米面向全国招商" target="_blank"><img width="150" height="81" alt="长白山大米面向全国招商" src="/vip/2017-1-11-14-49.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1224/9350.html" title="义乌小商品一手厂家 超低价包，表，鞋，生活用品 免费代发代理" target="_blank"><img width="150" height="81" alt="义乌小商品一手厂家 超低价包，表，鞋，生活用品 免费代发代理" src="/vip/2016-12-24-10-53.jpg"></a></li>
+	<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1123/9054.html" title="超市芙蓉王55起厂家一手货源" target="_blank"><img width="150" height="81" alt="超市芙蓉王55起厂家一手货源" src="/vip/2016-11-23-11-50.jpg"></a></li>
+	</ul>
+	
+		<ul >
+		 <li><a href="http://www.wshangw.net/a/nanxie_nvxie/2015/1026/5443.html" target="_blank" title="厂家直销名牌运动鞋休闲鞋诚招全国代理"><img width="150" height="81" alt="厂家直销名牌运动鞋休闲鞋诚招全国代理" src="/vip/2016-9-18-13-16.jpg"></a></li>
+<li><a href="http://www.wshangw.net/a/guanyuwomen/jingzhunguanggaofuwu/2014/0828/10.html" title="微商网广告服务" target="_blank"><img width="150" height="81" alt="微商网广告服务" src="/vip/jzgg.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/0811/8055.html" title="金兴鞋业 厂家直销 高品质低价格 欢迎主推" target="_blank"><img width="150" height="81" alt="金兴鞋业 厂家直销 高品质低价格 欢迎主推" src="/vip/2016-8-11-11-06.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1226/9368.html" title="广东汕头最高质量货源，厂家直销，一件代发，欢迎试货。" target="_blank"><img width="150" height="81" alt="广东汕头最高质量货源，厂家直销，一件代发，欢迎试货。" src="/vip/2016-12-26-11-28.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1129/9112.html" title="香烟批发实力批发， 诚信稳定牛逼实力厂家" target="_blank"><img width="150" height="81" alt="香烟批发实力批发， 诚信稳定牛逼实力厂家" src="/vip/2016-11-29-11-30.jpg"></a></li>
+		<li><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1224/9351.html" title="大麦若叶青汁 水青丰大麦青汁全国招商" target="_blank"><img width="150" height="81" alt="大麦若叶青汁 水青丰大麦青汁全国招商" src="/vip/2016-12-24-11-09.jpg"></a></li>
+
+	</ul>
+	
+</div>
+				
+
+
+
+<div style="height:30px; width:1000px;margin: 2px auto 0px auto;border: 1px solid #e6e6e3;" id="countdv">
+<p><a href="http://www.wshangw.net/a/huazhuangpin/">化妆品货源：</a><span>1647</span>个</p>
+   <p><a href="http://www.wshangw.net/a/nvzhuang_nanzhuang/">男装女装货源：</a><span>637</span>个</p>
+   <p><a href="http://www.wshangw.net/a/shechipinpai/">奢侈品货源：</a><span>348</span>个</p>
+   <p><a href="http://www.wshangw.net/a/nanxie_nvxie//">女鞋男鞋货源：</a><span>406</span>个</p>
+   <p><a href="http://www.wshangw.net/a/qitahuoyuan/">其他货源：</a><span>1771</span>个</p>
+   <p><a href="http://www.wshangw.net/a/weixinyingxiao/">微信营销文章：</a><span>4418</span>篇</p>
+    <p><a href="http://www.wshangw.net/a/weishangqun/">微商群：</a><span>293</span>个</p>
+</div>
+
+        <div class="container-hx">
+                 
+
+
+  <div class="row-fluid-wrap-hx">
+                <div class="center-container-hx">
+                    <div class="clearfix row-fluid-hx"><div class="banner-ad">
+
+ 
+    </div>
+
+    <div class="center-ctr-wrap" aid="41000">
+    <div class="center-ctr-box">
+	<div class="place"> <strong>当前位置:</strong> <a href='http://www.wshangw.net/'>主页</a> > <a href='/a/nvzhuang_nanzhuang/'>女装/男装</a> > 【自己改变自己】随变裤，真正的四面弹，随意剪，穿自己想要的裤 </div>
+        <div class="clearfix neirong">
+                <h1>
+            【自己改变自己】随变裤，真正的四面弹，随意剪，穿自己想要的裤    </h1>
+
+        <div class="subtitle-h1"></div>
+        <div class="neirong-other">
+           
+            <span class="recommenders"> 
+			作者：XWZTD88888
+			</span>
+			<span  >2016-12-12 17:51</span>
+			<span  id="source_baidu">来源：<a href="#">微商网</a></span>
+		<em class="pl-num" >热度：<script src="/plus/count.php?view=yes&aid=9235&mid=1" type='text/javascript' language="javascript"></script></em>
+			 </div>
+             
+       
+                <div class="neirong-box" id="neirong_box">
+				<div class="wxneijianjie">
+				<div class="wxleft">
+				  <li>
+    <a href='/uploads/161212/1-1612121I50XT.jpg' target='_blank'><img src='/uploads/161212/1-1612121I50XT.jpg'  width='164'  border='0'/></a>
+    <br />
+    <a href='/uploads/161212/1-1612121I50XT.jpg' target='_blank'></a>
+  </li>
+				</div>
+				<div  class="wxright">
+				 <ul>
+				 <li>微信号：XWZTD88888</li>
+				 <li>关键词：女装/男装</li>
+				  <li>收录时间：2016-12-12 17:51</li>
+				 </ul>
+				 <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdPic":"","bdStyle":"0","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+				</div>
+				<div class="wxrighter2">
+				<img src="/uploads/allimg/161212/1-1612121I5550-L.png" />
+				</div>
+				</div>
+				
+				<div  style="font-weight:bold">微信货源详细描述</div>
+            <table style=" margin-top:20px;">
+                <tr>
+				
+                    <td>
+                            <span style="font-size:16px;">传澄随变裤<br />
+&nbsp;<br />
+1、&nbsp;百搭：每个女性的衣橱里总是少不了一个百搭产品&mdash;&mdash;小黑裤；<br />
+&nbsp;<br />
+2、&nbsp;四面弹：普通的小黑裤，要么没弹力，要么就是两面谈，四面弹意味着上下左右，都有弹力非常舒适；<br />
+&nbsp;<br />
+3、&nbsp;任意剪：在任意地方可以剪，不勾丝，你可以剪9分裤&nbsp;7分裤&nbsp;&nbsp;5分裤&nbsp;&nbsp;破洞&hellip;&hellip;等等&nbsp;&nbsp;&nbsp;每条裤子配一本手册，300多种DIY随意搭配；<br />
+&nbsp;<br />
+4、&nbsp;10天无条件退换：淘宝才做到7天无理由退换，而且吊牌不能少。传澄随变裤即使你穿了，吊牌没了，穿脏洗了，仍然可以退换；微商上面独一无二，仅此一家；<br />
+&nbsp;<br />
+5、&nbsp;高品质：每条裤子上镶有施华洛世奇水晶；YKK拉链、独特的工艺、U臀专利&mdash;&mdash;珠地网眼面料&hellip;&hellip;<br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H32JI.jpg" style="width: 550px; height: 980px;" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H33G93.jpg" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H344343.jpg" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H350352.jpg" style="width: 550px; height: 980px;" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H356138.jpg" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H402Y9.jpg" style="width: 550px; height: 900px;" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H40bU.jpg" style="width: 550px; height: 977px;" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H4153A.jpg" style="width: 550px; height: 980px;" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H421U5.jpg" style="width: 550px; height: 977px;" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H42GW.jpg" style="width: 550px; height: 980px;" /><br />
+<br />
+<img alt="" src="/uploads/allimg/161212/1-1612121H432I7.jpg" style="width: 550px; height: 733px;" /></span><br />
+<br />
+<div>
+	<span style="font-size:16px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 传澄产品知识</span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;"><img alt="" src="/uploads/allimg/161212/1-1612121HK5912.jpg" style="width: 550px; height: 240px;" /><br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121HP4642.jpg" style="width: 550px; height: 240px;" /><br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121HQ01N.jpg" style="width: 550px; height: 240px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">&nbsp;传澄，是一家专业的从研发到营销为一体的的一家袜子专业的生产商和经销商，传澄公司有一座袜子博物馆，有一个袜子品牌的集合店店MORESOCKS &nbsp;袜云馆，有我们一百家连锁店，还有我们的袜子工厂。</span><br />
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">&nbsp;传澄恒温袜内部材质采用企鹅绒。它是一种可以根据人体调解保持舒适温度的材质，是为了南极科考队防寒服而被开发出来的材质。即使在严寒的气候中也不会感到过于寒冷，且在高温的环境中也不会觉得过热，始终能保持舒适的肤感。企鹅绒内含2至3微米的控温胶</span><span style="font-size: 16px;">囊，这种软膏状的胶囊的温度和人体的温度很接近，它会随温度的改变由固体变液体再变固体，通过吸热、蓄热，放热来调节适当的温度。当外界温度高于人体温度时，胶囊呈液态，吸收多余的热量使身体表面温度下降。与之相反，当体感温度低的时候，融化的控温胶囊会变成固体，把已储存的热量释放出来，正是由于这样不断的重复循环变化，才能保持着适合人体的理想温度段。</span></div>
+<div>
+	<br />
+	<span style="font-size:16px;"><img alt="" src="/uploads/allimg/161212/1-1612121HR4123.jpg" style="width: 550px; height: 550px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">超细纤维，具有比一般纤维更加蓬松，柔软的质感，更能客服天然纤维的易褶，人造纤维不透气的特点，就有保暖，不发霉，无虫蛀，质轻，防水等特性，外部保暖，内部调温，是一种调节保持舒适温度的智能材料<br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121HS5545.jpg" style="width: 550px; height: 193px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;"><span style="background-color:#00ffff;">腿部</span>分段式压力编织，收紧大腿赘肉，防止下垂，朔造纤细美腿<br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121HT9403.jpg" style="width: 550px; height: 550px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;"><span style="background-color:#00ffff;">腹部</span>6角形蜂巢设计，特殊凹凸网眼收腹燃脂（6角形蜂巢设计，国家专利，物理加热）<br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121HZ01I.jpg" style="width: 550px; height: 550px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;"><span style="background-color:#00ffff;">腹部</span>超细旦高弹感丝，吸湿，发热，恒温，保暖，腰头14CM加宽腰头，舒适自<br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121H910631.jpg" style="width: 550px; height: 550px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;"><span style="background-color:#00ffff;">臀部</span>人体工程学设计U形微波结合，3段式立体编织提臀朔型<br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121I00Q15.jpg" style="width: 550px; height: 550px;" /></span><br />
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">控温胶囊，粒径2-3微米，软膏状胶囊的温度高于人体温度时，呈液态，吸收余温热量使身体表面的温度下降，外界温度低于人体的温度时，呈固态，把储存的能量释放出来<br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121I021402.jpg" style="width: 550px; height: 240px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;"><span style="background-color:#00ffff;">脚口</span>双针包边工艺，手工定位，双针包边，拒绝滑裤<br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121I031226.jpg" style="width: 550px; height: 240px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;"><span style="background-color:#00ffff;">100％不掉档的又薄，又暖，又塑性并且不抽丝，不起毛，不嘞脚的恒温袜</span><br />
+	<br />
+	<img alt="" src="/uploads/allimg/161212/1-1612121I041Z7.jpg" style="width: 550px; height: 240px;" /></span></div>
+<div>
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">包装，袜子先家采用保温材料加铝膜的包装</span><br />
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">微商第一家运用AR技术的品牌，用手机下载一个APP就可以扫出AR 产品介绍</span><br />
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">&nbsp; &nbsp;臀部，大腿，腹部三大绝招彻底摆脱了传统的塑形让人窒息般的束缚，不仅穿上显瘦还会越穿越瘦，采用的6角蜂巢设计能够从日常的运动中，聚结能量，促进腹部脂肪的燃烧</span><br />
+	&nbsp;</div>
+<div>
+	<span style="font-size:16px;">&nbsp; &nbsp;这就是传澄恒温袜子，一双每个人都想拥有的绝世好袜、</span></div>
+<br />
+<br />
+<br />
+      	                    
+                  </td>
+                </tr>
+            </table>
+        </div>
+		<div class="links">上一篇：<a href='/a/nvzhuang_nanzhuang/2016/1207/9186.html'>桃儿童装全国货源总部，招加盟，免费代理</a>  下一篇：<a href='/a/nvzhuang_nanzhuang/2016/1214/9252.html'>广州厂家直销奢侈品男包女包包微信招代理钱包微商一手货源一件代</a> </div>
+     <div>
+<script type="text/javascript">
+    /*640*60 创建于 2014-10-09*/
+    var cpro_id = "u1750200";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+	 </div>
+
+	 
+
+
+
+    </div>
+    </div>
+	</div>
+	
+    <div class="side-container-hx">
+       
+	    <div class="hot-view">
+        <h3 class="t-h2"><em>香烟一手货源一件代发</em></h3>
+                      <div class="view-list idx-view"  style="margin-top:5px; margin-left:15px; margin-bottom:5px;">
+					  <p style=" font-size:14px;color:red; ">香烟一手货源一件代发</p>
+                    <a href="http://www.wshangw.net/a/qitahuoyuan/2016/0906/8287.html" title="微信批发香烟云霄烟草厂家招代理，香烟一手货源一件代发"><img src="/vip/2016-11-07-11-24.jpg" /></a>
+
+					  </div>
+   
+   <div class="hot-view">
+        <h3 class="t-h2"><em>推广货源</em></h3>
+	         <div class="view-list idx-view" style="margin-top:5px; ">
+            <div class="clearfix view-boxad">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="http://www.wshangw.net/a/qitahuoyuan/2016/0212/6368.html" title="云霄烟草厂家直销免费招代理" target="_blank"><img alt="云霄烟草厂家直销免费招代理" src="/vip/2016-2-14-11-34.jpg" /> </a></h4>
+                   
+                </div>
+            </div>
+			 
+       </div>  
+	   
+	  
+	       <div class="view-list idx-view">
+            <div class="clearfix view-boxad">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/0720/7844.html" title="运动鞋厂家直销全网最低免费招代理+一件代发，来这你就是一手！" target="_blank"><img alt="运动鞋厂家直销全网最低免费招代理+一件代发，来这你就是一手！" src="/vip/2016-7-20-11-00.jpg" /> </a></h4>
+                   
+                </div>
+            </div>
+			 
+       </div>
+			
+
+	   	   <div class="view-list idx-view">
+            <div class="clearfix view-boxad">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="http://www.wshangw.net/a/qitahuoyuan/2016/1220/9311.html" title="目前最火爆最有钱景的微商产品" target="_blank"><img alt="目前最火爆最有钱景的微商产品" src="/vip/2016-12-20-11-44.jpg" /> </a></h4>
+                   
+                </div>
+            </div>
+			 
+       </div>
+	   
+	      	   <div class="view-list idx-view">
+            <div class="clearfix view-boxad">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="http://www.wshangw.net/a/nanxie_nvxie/2016/1122/9043.html" title="华威鞋业厂家直销，绝对的一手货源，全网最低，均价40左右" target="_blank"><img alt="华威鞋业厂家直销，绝对的一手货源，全网最低，均价40左右" src="/vip/2016-12-20-11-46.jpg" /> </a></h4>
+                   
+                </div>
+            </div>
+			 
+       </div>
+	   
+	      	   <div class="view-list idx-view">
+            <div class="clearfix view-boxad">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="http://www.wshangw.net/a/qitahuoyuan/2017/0118/9566.html" title="抢红包神器" target="_blank"><img alt="抢红包神器" src="/vip/2017-1-18-11-42.gif" /> </a></h4>
+                   
+                </div>
+            </div>
+			 
+       </div>
+	   
+	         		   <div class="view-list idx-view">
+            <div class="clearfix view-boxad">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="http://www.wshangw.net/a/guanyuwomen/jingzhunguanggaofuwu/2014/0828/10.html" title="微商网精准广告服务" target="_blank"><img alt="微商网精准广告服务" src="/vip/right265.jpg" /> </a></h4>
+                   
+                </div>
+            </div>
+			 
+       </div>
+	   
+	   
+
+                <div class="view-list idx-view"  style="margin-top:5px; margin-left:15px; margin-bottom:5px;">
+					  <script type="text/javascript">
+    /*250*250 创建于 2014-10-09*/
+    var cpro_id = "u1750186";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+
+					  </div>
+
+	   
+    </div>
+	   
+  <div class="hot-view">
+        <h3 class="t-h2"><em>相关微信货源</em></h3>
+
+	  <div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2016/1201/9132.html" title="广州奢侈品包包 欢迎实体店和实力代理加盟" target="_blank">广州奢侈品包包 欢迎实体店和实力代理</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2017/0107/9472.html" title="我20岁做潮牌 一年买宝马" target="_blank">我20岁做潮牌 一年买宝马</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2017/0107/9469.html" title="本店面向全国招收代理！厂家货源，一件代发，你不需要屯货" target="_blank">本店面向全国招收代理！厂家货源，一</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2015/0518/3988.html" title="微商阿迪耐克服装，一手货源，一件代发！" target="_blank">微商阿迪耐克服装，一手货源，一件代</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2016/1219/9296.html" title="耐克FFF内裤，诚招微商代理" target="_blank">耐克FFF内裤，诚招微商代理</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2016/1219/9295.html" title="优秀原创女装品牌，免费代理，0库存，一件发货，圣诞大优惠！" target="_blank">优秀原创女装品牌，免费代理，0库存，</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2016/1215/9260.html" title="精品欧韩潮流童装全国总部一件代发无需囤货" target="_blank">精品欧韩潮流童装全国总部一件代发无</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2016/1214/9252.html" title="广州厂家直销奢侈品男包女包包微信招代理钱包微商一手货源一件代" target="_blank">广州厂家直销奢侈品男包女包包微信招</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/nvzhuang_nanzhuang/2016/1114/8971.html" title="广州厂家直销浪琴劳力士高仿手表微信招代理微商一手货源" target="_blank">广州厂家直销浪琴劳力士高仿手表微信</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/plus/view.php?aid=3295" title="微商网精准广告" target="_blank">微商网精准广告</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+
+	
+	   
+    </div>
+
+    <div class="hot-view">
+        <h3 class="t-h2"><em>热门微信营销</em></h3>
+
+	<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0118/9561.html" title="完善微商监管机制 保护消费者合法权益" target="_blank">完善微商监管机制 保护消费者合法权益</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0118/9560.html" title="微商操盘手选择产品的13大标准" target="_blank">微商操盘手选择产品的13大标准</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0118/9559.html" title="教你如何利用微商赚取第一桶金" target="_blank">教你如何利用微商赚取第一桶金</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0118/9558.html" title="微商如何把握成交的速度" target="_blank">微商如何把握成交的速度</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0117/9553.html" title="2017微商最火产品潜力排行榜前十" target="_blank">2017微商最火产品潜力排行榜前十</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0117/9552.html" title="做微商不成交，有四大原因！" target="_blank">做微商不成交，有四大原因！</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0117/9551.html" title="流量红利已透支，2017年微商还能火多久" target="_blank">流量红利已透支，2017年微商还能火多</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0117/9550.html" title="微商除了卖货，这些截流粉丝的方法你绝对不知道！" target="_blank">微商除了卖货，这些截流粉丝的方法你</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0116/9544.html" title="企业微商落地营销方法总结" target="_blank">企业微商落地营销方法总结</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+<div class="view-list idx-view">
+            <div class="clearfix view-box">
+             
+                <div class="view-box-ctt">
+                    <h4><a href="/a/weixinyingxiao/2017/0116/9543.html" title="2017年的微商发展趋势！" target="_blank">2017年的微商发展趋势！</a></h4>
+                   
+                </div>
+            </div>
+       </div>
+
+	
+	   
+    </div>
+
+
+
+
+</div>
+</div>
+</div>
+<div class="main ft m10t">
+
+    <div class="main1 ft_nav">
+    	<span class="sp1"></span>
+    	<p>微商交流QQ群①:391566635 QQ群②:451631046<a href="/a/guanyuwomen/guanyuwomen/2014/0828/9.html">关于我们 </a>|<a href="/a/guanyuwomen/jingzhunguanggaofuwu/2014/0828/10.html">精准广告服务</a>|<a href="/a/guanyuwomen/guanyuwomen/2014/0828/9.html">联系我们</a>|<a href="http://bbs.wshangw.net" target="_blank" rel="nofollow" title="免费提交货源、微商群">免费提交货源、微商群</a></p>
+    	<span class="sp2"></span>
+    </div>
+	<div  style=" margin-left:20px; margin-top:10px">友情链接：
+	<a href="http://www.wshangw.net" title="微商网" target="_blank">微商网</a>  
+	<a href="http://bbs.wshangw.net" title="微商社区" target="_blank">微商社区</a>  
+  <a href="http://www.chinawyx.com" title="微商" target="_blank">微商</a> 
+     <a href="http://www.repuwang.com" title="淘宝店铺转让" target="_blank">淘宝店铺转让</a> 
+   <a href="http://www.weixin008.com" title="微商货源网" target="_blank">微商货源网</a> 
+	<a href="http://www.long365.cn" title="优惠券网" target="_blank">优惠券网</a> 
+	<a href="http://www.weishanghuoyuan.com" title="微商代理" target="_blank">微商代理</a> 
+	<a href="http://www.shanmeng.com" title="B2B平台" target="_blank">B2B平台</a> 
+    <a href="http://www.2s.tv" title="二色商城" target="_blank">二色商城</a> 
+    <a href="http://www.17daili.com" title="网店代理" target="_blank">网店代理</a> 
+    <a href="http://www.wwwwx.cn" title="货源网" target="_blank">货源网</a> 
+	<a href="http://www.weixinqun.com" title="微信红包群" target="_blank">微信红包群</a> 
+    <a href="http://www.hy5.com.cn" title="网店代销货源" target="_blank">网店代销货源</a> 
+	  <a href="http://www.91weixinqun.com" title="微信群" target="_blank">微信群</a> 
+	   <a href="http://www.cncompany.cn" title="微商货源" target="_blank">微商货源</a> 
+	  <a href="http://www.100estore.com" title="天猫店铺转让" target="_blank">天猫店铺转让</a> 
+	  <a href="http://www.360shop.com.cn" title="微信分销" target="_blank">微信分销</a> 
+	 <a href="http://www.weixinqun.cn" title="微信群" target="_blank">微信群</a> 
+	   <a href="http://www.vsuda.cn" target="_blank" title="微信公众号">微信公众号</a>
+	    <a href="http://shichang.hznzcn.com" target="_blank" title="服装批发市场">服装批发市场</a>
+	   <a href="http://fc.28.com" title="招商" target="_blank">招商</a>
+	    <a href="http://zs.efu.com.cn" title="服装加盟" target="_blank">服装加盟</a>
+		 <a href="http://www.huoyuanzhijia.com" title="微商货源" target="_blank">微商货源</a>
+		<a href="http://www.28wsw.com" title="微商货源网" target="_blank">微商货源网</a>
+	    <a href="http://www.lengwenxue.com" title="搞笑视频" target="_blank">搞笑视频</a>
+		 <a href="http://www.9111.tv" title="白酒招商" target="_blank">白酒招商</a>
+		  <a href="http://www.3490.cn" title=" 食品饮料招商网" target="_blank">食品饮料招商网</a>
+		   <a href="http://www.t9k9.com" title="九块九包邮" target="_blank">九块九包邮</a>
+		 <a href="http://f600.cn" title="创业项目" target="_blank">创业项目</a>
+		 <a href="http://www.shanmai.cn" title="户外服装" target="_blank">户外服装</a>
+		 <a href="http://www.b2q.com" title="工程师网" target="_blank">工程师网</a>
+		   <a href="http://www.zhifuwang.com" title="创业项目" target="_blank">创业项目</a>
+		   <a href="http://www.vvic.com" title="搜款网" target="_blank">搜款网</a>
+	     <a href="http://www.chimatong.com" title="尺码对照表" target="_blank">尺码对照表</a>
+		 <a href="http://www.bbyy.com" title="婴儿游泳馆加盟" target="_blank">婴儿游泳馆加盟</a>
+	
+	
+</div>
+
+        <div class="ft_cont"><br>Copyright &#169;  2004-2014 微商网 湘ICP备14012475号</div>
+		
+		<div style=" display:none">
+		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1253192409'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s13.cnzz.com/z_stat.php%3Fid%3D1253192409%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+		<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F1b75c8ec480d730f30f0b9298977af8c' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+		</div>
+        <div class="ft_img">
+     
+      <img src="/templets/default/images/ft_04.gif">
+            <img src="/templets/default/images/icp2.gif">
+			<img border="0" src="http://img.webscan.360.cn/status/pai/hash/1a341b715d76eca28d501d2e1fe066b4"/>
+     </div>
+	
+	 </div>
+</div>
+
+<script src="/templets/default/js/bottom.js"></script>
+
+<link href="/templets/default/style/bottom.css" rel="stylesheet" type="text/css" />
+
+<div class="float_layer" id="miaov_float_layer" style="z-index:10001;">
+  <h2> <b>高仿真丝香烟</b> <a id="btn_min" href="javascript:;" class="min"></a> <a id="btn_close" href="javascript:;" class="close"></a> </h2>
+  <div class="content2">
+    <div class="wrap2"> 
+    	<div>
+
+<p style="font-size:12px; font-weight:bold; color:#FF0000; margin-left:10px;">点击查看 加入厂家一手货源！</p>
+<div  style="border: 1px solid #e6e6e3; width:170px; height:170px;">
+<a href="http://www.wshangw.net/a/qitahuoyuan/2016/0507/7168.html" title="高仿真丝香烟，诚招代理，供实体店无压力">
+<img src="http://www.wshangw.net/vip/2016-5-7-15-01.jpg" width="170"  height="170"  />
+</a>
+</div>
+    </div>
+  </div>
+
+ </div>
+  </div>
+
+<div class="float_layer_left" id="miaov_float_left" style="z-index:10001;" >
+  <h2> <b>正品新百伦耐克阿迪</b> <a id="btn_min_left" href="javascript:;" class="min"></a> <a id="btn_close_left" href="javascript:;" class="close"></a> </h2>
+  <div class="content2">
+    <div class="wrap2"> 
+    	<div>
+
+<p style="font-size:12px; font-weight:bold; color:#FF0000; margin-left:10px;">点击查看 加入厂家一手货源！</p>
+<div  style="border: 1px solid #e6e6e3; width:170px; height:170px;">
+<a href="http://www.wshangw.net/a/nanxie_nvxie/2015/0519/3996.html" title="香港正品新百伦耐克阿迪，来自香港，绝对正品！">
+<img src="http://www.wshangw.net/vip/2015-3-31-10-20.jpg" width="170"  height="170"  />
+</a>
+</div>
+
+   </div>
+  </div>
+
+ </div>
+  </div>
+
+</div>
+</body>
+</html>
