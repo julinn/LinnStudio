@@ -17,6 +17,13 @@ namespace SearchWSW
         private static int FiCurr;
         private static string[] FList;
         private static bool FbDoing;
+        //
+        private static DataTable FdtDetail;
+        private static int FiDetailCurr;
+        private static int FiDetailTotal;
+        private static bool FbDetailDoing;
+        private static int FiDetailRecID;
+        //
         public FormMain()
         {
             InitializeComponent();
@@ -147,6 +154,63 @@ namespace SearchWSW
             //停止
             FbDoing = false;
             btnTest.Enabled = true;
+        }
+        private void msgDetail(string str)
+        {
+            lbDetail.Text = str;
+            wsCore.Delay(50);
+        }
+
+        private void DetailLog(string str)
+        {
+            mmDetail.AppendText(str + "\r\n");
+        }
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            //明细更新开始
+            FdtDetail = wsCore.GetNoDetailList();
+            if (FdtDetail.Rows.Count == 0)
+                return;
+            //第一次触发
+            FiDetailTotal = FdtDetail.Rows.Count;
+            FiDetailRecID = wsCore.StrToInt(FdtDetail.Rows[FiDetailCurr]["RecID"].ToString());
+            string url = FdtDetail.Rows[FiDetailCurr]["Url"].ToString();
+            if (FiDetailRecID == 0 || url == "")
+            {
+                lbDetail.Text = "ID 或 URL 为空";
+                return;
+            }
+            FbDetailDoing = true;
+            FiDetailCurr = 0;       
+            wbDetail.Navigate(url);
+        }
+
+        private void wbDetail_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            //
+            if (!FbDetailDoing)
+                return;
+            if (e.Url != wbDetail.Document.Url)
+                return;
+            string str = wbDetail.Document.Body.InnerHtml;
+            DetailDoing(str);
+        }
+
+        private void DetailDoing(string html)
+        {
+            //解析数据
+            msgDetail("更新进度：" + (FiDetailCurr + 1).ToString() + " / " + FiDetailTotal.ToString() + " ......");
+            string result = wsCore.GetDetailInfo(html, FiDetailRecID);
+            //mmDetail.Text = result;
+            DetailLog(result);
+            //下一轮准备
+            FiDetailCurr = FiDetailCurr + 1;
+            if(FiDetailCurr < FdtDetail.Rows.Count)
+            {
+                string url = FdtDetail.Rows[FiDetailCurr]["Url"].ToString();
+                FiDetailRecID = wsCore.StrToInt(FdtDetail.Rows[FiDetailCurr]["RecID"].ToString());
+                wbDetail.Navigate(url);
+            }
         }
     }
 }

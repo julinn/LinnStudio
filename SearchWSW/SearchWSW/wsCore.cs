@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+//
+using System.Data;
+using System.Net;
+using System.IO;
 
 namespace SearchWSW
 {    
@@ -147,5 +151,86 @@ namespace SearchWSW
             }            
             return result;
         }
-    }    
+
+        //获取待更新列表
+        public static DataTable GetNoDetailList()
+        {
+            string sql = "call proc_xyws_Huoyuan_AutoUpdateSearch()",
+                err = "";
+            DataTable dt = new DataTable();
+            ulMySqlHelper.GetaDatatable(sql, out dt, out err);
+            return dt;
+        }
+
+        private static string FmtTimeStr(string str)
+        {
+            //2016-12-1217:51
+            try
+            {
+                return str.Substring(0, 10);
+            }
+            catch
+            {
+                return "";
+            }
+        }
+        public static void SaveDetail(int recID, string wxImg, string RecTime,  string content, string imagelist)
+        {
+            string sql = "call proc_xyws_Huoyuan_AutoUpdateDetail(";
+            MySql.Data.MySqlClient.MySqlParameter[] paras = new MySql.Data.MySqlClient.MySqlParameter[]
+            {
+                //IN `_RecID` int, IN `_RecTime` datetime, IN `_wxImg` varchar(300),IN `_Content` text,IN `_ImageList` text
+                ulMySqlHelper.AddIntParameter("@_RecID", recID),
+                ulMySqlHelper.AddVarcharParameter("@_RecTime", RecTime),
+                ulMySqlHelper.AddVarcharParameter("@_wxImg", wxImg),
+                ulMySqlHelper.AddVarcharParameter("@_Content", content),
+                ulMySqlHelper.AddVarcharParameter("@_ImageList", imagelist)
+            };
+            sql = sql + ulMySqlHelper.GetAllParametersName(paras) + ")";
+           //string result =  ulMySqlHelper.GetFirstVar(sql, paras);
+            //ulMySqlHelper.ExecuteStoreProcedure(sql, paras);
+            ulMySqlHelper.ExecuteSql(sql, paras);
+        }
+
+        public static string GetDetailInfo(string Html, int recID)
+        {
+            string result = "", tempResult = "", sTime = "", swxImg = "", sContent = "", sImageList = "",
+                sDomain = "http://www.wshangw.net";
+            tempResult = GetMiddleString(Html, "center-ctr-box", "links");
+            //tempResult = tempResult.Replace(" ", "");
+            tempResult = tempResult.Replace("\n", "");
+            tempResult = tempResult.Replace("\r", "");
+            tempResult = tempResult.Replace("\t", "");
+            sContent = GetMiddleString(tempResult, "<TBODY>", "</TBODY>");
+            sContent = sContent.Replace("\"/uploads/", "\"" + sDomain + "/uploads/");
+            tempResult = tempResult.Replace(" ", "");
+            sTime = GetMiddleString(tempResult, "收录时间：", "</LI></UL>");
+            sTime = FmtTimeStr(sTime);
+            swxImg = sDomain + GetMiddleString(tempResult, "wxrighter2><IMGsrc=\"", "\"></DIV></DIV><DIVstyle=");            
+            SaveDetail(recID, swxImg, sTime, sContent, sImageList);
+            result = sTime + "|" + swxImg;// +"|" + sContent;
+            //
+            return result;
+        }
+
+        public static string HttpGet(string Url)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url);
+                request.Method = "GET"; request.ContentType = "text/html";//;charset=UTF-8
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                Stream myResponseStream = response.GetResponseStream();
+                StreamReader myStreamReader = new StreamReader(myResponseStream);//, Encoding.GetEncoding("utf-8")
+                string retString = myStreamReader.ReadToEnd();
+                myStreamReader.Close();
+                myResponseStream.Close();
+                return retString;
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+    }   
 }
