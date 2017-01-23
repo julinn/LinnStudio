@@ -212,5 +212,75 @@ namespace SearchWSW
                 wbDetail.Navigate(url);
             }
         }
+
+        /// <summary>
+        /// 下载图片；1微信二维码； 2展示图
+        /// </summary>
+        /// <param name="type">1微信二维码； 2展示图</param>
+        private void ImageDownload(int type)
+        {
+            //下载图片
+            if (type != 1)
+                type = 2;
+            mmDown.Text = "";
+            //string url = "http://www.wshangw.net/uploads/allimg/161212/1-1612121I5550-L.png";
+            //url = wsCore.ImageDownload(url);
+            //mmDown.AppendText(url);
+
+            //正式
+            DataTable dt = wsCore.GetDonwImgList(type);
+            int iCount = dt.Rows.Count;
+            if (iCount == 0)
+            {
+                lbDown.Text = "没有找到记录";
+                return;
+            }
+            string url = "";
+            for (int i = 0; i < iCount; i++)
+            {
+                lbDown.Text = "正在下载：" + (i + 1).ToString() + " / " + iCount + " ......";
+                wsCore.Delay(10);
+                url = dt.Rows[i]["URL"].ToString();
+                if (!url.Contains("http://"))
+                    url = "http://" + url;
+                url = wsCore.ImageDownload(url);
+                mmDown.AppendText(url + "\r\n");
+            }
+        }
+
+        private void btnImgDownload_Click(object sender, EventArgs e)
+        {
+            /*
+            //下载图片
+            mmDown.Text = "";
+            //string url = "http://www.wshangw.net/uploads/allimg/161212/1-1612121I5550-L.png";
+            //url = wsCore.ImageDownload(url);
+            //mmDown.AppendText(url);
+
+            //正式
+            DataTable dt = wsCore.GetDonwImgList(1);
+            int iCount = dt.Rows.Count;
+            if (iCount == 0)
+            {
+                lbDown.Text = "没有找到记录";
+                return;
+            }
+            string url = "";
+            for (int i = 0; i < iCount; i++)
+            {
+                lbDown.Text = "正在下载：" + (i + 1).ToString() + " / " + iCount + " ......";
+                wsCore.Delay(10);
+                url = dt.Rows[i]["URL"].ToString();
+                url = wsCore.ImageDownload(url);
+                mmDown.AppendText(url + "\r\n");
+            }
+             */
+            ImageDownload(1);
+        }
+
+        private void btnImageDownShowimg_Click(object sender, EventArgs e)
+        {
+            ImageDownload(2);
+        }
     }
 }

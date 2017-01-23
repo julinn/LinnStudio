@@ -41,11 +41,17 @@
             this.lbDoingInfo = new System.Windows.Forms.Label();
             this.btnTest = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.wbDetail = new System.Windows.Forms.WebBrowser();
             this.mmDetail = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.wbDetail = new System.Windows.Forms.WebBrowser();
-            this.btnDetail = new System.Windows.Forms.Button();
             this.lbDetail = new System.Windows.Forms.Label();
+            this.btnDetail = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.mmDown = new System.Windows.Forms.RichTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbDown = new System.Windows.Forms.Label();
+            this.btnImgDownload = new System.Windows.Forms.Button();
+            this.btnImageDownShowimg = new System.Windows.Forms.Button();
             this.tMain.SuspendLayout();
             this.tp1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -53,6 +59,8 @@
             this.gbDoing.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tMain
@@ -60,6 +68,7 @@
             this.tMain.Controls.Add(this.tp1);
             this.tMain.Controls.Add(this.tabPage2);
             this.tMain.Controls.Add(this.tabPage1);
+            this.tMain.Controls.Add(this.tabPage3);
             this.tMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tMain.Location = new System.Drawing.Point(0, 0);
             this.tMain.Name = "tMain";
@@ -194,6 +203,18 @@
             this.tabPage1.Text = "明细更新";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // wbDetail
+            // 
+            this.wbDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wbDetail.Location = new System.Drawing.Point(3, 264);
+            this.wbDetail.MinimumSize = new System.Drawing.Size(20, 20);
+            this.wbDetail.Name = "wbDetail";
+            this.wbDetail.ScriptErrorsSuppressed = true;
+            this.wbDetail.Size = new System.Drawing.Size(915, 436);
+            this.wbDetail.TabIndex = 2;
+            this.wbDetail.Url = new System.Uri("", System.UriKind.Relative);
+            this.wbDetail.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbDetail_DocumentCompleted);
+            // 
             // mmDetail
             // 
             this.mmDetail.Dock = System.Windows.Forms.DockStyle.Top;
@@ -215,17 +236,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "`";
             // 
-            // wbDetail
+            // lbDetail
             // 
-            this.wbDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wbDetail.Location = new System.Drawing.Point(3, 264);
-            this.wbDetail.MinimumSize = new System.Drawing.Size(20, 20);
-            this.wbDetail.Name = "wbDetail";
-            this.wbDetail.ScriptErrorsSuppressed = true;
-            this.wbDetail.Size = new System.Drawing.Size(915, 436);
-            this.wbDetail.TabIndex = 2;
-            this.wbDetail.Url = new System.Uri("http://www.wshangw.net/a/nvzhuang_nanzhuang/2016/1212/9235.html", System.UriKind.Absolute);
-            this.wbDetail.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbDetail_DocumentCompleted);
+            this.lbDetail.AutoSize = true;
+            this.lbDetail.Location = new System.Drawing.Point(6, 73);
+            this.lbDetail.Name = "lbDetail";
+            this.lbDetail.Size = new System.Drawing.Size(53, 12);
+            this.lbDetail.TabIndex = 2;
+            this.lbDetail.Text = "准备就绪";
             // 
             // btnDetail
             // 
@@ -237,14 +255,67 @@
             this.btnDetail.UseVisualStyleBackColor = true;
             this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
-            // lbDetail
+            // tabPage3
             // 
-            this.lbDetail.AutoSize = true;
-            this.lbDetail.Location = new System.Drawing.Point(6, 73);
-            this.lbDetail.Name = "lbDetail";
-            this.lbDetail.Size = new System.Drawing.Size(53, 12);
-            this.lbDetail.TabIndex = 2;
-            this.lbDetail.Text = "准备就绪";
+            this.tabPage3.Controls.Add(this.mmDown);
+            this.tabPage3.Controls.Add(this.groupBox3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(921, 703);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "下载图片";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // mmDown
+            // 
+            this.mmDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mmDown.Location = new System.Drawing.Point(3, 103);
+            this.mmDown.Name = "mmDown";
+            this.mmDown.Size = new System.Drawing.Size(915, 597);
+            this.mmDown.TabIndex = 1;
+            this.mmDown.Text = "";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnImageDownShowimg);
+            this.groupBox3.Controls.Add(this.lbDown);
+            this.groupBox3.Controls.Add(this.btnImgDownload);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox3.Location = new System.Drawing.Point(3, 3);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(915, 100);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            // 
+            // lbDown
+            // 
+            this.lbDown.AutoSize = true;
+            this.lbDown.Location = new System.Drawing.Point(6, 73);
+            this.lbDown.Name = "lbDown";
+            this.lbDown.Size = new System.Drawing.Size(53, 12);
+            this.lbDown.TabIndex = 3;
+            this.lbDown.Text = "准备就绪";
+            // 
+            // btnImgDownload
+            // 
+            this.btnImgDownload.Location = new System.Drawing.Point(6, 20);
+            this.btnImgDownload.Name = "btnImgDownload";
+            this.btnImgDownload.Size = new System.Drawing.Size(121, 41);
+            this.btnImgDownload.TabIndex = 2;
+            this.btnImgDownload.Text = "二维码";
+            this.btnImgDownload.UseVisualStyleBackColor = true;
+            this.btnImgDownload.Click += new System.EventHandler(this.btnImgDownload_Click);
+            // 
+            // btnImageDownShowimg
+            // 
+            this.btnImageDownShowimg.Location = new System.Drawing.Point(152, 20);
+            this.btnImageDownShowimg.Name = "btnImageDownShowimg";
+            this.btnImageDownShowimg.Size = new System.Drawing.Size(121, 41);
+            this.btnImageDownShowimg.TabIndex = 4;
+            this.btnImageDownShowimg.Text = "展示图";
+            this.btnImageDownShowimg.UseVisualStyleBackColor = true;
+            this.btnImageDownShowimg.Click += new System.EventHandler(this.btnImageDownShowimg_Click);
             // 
             // FormMain
             // 
@@ -266,6 +337,9 @@
             this.tabPage1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -290,6 +364,12 @@
         private System.Windows.Forms.WebBrowser wbDetail;
         private System.Windows.Forms.Label lbDetail;
         private System.Windows.Forms.Button btnDetail;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.RichTextBox mmDown;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnImgDownload;
+        private System.Windows.Forms.Label lbDown;
+        private System.Windows.Forms.Button btnImageDownShowimg;
     }
 }
 
