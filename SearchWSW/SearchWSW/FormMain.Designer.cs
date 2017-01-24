@@ -49,9 +49,10 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.mmDown = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnImageDownShowimg = new System.Windows.Forms.Button();
             this.lbDown = new System.Windows.Forms.Label();
             this.btnImgDownload = new System.Windows.Forms.Button();
-            this.btnImageDownShowimg = new System.Windows.Forms.Button();
+            this.chkIsArticle = new System.Windows.Forms.CheckBox();
             this.tMain.SuspendLayout();
             this.tp1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -226,6 +227,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.chkIsArticle);
             this.groupBox2.Controls.Add(this.lbDetail);
             this.groupBox2.Controls.Add(this.btnDetail);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -288,6 +290,16 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
+            // btnImageDownShowimg
+            // 
+            this.btnImageDownShowimg.Location = new System.Drawing.Point(152, 20);
+            this.btnImageDownShowimg.Name = "btnImageDownShowimg";
+            this.btnImageDownShowimg.Size = new System.Drawing.Size(121, 41);
+            this.btnImageDownShowimg.TabIndex = 4;
+            this.btnImageDownShowimg.Text = "展示图";
+            this.btnImageDownShowimg.UseVisualStyleBackColor = true;
+            this.btnImageDownShowimg.Click += new System.EventHandler(this.btnImageDownShowimg_Click);
+            // 
             // lbDown
             // 
             this.lbDown.AutoSize = true;
@@ -307,15 +319,15 @@
             this.btnImgDownload.UseVisualStyleBackColor = true;
             this.btnImgDownload.Click += new System.EventHandler(this.btnImgDownload_Click);
             // 
-            // btnImageDownShowimg
+            // chkIsArticle
             // 
-            this.btnImageDownShowimg.Location = new System.Drawing.Point(152, 20);
-            this.btnImageDownShowimg.Name = "btnImageDownShowimg";
-            this.btnImageDownShowimg.Size = new System.Drawing.Size(121, 41);
-            this.btnImageDownShowimg.TabIndex = 4;
-            this.btnImageDownShowimg.Text = "展示图";
-            this.btnImageDownShowimg.UseVisualStyleBackColor = true;
-            this.btnImageDownShowimg.Click += new System.EventHandler(this.btnImageDownShowimg_Click);
+            this.chkIsArticle.AutoSize = true;
+            this.chkIsArticle.Location = new System.Drawing.Point(170, 34);
+            this.chkIsArticle.Name = "chkIsArticle";
+            this.chkIsArticle.Size = new System.Drawing.Size(96, 16);
+            this.chkIsArticle.TabIndex = 3;
+            this.chkIsArticle.Text = "更新文章明细";
+            this.chkIsArticle.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -370,6 +382,7 @@
         private System.Windows.Forms.Button btnImgDownload;
         private System.Windows.Forms.Label lbDown;
         private System.Windows.Forms.Button btnImageDownShowimg;
+        private System.Windows.Forms.CheckBox chkIsArticle;
     }
 }
 

@@ -23,6 +23,7 @@ namespace SearchWSW
         private static int FiDetailTotal;
         private static bool FbDetailDoing;
         private static int FiDetailRecID;
+        private static bool FbIsDetailArticle;
         //
         public FormMain()
         {
@@ -132,7 +133,7 @@ namespace SearchWSW
             if (mmData.Text == "")
                 mmData.Text = data;
             else
-                mmData.Text = mmData.Text + "@" + data;
+                mmData.AppendText("@" + data);
             if (FiPage > 1 && FiCurr < FiPage && FList.Length == FiPage)
             {
                 wbGet.Navigate(FList[FiCurr]);
@@ -167,10 +168,11 @@ namespace SearchWSW
         }
         private void btnDetail_Click(object sender, EventArgs e)
         {
-            //明细更新开始
+            //明细更新开始            
             FdtDetail = wsCore.GetNoDetailList();
             if (FdtDetail.Rows.Count == 0)
                 return;
+            FbIsDetailArticle = chkIsArticle.Checked;
             //第一次触发
             FiDetailTotal = FdtDetail.Rows.Count;
             FiDetailRecID = wsCore.StrToInt(FdtDetail.Rows[FiDetailCurr]["RecID"].ToString());
@@ -200,7 +202,11 @@ namespace SearchWSW
         {
             //解析数据
             msgDetail("更新进度：" + (FiDetailCurr + 1).ToString() + " / " + FiDetailTotal.ToString() + " ......");
-            string result = wsCore.GetDetailInfo(html, FiDetailRecID);
+            string result = "";
+            if (FbIsDetailArticle)
+                result = wsCore.GetDetailArticleInfo(html, FiDetailRecID);
+            else
+                result = wsCore.GetDetailInfo(html, FiDetailRecID);
             //mmDetail.Text = result;
             DetailLog(result);
             //下一轮准备
@@ -281,6 +287,11 @@ namespace SearchWSW
         private void btnImageDownShowimg_Click(object sender, EventArgs e)
         {
             ImageDownload(2);
+        }
+
+        private void btnUpdateArticle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

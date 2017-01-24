@@ -101,7 +101,7 @@ namespace SearchWSW
             title = FmtStr(title);
             showimg = FmtStr(showimg);
             url = FmtStr(url);
-            if (wxID == "" || url == "")
+            if (wxID == "" && url == "")
                 return;
             if (!showimg.Contains("http://"))
                 showimg = "http://" + showimg;
@@ -209,6 +209,30 @@ namespace SearchWSW
             sTime = GetMiddleString(tempResult, "收录时间：", "</LI></UL>");
             sTime = FmtTimeStr(sTime);
             swxImg = sDomain + GetMiddleString(tempResult, "wxrighter2><IMGsrc=\"", "\"></DIV></DIV><DIVstyle=");            
+            SaveDetail(recID, swxImg, sTime, sContent, sImageList);
+            result = sTime + "|" + swxImg;// +"|" + sContent;
+            //
+            return result;
+        }
+
+        public static string GetDetailArticleInfo(string Html, int recID)
+        {
+            string result = "", tempResult = "", sTime = "", swxImg = "", sContent = "", sImageList = "",
+                sDomain = "http://www.wshangw.net";
+            tempResult = GetMiddleString(Html, "center-ctr-box", "</TABLE>") + "</TABLE>";
+            //tempResult = tempResult.Replace(" ", "");
+            tempResult = tempResult.Replace("\n", "");
+            tempResult = tempResult.Replace("\r", "");
+            tempResult = tempResult.Replace("\t", "");
+            sContent = GetMiddleString(tempResult, "<TABLE>", "</TABLE>");
+            sContent = sContent.Replace("\"/uploads/", "\"" + sDomain + "/uploads/");
+            sContent = "<table>" + sContent + "</table>";
+            sContent = GetMiddleString(sContent, "<TBODY>", "</TBODY>");
+            tempResult = tempResult.Replace(" ", "");
+            sTime = GetMiddleString(tempResult, "recommenders", "source_baidu");
+            sTime = GetMiddleString(tempResult, "</SPAN><SPAN>", "</SPAN><SPANid");
+            sTime = FmtTimeStr(sTime);
+            swxImg = sDomain + GetMiddleString(tempResult, "wxrighter2><IMGsrc=\"", "\"></DIV></DIV><DIVstyle=");
             SaveDetail(recID, swxImg, sTime, sContent, sImageList);
             result = sTime + "|" + swxImg;// +"|" + sContent;
             //
