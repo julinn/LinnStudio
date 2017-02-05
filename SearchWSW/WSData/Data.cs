@@ -11,6 +11,8 @@ namespace WSData
     class Data
     {
         //
+        public static string FTel = "";
+        public static string FPasswd = "";
         public static DataTable FdtUser = new DataTable();
         public static Dictionary<string, string> FcfgLocal = GetLocalConfig();
         //
@@ -79,6 +81,8 @@ namespace WSData
             result = ulMySqlHelper.GetFirstVar(sql);
             if (result == "1")
             {
+                FTel = tel;
+                FPasswd = pwd;
                 sql = "call proc_user_info('" + tel + "','" + pwd + "')";
                 ulMySqlHelper.GetaDatatable(sql, out FdtUser, out err);
                 if (FdtUser.Rows.Count > 0)
@@ -154,7 +158,7 @@ namespace WSData
             classDef = FmtStr(classDef);
             str = FmtStr(str);
             string err = "",
-                sql = "call proc_data_search('" + classDef + "','" + str + "')";
+                sql = "call proc_data_search('" + FTel + "','" + FPasswd + "','" + classDef + "','" + str + "')";
             DataTable dt = new DataTable();
             ulMySqlHelper.GetaDatatable(sql, out dt, out err);
             return dt;
@@ -163,9 +167,8 @@ namespace WSData
         public static DataTable user_search(string str)
         {
             str = FmtStr(str);
-            string tel = FmtStr(GetFdtUserInfo("Tel")),
-                err = "",
-                sql = "call proc_user_users('" + tel + "','" + str + "')";
+            string err = "",
+                sql = "call proc_user_users('" + FTel + "','" + FPasswd + "','" + str + "')";
             DataTable dt = new DataTable();
             ulMySqlHelper.GetaDatatable(sql, out dt, out err);
             return dt;
@@ -186,7 +189,7 @@ namespace WSData
         public static DataTable article_search(int page)
         {
             string err = "",
-                sql = "call proc_article_search(" + page.ToString() + ")";
+                sql = "call proc_article_search('" + FTel + "','" + FPasswd + "'," + page.ToString() + ")";
             DataTable dt = new DataTable();
             ulMySqlHelper.GetaDatatable(sql, out dt, out err);
             return dt;
@@ -196,6 +199,39 @@ namespace WSData
         {
             string sql = "call proc_data_countInfo()";
             return ulMySqlHelper.GetFirstVar(sql);
+        }
+
+        public static string user_changePasswd(string oldPwd, string newPwd, string newPwd2)
+        {           
+            oldPwd = FmtStr(oldPwd);
+            newPwd = FmtStr(newPwd);
+            newPwd2 = FmtStr(newPwd2);
+            if (newPwd == "")
+                return "新密码不能为空";
+            if (newPwd != newPwd2)
+                return "两次输入的新密码不一致";
+            string ret = "",
+                sql = "call proc_user_changePassword('"+FTel+"','"+oldPwd+"','"+newPwd+"')";
+            ret = ulMySqlHelper.GetFirstVar(sql);
+            if (ret == "1")
+            {
+                FPasswd = newPwd;
+                SaveLocalConfig(FTel, newPwd, true);
+                ret = "";
+            }
+            return ret;
+        }
+
+        public static string user_agentPaytoUser(string toTel, int point)
+        {
+            toTel = FmtStr(toTel);
+            if (point < 1)
+                return "充值点数不能小于0";
+            string sql = "call proc_user_AgentPayToUser('" + FTel + "','" + FPasswd + "','" + toTel + "'," + point.ToString() + ")";
+            string ret = ulMySqlHelper.GetFirstVar(sql);
+            if (ret == "1")
+                ret = "";
+            return ret;
         }
 
         //图片

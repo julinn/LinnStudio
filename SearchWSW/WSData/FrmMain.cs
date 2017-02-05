@@ -197,5 +197,13 @@ namespace WSData
                 return;
             showArticleContent();
         }
+
+        //帐户信息页面 =================
+        private void btnChangePwd_Click(object sender, EventArgs e)
+        {
+            //修改密码
+            FrmChangePwd fmcp = new FrmChangePwd();
+            fmcp.ShowDialog();
+        }
     }
 }
