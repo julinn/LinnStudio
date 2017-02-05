@@ -66,6 +66,9 @@
             &nbsp;<asp:Button ID="btnEdit" runat="server" Text="修改分红单" 
                     onclick="btnEdit_Click" />
 &nbsp;<asp:Button ID="btnAudit" runat="server" Text="审核分红单" OnClientClick ="return confirm('分红单审核以后将不可修改或变更，确定要审核吗？');" onclick="btnAudit_Click" />
+            &nbsp;<asp:Button ID="btnBillDel" runat="server" Text="彻底删除分红单"  
+                    OnClientClick ="return confirm('分红单删除以后将不可还原，确定要彻底删除吗？');" 
+                    onclick="btnBillDel_Click" />
             </td>
         </tr>
         <tr>

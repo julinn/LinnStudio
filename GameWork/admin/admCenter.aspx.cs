@@ -22,5 +22,8 @@ public partial class admin_admCenter : System.Web.UI.Page
         int id = coreGW.GetSessionID(this.Page);
         DataTable dt = coreGW.LogSearch(id, 1);
         coreGW.DataBind(dt, GridView1);
+        //
+        DataTable dt2 = coreGW.LogSearch(id, 4);
+        coreGW.DataBind(dt2, GridView2);
     }
 }

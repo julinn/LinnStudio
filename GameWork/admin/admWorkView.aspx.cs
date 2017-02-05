@@ -159,4 +159,19 @@ public partial class admWorkView : System.Web.UI.Page
             coreGW.MsgLableErr(ret, lbMsg);
         }
     }
+    protected void btnBillDel_Click(object sender, EventArgs e)
+    {
+        //
+        int uid = coreGW.GetSessionID(this.Page),
+            id = GetWorkID();
+        string ret = coreGW.BillDelete(id, uid);
+        if (ret == "")
+        {
+            Response.Redirect("./admWorkMgr.aspx");
+        }
+        else
+        {
+            coreGW.MsgLableErr(ret, lbMsg);
+        }
+    }
 }

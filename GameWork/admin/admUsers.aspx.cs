@@ -37,6 +37,7 @@ public partial class admin_admUsers : System.Web.UI.Page
         lbMsg.Text = "";
         edtPym.Text = "";
         rblState.SelectedValue = "1";
+        btnDel.Enabled = false;
     }
 
     private void SearchUser()
@@ -63,6 +64,7 @@ public partial class admin_admUsers : System.Web.UI.Page
             rblState.SelectedValue = dt.Rows[0]["State"].ToString();
             edtPym.Text = dt.Rows[0]["Pym"].ToString();
             pnlEdit.Visible = true;
+            btnDel.Enabled = true;
         }
     }
 
@@ -118,5 +120,19 @@ public partial class admin_admUsers : System.Web.UI.Page
         //add new
         CleanEdit();
         pnlEdit.Visible = true;
+    }
+    protected void btnDel_Click(object sender, EventArgs e)
+    {
+        int id = coreGW.FmtInt(edtName.ToolTip),
+            uid = coreGW.GetSessionID(this.Page);
+        string ret = coreGW.MemberDelete(id, uid);
+        if (ret == "")
+        {
+            coreGW.LogWrite(uid, 4, "删除成员："+edtName.Text);
+            CleanEdit();
+            SearchUser();
+        }
+        else
+            coreGW.MsgLableErr(ret, lbMsg);
     }
 }

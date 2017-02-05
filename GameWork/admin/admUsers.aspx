@@ -80,7 +80,10 @@
                                 <asp:Button ID="btnSave" runat="server" onclick="btnSave_Click" Text="保 存" />
                                 &nbsp;<asp:Button ID="btnCancel" runat="server" onclick="btnCancel_Click" 
                                     Text="取 消" />
-                                &nbsp;<asp:CheckBox ID="chkContinue" runat="server" Text="连续增加" />
+                                &nbsp;<asp:Button ID="btnDel" runat="server" Text="成员删除" 
+                                    OnClientClick ="return confirm('成员删除将作废其所有未结算记录，确定要删除吗？');" 
+                                    onclick="btnDel_Click"  />
+                                <asp:CheckBox ID="chkContinue" runat="server" Text="连续增加" />
                             </td>
                         </tr>
                         <tr>

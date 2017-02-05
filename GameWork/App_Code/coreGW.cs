@@ -684,7 +684,7 @@ public class coreGW
     /// 写入日志
     /// </summary>
     /// <param name="uid">用户ID</param>
-    /// <param name="classid">类型 1登录 2修改单据 3审核单据</param>
+    /// <param name="classid">类型 1登录 2修改单据 3审核单据,4 删除成员</param>
     /// <param name="content">日志内容</param>
     public static void LogWrite(int uid, int classid, string content)
     {
@@ -718,5 +718,39 @@ public class coreGW
         return LogSearch(uid, classID, 0);
     }
 
+    /// <summary>
+    /// 删除账单
+    /// </summary>
+    /// <param name="billID">账单ID</param>
+    /// <param name="uid">用户ID</param>
+    /// <returns></returns>
+    public static string BillDelete(int billID, int uid)
+    {
+        string ret = "",
+            sql = "call proc_gw_Bill_Del(" + billID.ToString() + "," + uid.ToString() + ")";
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "1")
+            ret = "";
+        return ret;
+    }
 
+    /// <summary>
+    /// 成员删除
+    /// </summary>
+    /// <param name="memID">成员ID</param>
+    /// <param name="uid">用户ID</param>
+    /// <returns></returns>
+    public static string MemberDelete(int memID, int uid)
+    {
+        string ret = "",
+            sql = "call proc_gw_Member_Del(" + memID.ToString() + "," + uid.ToString() + ")";
+        if (memID == 0)
+            return "获取成员ID失败，请稍后再重试";
+        if (uid == 0)
+            return "获取当前用户ID失败，请重新登陆后再重试";
+        ret = ulMySqlHelper.GetFirstVar(sql);
+        if (ret == "1")
+            ret = "";
+        return ret;
+    }
 }
