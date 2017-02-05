@@ -1,6 +1,9 @@
 ﻿using System.Runtime.InteropServices;
 using System.Management;
 using System;
+//
+using System.Net.NetworkInformation;
+using Microsoft.Win32; 
 
 public class ulMAC
 {
@@ -139,7 +142,7 @@ public class ulMAC
         [DllImport("NETAPI32.DLL")]
         public static extern char Netbios(ref NCB ncb);
     }
-    //取网卡mac
+    //取网卡mac， （备注：2017-02-05 11:37:10 这个有可能获取到虚拟网卡地址，不是很准确）
     public static string GetMacAddress()
     {
         string addr = "";
@@ -193,5 +196,46 @@ public class ulMAC
         {
         }
         return addr.Replace(' ', '0');
+    }
+
+    //============================ 
+    public static string GetMacAddressByNetworkInformation()
+    {
+        string key = "SYSTEM\\CurrentControlSet\\Control\\Network\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\";
+        string macAddress = string.Empty;
+        try
+        {
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            foreach (NetworkInterface adapter in nics)
+            {
+                if (adapter.NetworkInterfaceType == NetworkInterfaceType.Ethernet
+                    && adapter.GetPhysicalAddress().ToString().Length != 0)
+                {
+                    string fRegistryKey = key + adapter.Id + "\\Connection";
+                    RegistryKey rk = Registry.LocalMachine.OpenSubKey(fRegistryKey, false);
+                    if (rk != null)
+                    {
+                        string fPnpInstanceID = rk.GetValue("PnpInstanceID", "").ToString();
+                        int fMediaSubType = Convert.ToInt32(rk.GetValue("MediaSubType", 0));
+                        if (fPnpInstanceID.Length > 3 &&
+                            fPnpInstanceID.Substring(0, 3) == "PCI")
+                        {
+                            macAddress = adapter.GetPhysicalAddress().ToString();
+                            for (int i = 1; i < 6; i++)
+                            {
+                                macAddress = macAddress.Insert(3 * i - 1, ":");
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        catch //(Exception ex)
+        {
+            //这里写异常的处理  
+            return "";
+        }
+        return macAddress.Replace(":","");
     }
 }

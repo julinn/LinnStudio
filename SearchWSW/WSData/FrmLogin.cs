@@ -17,6 +17,7 @@ namespace WSData
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            //MessageBox.Show(ulMAC.GetMacAddressByNetworkInformation());
             string result = Data.user_login_mac(edtTel.Text, edtpwd.Text);
             if (result == "")
             {

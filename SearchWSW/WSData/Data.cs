@@ -67,7 +67,7 @@ namespace WSData
 
         public static string GetMac()
         {
-            return ulMAC.GetMacAddress();
+            return ulMAC.GetMacAddressByNetworkInformation();// GetMacAddress();
         }
 
         public static string user_login_mac(string tel, string pwd)
@@ -181,6 +181,134 @@ namespace WSData
             DataTable dt = new DataTable();
             ulMySqlHelper.GetaDatatable(sql, out dt, out err);
             return dt;
+        }
+
+        public static DataTable article_search(int page)
+        {
+            string err = "",
+                sql = "call proc_article_search(" + page.ToString() + ")";
+            DataTable dt = new DataTable();
+            ulMySqlHelper.GetaDatatable(sql, out dt, out err);
+            return dt;
+        }
+
+        public static string data_info()
+        {
+            string sql = "call proc_data_countInfo()";
+            return ulMySqlHelper.GetFirstVar(sql);
+        }
+
+        //图片
+        #region 图片处理
+        /// <summary>
+        /// 图片URL地址转换为本地图片路径
+        /// </summary>
+        /// <param name="imgUrl"></param>
+        /// <returns></returns>
+        public static string ImageUrlToLocalFilepath(string imgUrl)
+        {
+            string path = System.Windows.Forms.Application.StartupPath,
+                    filename = "";
+            filename = imgUrl.Replace("www.wshangw.net", "").Replace("http://", "");
+            filename = filename.Replace("/", "\\");
+            filename = path + filename;
+            return filename;
+        }
+
+        /// <summary>
+        /// 检查图片URL是否已下载到本地，如果不存在，则下载到本地，成功返回本地路径，失败返回空
+        /// </summary>
+        /// <param name="imgUrl"></param>
+        /// <returns></returns>
+        public static string ImageUrlCheckDown(string imgUrl)
+        {
+            string fileName = ImageUrlToLocalFilepath(imgUrl);
+            if (!File.Exists(fileName))
+            {
+                string down = ImageDownload(imgUrl);
+                if (down.Contains("失败"))
+                    fileName = "";
+            }
+            return fileName;
+        }
+
+        /// <summary>
+        /// 下载网络图片到本地
+        /// </summary>
+        /// <param name="imgUrl"></param>
+        /// <returns></returns>
+        public static string ImageDownload(string imgUrl)
+        {
+            try
+            {
+                //http://www.wshangw.net/uploads/allimg/161212/1-1612121I5550-L.png
+                string path = System.Windows.Forms.Application.StartupPath,
+                    dir = "", filename = "";
+                filename = imgUrl.Replace("www.wshangw.net", "").Replace("http://", "");
+                filename = filename.Replace("/", "\\");
+                filename = path + filename;
+                string[] list = filename.Split('\\');
+                for (int i = 0; i < list.Length - 1; i++)
+                {
+                    if (dir == "")
+                        dir = list[i];
+                    else
+                        dir = dir + "\\" + list[i];
+                }
+                if (!Directory.Exists(dir))
+                {
+                    DirectoryInfo dirInfo = new DirectoryInfo(dir);
+                    dirInfo.Create();
+                }
+
+                //下载图片
+                // WebClient mywebclient = new WebClient();
+                // mywebclient.DownloadFile(imgUrl, dir);
+                //
+                WebRequest request = WebRequest.Create(imgUrl);
+                WebResponse response = request.GetResponse();
+                Stream reader = response.GetResponseStream();
+                FileStream writer = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
+                byte[] buff = new byte[512];
+                int c = 0; //实际读取的字节数
+                while ((c = reader.Read(buff, 0, buff.Length)) > 0)
+                {
+                    writer.Write(buff, 0, c);
+                }
+                writer.Close();
+                writer.Dispose();
+                reader.Close();
+                reader.Dispose();
+                response.Close();
+                //
+                return "[成功]" + imgUrl;
+            }
+            catch (Exception ex)
+            {
+                return "【失败】" + imgUrl + " || " + ex.Message;
+            }
+        }
+
+        #endregion 
+
+        public static string GetPages(System.Windows.Forms.ComboBox cmb)
+        {
+            cmb.Items.Clear();
+            string sql = "call proc_article_countPage()";
+            string ret = ulMySqlHelper.GetFirstVar(sql);
+            string[] arr = ret.Split(',');
+            int icount = StrToInt(arr[0]);
+            int ipage = StrToInt(arr[1]);
+            if (ipage > 0)
+            {
+                for (int i = 1; i <= ipage; i++)
+                    cmb.Items.Add(i.ToString());
+            }
+            else
+                cmb.Items.Add("1");
+            cmb.SelectedIndex = 0;
+            return icount.ToString();
+
         }
 
     }
