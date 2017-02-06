@@ -18,6 +18,13 @@ namespace WSData
 
         private void FmMain_Load(object sender, EventArgs e)
         {
+            //检测是否有新版本需要更新
+            if (Data.ExeUpdateCheck())
+            {
+                FrmUpdate fmupdate = new FrmUpdate();
+                fmupdate.ShowDialog();
+                return;
+            }
             //登录
             FrmLogin fmlogin = new FrmLogin();
             fmlogin.ShowDialog();

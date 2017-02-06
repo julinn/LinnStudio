@@ -10,6 +10,7 @@ namespace WSData
 {
     class Data
     {
+        public static string FExeVer = "20170205";
         //
         public static string FTel = "";
         public static string FPasswd = "";
@@ -345,6 +346,23 @@ namespace WSData
             cmb.SelectedIndex = 0;
             return icount.ToString();
 
+        }
+
+        public static string GetSystemConfig(string keyName)
+        {
+            keyName = FmtStr(keyName);
+            string sql = "call proc_system_read('" + keyName + "')";
+            return ulMySqlHelper.GetFirstVar(sql);
+        }
+
+        public static bool ExeUpdateCheck()
+        {
+            string sql = "call proc_system_read('ExeVer')";
+            string ver = ulMySqlHelper.GetFirstVar(sql);
+            if (ver == FExeVer)
+                return false;
+            else
+                return true;
         }
 
     }
