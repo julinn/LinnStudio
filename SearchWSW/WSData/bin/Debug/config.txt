@@ -1,3 +1,0 @@
-uid=1
-pwd=1
-select=1
