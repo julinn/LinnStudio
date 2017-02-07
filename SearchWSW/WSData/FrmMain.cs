@@ -21,9 +21,12 @@ namespace WSData
             //检测是否有新版本需要更新
             if (Data.ExeUpdateCheck())
             {
-                FrmUpdate fmupdate = new FrmUpdate();
-                fmupdate.ShowDialog();
-                return;
+                //if (MessageBox.Show("检测到新版本，是否升级？", "升级提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                //{
+                    FrmUpdate fmupdate = new FrmUpdate();
+                    fmupdate.ShowDialog();
+                    return;
+                //}
             }
             //登录
             FrmLogin fmlogin = new FrmLogin();

@@ -10,7 +10,7 @@ namespace WSData
 {
     class Data
     {
-        public static string FExeVer = "20170205";
+        public static string FExeVer = "20170206";
         //
         public static string FTel = "";
         public static string FPasswd = "";

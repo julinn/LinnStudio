@@ -38,8 +38,10 @@ namespace WSData
                 string ret = ulSystem.DownloadFile(url, filename, this.progressBar1, this.label1);
                 if (ret == "")
                 {
-                    MessageBox.Show("更新完成");
+                    //MessageBox.Show("更新完成");
                     //DialogResult = DialogResult.OK;
+                    label1.Text = "下载更新完成，开始升级更新，请稍候......";
+                    Data.Delay(500);
                     string oldfilename = ulSystem.getCurrpath() + "\\WSData.exe";//Assembly.GetExecutingAssembly().Location;
                     string oldback = oldfilename + ".delete";
                     if (File.Exists(oldback))
