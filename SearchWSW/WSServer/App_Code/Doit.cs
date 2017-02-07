@@ -152,7 +152,13 @@ public class Doit
         }
         else if (str == "wjmm")
         {
-            sql = "call proc_wx_user_resetPwd('"+openID+"')";
+            sql = "call proc_wx_user_resetPwd('" + openID + "')";
+            result = ulMySqlHelper.GetFirstVar(sql);
+        }
+        else
+        {
+            FmtStr(str);
+            sql = "call proc_wx_userTextCmd('" + openID + "','"+str+"')";
             result = ulMySqlHelper.GetFirstVar(sql);
         }
         return result;
