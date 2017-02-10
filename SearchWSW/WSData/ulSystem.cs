@@ -51,7 +51,7 @@ public class ulSystem
     {
         try
         {
-            System.Diagnostics.FileVersionInfo fv = new System.Diagnostics.FileVersionInfo(filePath);
+            System.Diagnostics.FileVersionInfo fv = System.Diagnostics.FileVersionInfo.GetVersionInfo(filePath);
             return fv.FileVersion; 
         }
         catch
@@ -360,7 +360,7 @@ public class ulSystem
 
     public static bool saveConfig_txt(Dictionary<string, string> cfg)
     {
-        return saveConfig_txt(FsConfigFileName);
+        return saveConfig_txt(cfg, FsConfigFileName);
     }
 
     public static bool saveConfig_txt(string nodeName, string nodeValue, string txtpath)
