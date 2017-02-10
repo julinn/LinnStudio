@@ -5,7 +5,7 @@ using System.Text;
 public class ulSystem
 {
     private static string FsConnFileName = getCurrpath() + "\\connset.txt";
-    private static string FsConfigFileName = getCurrpath() + "\\defconfig.txt";
+    private static string FsConfigFileName = getCurrpath() + "\\config.txt";
 
     public ulSystem()
     {
@@ -436,15 +436,19 @@ public class ulSystem
     }
     #endregion 
 
-
-
-    public static Dictionary<string, string> GetConnSet()
+    #region ReadConnString 读取连接字符串
+    public static string ReadConnString()
     {
-        Dictionary<string, string> cfg = new Dictionary<string, string>();
-        //string path = 
-        cfg = readConfig_txt(FsConnFileName);
-        return cfg;
+        return SimpleDecStr(txtRead(FsConnFileName));
     }
+    #endregion 
+
+    #region SaveConnString 保存连接字符串
+    public static bool SaveConnString(string str)
+    {
+        return txtSave(SimpleEncStr(str), FsConnFileName);
+    }
+    #endregion 
 
     #region DownloadFile 下载文件
     /// <summary>
