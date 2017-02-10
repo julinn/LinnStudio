@@ -319,6 +319,16 @@ public class ulSystem
         return ret;
     }
 
+    /// <summary>
+    /// 读取默认配置单个节点值
+    /// </summary>
+    /// <param name="nodeName"></param>
+    /// <returns></returns>
+    public static string readConfig_txtValue(string nodeName)
+    {
+        return readConfig_txt(FsConfigFileName, nodeName);
+    }
+
     #endregion 
 
     #region saveConfig_txt 保存TXT配置文件
