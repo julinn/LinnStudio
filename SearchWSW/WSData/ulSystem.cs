@@ -30,6 +30,19 @@ public class ulSystem
         return System.Text.RegularExpressions.Regex.IsMatch(str_number, @"^[0-9]*$");
     }
 
+    public static string GetFileVersion(string filePath)
+    {
+        try
+        {
+            System.Diagnostics.FileVersionInfo fv = new System.Diagnostics.FileVersionInfo(filePath);
+            return fv.FileVersion; 
+        }
+        catch
+        {
+            return "";
+        }
+    }
+
     #region SimpleEncStr 简单加密 base64
     /// <summary>
     /// 简单加密 base64
