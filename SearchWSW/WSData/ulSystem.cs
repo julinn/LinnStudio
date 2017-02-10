@@ -5,10 +5,13 @@ using System.Text;
 public class ulSystem
 {
     private static string FsConnFileName = getCurrpath() + "\\connset.txt";
+    private static string FsConfigFileName = getCurrpath() + "\\defconfig.txt";
+
     public ulSystem()
     {
     }
 
+    #region getCurrpath 当前程序目录（末尾不含\，格式 如 E:\App\AppPath）
     /// <summary>
     /// 当前程序目录（末尾不含\，格式 如 E:\App\AppPath）
     /// </summary>
@@ -24,12 +27,26 @@ public class ulSystem
             return "";
         }
     }
+    #endregion 
 
+    #region IsNumber 检查是否是数字
+    /// <summary>
+    /// 检查是否是数字
+    /// </summary>
+    /// <param name="str_number"></param>
+    /// <returns></returns>
     public static bool IsNumber(string str_number)
     {
         return System.Text.RegularExpressions.Regex.IsMatch(str_number, @"^[0-9]*$");
     }
+    #endregion 
 
+    #region GetFileVersion 获取文件版本号
+    /// <summary>
+    /// 获取文件版本号
+    /// </summary>
+    /// <param name="filePath"></param>
+    /// <returns></returns>
     public static string GetFileVersion(string filePath)
     {
         try
@@ -42,6 +59,7 @@ public class ulSystem
             return "";
         }
     }
+    #endregion 
 
     #region SimpleEncStr 简单加密 base64
     /// <summary>
@@ -69,9 +87,9 @@ public class ulSystem
     }
     #endregion
 
-    #region txt 读取
+    #region txtRead txt文件读取
     /// <summary>
-    /// txt 读取
+    /// txt文件读取
     /// </summary>
     /// <param name="path">文件路径</param>
     /// <returns></returns>
@@ -129,7 +147,13 @@ public class ulSystem
     }
     #endregion 
 
-    #region txt 保存
+    #region txtSave txt文件保存
+    /// <summary>
+    /// txt文件保存
+    /// </summary>
+    /// <param name="content"></param>
+    /// <param name="path"></param>
+    /// <returns></returns>
     public static bool txtSave(string content, string path)
     {
         try
@@ -180,7 +204,15 @@ public class ulSystem
             return false;
         }
     }
+    #endregion 
 
+    #region txtAddLine txt文件保存（追加行）
+    /// <summary>
+    /// txt文件保存（追加行）
+    /// </summary>
+    /// <param name="content"></param>
+    /// <param name="path"></param>
+    /// <returns></returns>
     public static bool txtAddLine(string content, string path)
     {
         try
@@ -198,7 +230,7 @@ public class ulSystem
     }
     #endregion 
 
-    #region 打开文件夹并选择指定文件
+    #region openPathAndSelectFile 打开文件夹并选择指定文件
     /// <summary>
     /// 打开文件夹并选择指定文件
     /// </summary>
@@ -221,7 +253,7 @@ public class ulSystem
     }
     #endregion 
 
-    #region 打开文件夹
+    #region openPath 打开文件夹
     /// <summary>
     /// 打开文件夹
     /// </summary>
@@ -243,6 +275,7 @@ public class ulSystem
     }
     #endregion 
 
+    #region readConfig_txt 读取TXT配置文件
     /// <summary>
     /// 读取TXT配置文件
     /// </summary>
@@ -272,6 +305,23 @@ public class ulSystem
         return cfg;
     }
 
+    public static Dictionary<string, string> readConfig_txt()
+    {
+        return readConfig_txt(FsConfigFileName);
+    }
+
+    public static string readConfig_txt(string txtpath, string nodeName)
+    {
+        string ret = "";
+        Dictionary<string, string> cfg = readConfig_txt(txtpath);
+        if (cfg.ContainsKey(nodeName))
+            ret = cfg[nodeName];
+        return ret;
+    }
+
+    #endregion 
+
+    #region saveConfig_txt 保存TXT配置文件
     /// <summary>
     /// 保存TXT配置文件
     /// </summary>
@@ -298,6 +348,31 @@ public class ulSystem
         return b;
     }
 
+    public static bool saveConfig_txt(Dictionary<string, string> cfg)
+    {
+        return saveConfig_txt(FsConfigFileName);
+    }
+
+    public static bool saveConfig_txt(string nodeName, string nodeValue, string txtpath)
+    {
+        bool b = false;
+        Dictionary<string, string> cfg = readConfig_txt(txtpath);
+        if (cfg.ContainsKey(nodeName))
+            cfg[nodeName] = nodeValue;
+        else
+            cfg.Add(nodeName, nodeValue);
+        b = saveConfig_txt(cfg, txtpath);
+        return b;
+    }
+
+    public static bool saveConfig_txt(string nodeName, string nodeValue)
+    {
+        return saveConfig_txt(nodeName, nodeValue, FsConfigFileName);
+    }
+
+    #endregion 
+
+    #region getDictKey 根据索引获取Key
     /// <summary>
     /// 根据索引获取Key
     /// </summary>
@@ -327,6 +402,9 @@ public class ulSystem
         }
         return ret;
     }
+    #endregion 
+
+    #region getDictValue 根据索引获取Value
     /// <summary>
     /// 根据索引获取Value
     /// </summary>
@@ -356,6 +434,9 @@ public class ulSystem
         }
         return ret;
     }
+    #endregion 
+
+
 
     public static Dictionary<string, string> GetConnSet()
     {
@@ -365,11 +446,12 @@ public class ulSystem
         return cfg;
     }
 
+    #region DownloadFile 下载文件
     /// <summary>
     /// 下载文件
     /// </summary>
     /// <param name="URL">文件URL</param>
-    /// <param name="filename">保存到本地名称</param>
+    /// <param name="filename">保存到本地名称（如：D:\App\App.exe）</param>
     /// <param name="prog">进度条控件名</param>
     /// <param name="label1">显示进度文字控件</param>
     /// <returns></returns>
@@ -416,5 +498,6 @@ public class ulSystem
         }
         return result;
     }
+    #endregion 
 
 }
