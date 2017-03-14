@@ -95,17 +95,18 @@ namespace SearchWSW
             return result;
         }
 
-        public static void SaveData(string wxID, string title, string showimg, string url)
+        public static void SaveData(string wxID, string title, string showimg, string url, string classDef)
         {
             wxID = FmtStr(wxID);
             title = FmtStr(title);
             showimg = FmtStr(showimg);
             url = FmtStr(url);
+            classDef = FmtStr(classDef);
             if (wxID == "" && url == "")
                 return;
             if (!showimg.Contains("http://"))
                 showimg = "http://" + showimg;
-            string sql = "call proc_xyws_Huoyuan_AutoExportIn('" + wxID + "','" + title + "','" + showimg + "','" + url + "')";
+            string sql = "call proc_xyws_Huoyuan_AutoExportIn('" + wxID + "','" + title + "','" + showimg + "','" + url + "','" + classDef + "')";
             ulMySqlHelper.GetFirstVar(sql);
         }
 
@@ -114,7 +115,7 @@ namespace SearchWSW
         /// </summary>
         /// <param name="listHtml"></param>
         /// <returns></returns>
-        public static string GetList(string listHtml)
+        public static string GetList(string listHtml, string classDef)
         {
             string result = "", tempResult = "", sDomain = "www.wshangw.net",
                 sFrom = "center-ctr-box>", sTo = "dede_pages";
@@ -145,7 +146,7 @@ namespace SearchWSW
                 title = GetMiddleString(ls, "\"target=_blank>", "</A>");
                 tempResult = wxID + "|" + title + "|" + showImg + "|" + url;
                 //保存
-                SaveData(wxID, title, showImg, url);
+                SaveData(wxID, title, showImg, url, classDef);
                 if (result == "")
                     result = tempResult;
                 else

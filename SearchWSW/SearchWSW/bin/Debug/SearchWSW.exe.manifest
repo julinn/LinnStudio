@@ -14,16 +14,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          UAC 清单选项
-          如果要更改 Windows 用户帐户控制级别，请
-          用下面的某一项替换 requestedExecutionLevel 节点。
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         如果要利用文件和注册表虚拟化实现向后
-         兼容，请删除 requestedExecutionLevel 节点。
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SearchWSW.exe" size="32768">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SearchWSW.exe" size="34304">
       <assemblyIdentity name="SearchWSW" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>zW8FWuTr3ITUK7c0kz8CYWHsB5c=</dsig:DigestValue>
+        <dsig:DigestValue>h0qrvop5a9WJS/naiaCN0402kGs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

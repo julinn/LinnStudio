@@ -44,6 +44,7 @@
             this.wbDetail = new System.Windows.Forms.WebBrowser();
             this.mmDetail = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chkIsArticle = new System.Windows.Forms.CheckBox();
             this.lbDetail = new System.Windows.Forms.Label();
             this.btnDetail = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -52,7 +53,7 @@
             this.btnImageDownShowimg = new System.Windows.Forms.Button();
             this.lbDown = new System.Windows.Forms.Label();
             this.btnImgDownload = new System.Windows.Forms.Button();
-            this.chkIsArticle = new System.Windows.Forms.CheckBox();
+            this.cmbClass = new System.Windows.Forms.ComboBox();
             this.tMain.SuspendLayout();
             this.tp1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,6 +104,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbClass);
             this.groupBox1.Controls.Add(this.btnGo);
             this.groupBox1.Controls.Add(this.edtUrl);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -114,7 +116,7 @@
             // 
             // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(659, 18);
+            this.btnGo.Location = new System.Drawing.Point(648, 19);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(120, 23);
             this.btnGo.TabIndex = 1;
@@ -128,7 +130,7 @@
             this.edtUrl.Name = "edtUrl";
             this.edtUrl.Size = new System.Drawing.Size(636, 21);
             this.edtUrl.TabIndex = 0;
-            this.edtUrl.Text = "http://www.wshangw.net/a/nanxie_nvxie/";
+            this.edtUrl.Text = "http://www.wshangw.net/a/nvzhuang_nanzhuang/";
             // 
             // tabPage2
             // 
@@ -238,6 +240,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "`";
             // 
+            // chkIsArticle
+            // 
+            this.chkIsArticle.AutoSize = true;
+            this.chkIsArticle.Location = new System.Drawing.Point(170, 34);
+            this.chkIsArticle.Name = "chkIsArticle";
+            this.chkIsArticle.Size = new System.Drawing.Size(96, 16);
+            this.chkIsArticle.TabIndex = 3;
+            this.chkIsArticle.Text = "更新文章明细";
+            this.chkIsArticle.UseVisualStyleBackColor = true;
+            // 
             // lbDetail
             // 
             this.lbDetail.AutoSize = true;
@@ -319,15 +331,22 @@
             this.btnImgDownload.UseVisualStyleBackColor = true;
             this.btnImgDownload.Click += new System.EventHandler(this.btnImgDownload_Click);
             // 
-            // chkIsArticle
+            // cmbClass
             // 
-            this.chkIsArticle.AutoSize = true;
-            this.chkIsArticle.Location = new System.Drawing.Point(170, 34);
-            this.chkIsArticle.Name = "chkIsArticle";
-            this.chkIsArticle.Size = new System.Drawing.Size(96, 16);
-            this.chkIsArticle.TabIndex = 3;
-            this.chkIsArticle.Text = "更新文章明细";
-            this.chkIsArticle.UseVisualStyleBackColor = true;
+            this.cmbClass.FormattingEnabled = true;
+            this.cmbClass.Items.AddRange(new object[] {
+            "服装",
+            "鞋子",
+            "化妆品",
+            "奢侈品牌",
+            "其他",
+            "营销文章"});
+            this.cmbClass.Location = new System.Drawing.Point(774, 20);
+            this.cmbClass.Name = "cmbClass";
+            this.cmbClass.Size = new System.Drawing.Size(121, 20);
+            this.cmbClass.TabIndex = 2;
+            this.cmbClass.Text = "服装";
+            this.cmbClass.SelectedIndexChanged += new System.EventHandler(this.cmbClass_SelectedIndexChanged);
             // 
             // FormMain
             // 
@@ -383,6 +402,7 @@
         private System.Windows.Forms.Label lbDown;
         private System.Windows.Forms.Button btnImageDownShowimg;
         private System.Windows.Forms.CheckBox chkIsArticle;
+        private System.Windows.Forms.ComboBox cmbClass;
     }
 }
 

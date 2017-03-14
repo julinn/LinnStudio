@@ -129,7 +129,7 @@ namespace SearchWSW
                 return;
             FiCurr = FiCurr + 1;
             showInfo("正在执行：" + FiCurr.ToString() + " / " + FiPage.ToString() + " ......");
-            string data = wsCore.GetList(dataStr);
+            string data = wsCore.GetList(dataStr, cmbClass.Text);
             if (mmData.Text == "")
                 mmData.Text = data;
             else
@@ -292,6 +292,34 @@ namespace SearchWSW
         private void btnUpdateArticle_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmbClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int i = cmbClass.SelectedIndex;
+            if (i < 0)
+                return;
+            switch (i)
+            {
+                case 0:
+                    edtUrl.Text = "http://www.wshangw.net/a/nvzhuang_nanzhuang/";
+                    break;
+                case 1:
+                    edtUrl.Text = "http://www.wshangw.net/a/nanxie_nvxie/";
+                    break;
+                case 2:
+                    edtUrl.Text = "http://www.wshangw.net/a/huazhuangpin/";
+                    break;
+                case 3:
+                    edtUrl.Text = "http://www.wshangw.net/a/shechipinpai/";
+                    break;
+                case 4:
+                    edtUrl.Text = "http://www.wshangw.net/a/qitahuoyuan/";
+                    break;
+                case 5:
+                    edtUrl.Text = "http://www.wshangw.net/a/weixinyingxiao/";
+                    break;
+            }
         }
     }
 }
